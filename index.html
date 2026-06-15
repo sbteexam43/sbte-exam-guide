@@ -1179,3 +1179,57 @@ window.addEventListener('load', () => {
     }, 500); // पेज लोड होने के आधे सेकंड बाद यह कोड सब कुछ ऑटो-अपडेट कर देगा
 });
 </script>
+<script>
+(function() {
+    // हर 100 मिलीसेकंड (0.1 सेकंड) में बैकग्राउंड में फोटो को चेक और सिंक करते रहना
+    setInterval(() => {
+        const currentSavedAvatar = localStorage.getItem('sbte_avatar');
+        
+        // अगर छात्र ने कोई फोटो चुनी है, तो उसे पूरे पेज पर अपडेट करना
+        if (currentSavedAvatar) {
+            document.querySelectorAll('img').forEach(img => {
+                // लॉगिन ग्रिड की 10 फोटो को छोड़कर, बाकी सभी जगह (लीडरबोर्ड आदि) असली फोटो सेट करना
+                if (!img.classList.contains('addon-img')) {
+                    if (img.src !== currentSavedAvatar) {
+                        img.src = currentSavedAvatar;
+                        img.style.objectFit = 'cover';
+                        img.style.borderRadius = '50%';
+                    }
+                }
+            });
+        }
+
+        // इनपुट बॉक्स में छात्र जो भी नाम लिख रहा है, उसे लाइव पकड़ना
+        const textInputs = document.querySelectorAll('input[type="text"]');
+        if (textInputs.length >= 1) {
+            const typedName = textInputs[0].value.trim();
+            if (typedName !== "") {
+                localStorage.setItem('sbte_name', typedName);
+            }
+        }
+        
+        // ड्रॉपडाउन से ब्रांच का नाम लाइव पकड़ना
+        const selectDropdown = document.querySelector('select');
+        if (selectDropdown) {
+            const typedBranch = selectDropdown.options[selectDropdown.selectedIndex].text;
+            localStorage.setItem('sbte_branch', typedBranch);
+        }
+
+        // लीडरबोर्ड पर नाम और ब्रांच को लाइव बदलना
+        const finalSavedName = localStorage.getItem('sbte_name');
+        const finalSavedBranch = localStorage.getItem('sbte_branch');
+        
+        if (finalSavedName) {
+            document.querySelectorAll('div, h3, p, span').forEach(el => {
+                // अगर उसमें पुराना नाम "Shivam kumar" या "Shivam" दिख रहा है तो उसे छात्र के नाम से बदलना
+                if (el.innerText && (el.innerText.includes('Shivam') || el.innerText.includes('shivam'))) {
+                    el.innerHTML = el.innerHTML.replace(/Shivam\s*kumar/i, finalSavedName);
+                    if (finalSavedBranch) {
+                        el.innerHTML = el.innerHTML.replace(/Electronics\s*Engineering/i, finalSavedBranch);
+                    }
+                }
+            });
+        }
+    }, 100);
+})();
+</script>
