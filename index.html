@@ -1146,3 +1146,36 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+<script>
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const savedName = localStorage.getItem('sbte_name');
+        const savedBranch = localStorage.getItem('sbte_branch');
+        const savedAvatar = localStorage.getItem('sbte_avatar');
+
+        if (savedName && savedAvatar) {
+            // 1. लीडरबोर्ड में जहाँ नाम लिखा है, उसे ढूंढना
+            const leaderboardCards = document.querySelectorAll('.main-container div, #main-portal div, .welcome-msg ~ div');
+            
+            // पूरे पेज पर लीडरबोर्ड के कार्ड को ऑटो-अपडेट करना
+            document.querySelectorAll('div').forEach(div => {
+                if (div.innerText && (div.innerText.includes('Shivam kumar') || div.innerText.includes('Shivamकुमार'))) {
+                    // नाम और ब्रांच बदलना
+                    div.innerHTML = div.innerHTML.replace(/Shivam\s*kumar/i, savedName);
+                    if(savedBranch) {
+                        div.innerHTML = div.innerHTML.replace(/Electronics\s*Engineering/i, savedBranch);
+                    }
+                    
+                    // उस कार्ड के अंदर मौजूद पुरानी इमेज को हटाकर आपकी चुनी हुई असली फोटो लगाना
+                    const img = div.querySelector('img');
+                    if (img) {
+                        img.src = savedAvatar;
+                        img.style.objectFit = 'cover';
+                        img.style.borderRadius = '50%';
+                    }
+                }
+            });
+        }
+    }, 500); // पेज लोड होने के आधे सेकंड बाद यह कोड सब कुछ ऑटो-अपडेट कर देगा
+});
+</script>
