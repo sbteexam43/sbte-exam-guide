@@ -1061,3 +1061,88 @@
     // तुरंत स्क्रीन को क्लीन करके अपडेट लागू करें
     drawLeaderboard();
 </script>
+<div id="custom-avatar-addon"></div>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. पुरानी फ़ाइल अपलोड वाली इनपुट को ढूँढकर हटाना
+    const oldFileInput = document.querySelector('input[type="file"]');
+    if (oldFileInput) {
+        oldFileInput.style.display = 'none';
+        // अगर उसके आस-पास कोई लेबल या टेक्स्ट है तो उसे भी हटाना
+        if(oldFileInput.previousElementSibling) oldFileInput.previousElementSibling.style.display = 'none';
+    }
+
+    // 2. आपकी 10 असली फोटो का सुंदर ग्रिड तैयार करना
+    const avatarList = [
+        "b35fdb62df77b809e3cf31e6518e863c.jpg",
+        "587e0c0e7aea8c0546dfaee48badb485.jpg",
+        "084047c7761e3f89b78723ec8dbb0432.jpg",
+        "91d5d95acceb45ee568650e35af54971.jpg",
+        "8e40f83a0f6b6f2e66803af56507b05d.jpg",
+        "87fa3b8a9a9cb9f0d6b23ace0edd2f5a.jpg",
+        "IMG_20260615_074856.jpg",
+        "IMG_20260615_074917.jpg",
+        "IMG_20260615_074934.jpg",
+        "b963870f4bcf17931ae3517aacfd9b16.jpg"
+    ];
+
+    // ग्रिड के लिए सुंदर स्टाइल (CSS) बनाना
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .addon-label { font-weight: bold; color: #1e3a8a; margin-top: 15px; margin-bottom: 8px; text-align: left; font-size: 14px; }
+        .addon-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 20px; background: #f8fafc; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .addon-img { width: 100%; aspect-ratio: 1; border-radius: 50%; border: 3px solid #cbd5e1; cursor: pointer; object-fit: cover; transition: all 0.2s; background: white; }
+        .addon-img.selected { border-color: #3b82f6; box-shadow: 0 0 8px rgba(59, 130, 246, 0.5); transform: scale(1.05); }
+    `;
+    document.head.appendChild(style);
+
+    // लॉगिन बॉक्स के अंदर इस ग्रिड को फिट करना
+    const loginBox = document.querySelector('.login-box') || document.querySelector('div[style*="background: white"]');
+    if (loginBox) {
+        const label = document.createElement('div');
+        label.className = 'addon-label';
+        label.innerText = 'अपनी प्रोफाइल फोटो चुनें (10 विकल्प):';
+        
+        const grid = document.createElement('div');
+        grid.className = 'addon-grid';
+
+        let selectedSrc = "https://sbteexam43.github.io/sbte-exam-guide/" + avatarList[0];
+        localStorage.setItem('sbte_avatar', selectedSrc); // डिफ़ॉल्ट फोटो सेट
+
+        avatarList.forEach((imgName, index) => {
+            const img = document.createElement('img');
+            img.src = "https://sbteexam43.github.io/sbte-exam-guide/" + imgName;
+            img.className = 'addon-img';
+            if(index === 0) img.classList.add('selected');
+
+            img.onclick = function() {
+                document.querySelectorAll('.addon-img').forEach(i => i.classList.remove('selected'));
+                img.classList.add('selected');
+                localStorage.setItem('sbte_avatar', img.src);
+            };
+            grid.appendChild(img);
+        });
+
+        // लॉगिन बटन से ठीक पहले इसे जोड़ना
+        const loginBtn = loginBox.querySelector('button');
+        if (loginBtn) {
+            loginBox.insertBefore(label, loginBtn);
+            loginBox.insertBefore(grid, loginBtn);
+            
+            // बटन के क्लिक पर फोटो को प्रोफाइल पर दिखाना
+            loginBtn.addEventListener('click', () => {
+                const finalAvatar = localStorage.getItem('sbte_avatar');
+                const profileImg = document.querySelector('.profile-pic') || document.getElementById('user-avatar') || document.querySelector('img[id*="avatar"]');
+                if (profileImg) profileImg.src = finalAvatar;
+            });
+        }
+    }
+
+    // अगर छात्र पहले से लॉगिन है तो पुरानी फोटो दिखाना
+    const savedAvatar = localStorage.getItem('sbte_avatar');
+    if (savedAvatar) {
+        const profileImg = document.querySelector('.profile-pic') || document.getElementById('user-avatar') || document.querySelector('img[id*="avatar"]');
+        if (profileImg) profileImg.src = savedAvatar;
+    }
+});
+</script>
