@@ -110,6 +110,18 @@
         .chevron { transition: transform 0.3s; color: #64748b; }
     </style>
 </head>
+    <script>
+    // यह स्क्रिप्ट वेबसाइट के नाम को अपने आप बदल देगी
+    window.onload = function() {
+        var elements = document.getElementsByTagName('*');
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i].innerHTML === "SBTE Smart Hub") {
+                elements[i].innerHTML = "SBTE Exam Guide";
+            }
+        }
+        document.title = "SBTE Exam Guide";
+    };
+    </script>
 <body>
 
     <header>
