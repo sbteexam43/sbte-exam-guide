@@ -7,127 +7,1268 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SBTE Exam Guide - Ultimate Portal</title>
     <meta name="description" content="SBTE Exam Guide - Electronics Engineering के लिए बेस्ट MCQ टेस्ट और लीडरबोर्ड।">
-    <meta name="keywords" content="SBTE, SBTE Exam Guide, Electronics Engineering, 3rd Semester MCQ, Purushottam Kumar">
-    <meta name="author" content="Purushottam Kumar">
+<meta name="keywords" content="SBTE, SBTE Exam Guide, Electronics Engineering, 3rd Semester MCQ, Purushottam Kumar">
+<meta name="author" content="Purushottam Kumar">
     <meta property="og:image" content="https://sbteexam43.github.io/sbte-exam-guide/1781487712333.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
+<meta property="og:title" content="SBTE Exam Guide - Ultimate Portal">
+<meta property="og:description" content="SBTE Exam Guide - सभी ब्रांच के लिए बेस्ट MCQ टेस्ट और लीडरबोर्ड।">
+<meta property="og:url" content="https://sbteexam43.github.io/sbte-exam-guide/">
+<meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: #f1f5f9; color: #1e293b; padding-bottom: 50px; }
-        header { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+        
+        /* Navbar Style */
+        header {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white; padding: 15px 20px; display: flex;
+            align-items: center; justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100;
+        }
         .logo { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-        .logout-btn { background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; display: none; font-size: 13px; }
+        .logo i { color: #38bdf8; }
+        .logout-btn { background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; display: none; font-size: 13px; transition: 0.2s; }
+        .logout-btn:hover { background: #dc2626; }
+
         .container { max-width: 850px; margin: 25px auto; padding: 0 15px; }
-        .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #1e3a8a, #0f172a); display: flex; justify-content: center; align-items: center; z-index: 200; }
-        .login-box { background: white; padding: 35px; border-radius: 16px; width: 90%; max-width: 420px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); text-align: center; }
-        .enter-btn { background: #2563eb; color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 15px; }
-        .section-card { background: white; border-radius: 12px; padding: 18px; margin-top: 15px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; border-left: 6px solid #cbd5e1; }
+        
+        /* User Profile Dashboard Banner */
+        .dashboard-banner {
+            display: none; background: white; padding: 20px; border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03); margin-bottom: 25px;
+            border-left: 6px solid #3b82f6; align-items: center; justify-content: space-between;
+        }
+        .user-details h3 { color: #1e3a8a; font-size: 18px; }
+        .user-details p { color: #64748b; font-size: 13px; margin-top: 3px; }
+        .badge-tag { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; display: inline-block; margin-top: 5px; }
+
+        /* Login Screen Modal (Full Page if not logged in) */
+        .login-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+            display: flex; justify-content: center; align-items: center; z-index: 200;
+        }
+        .login-box {
+            background: white; padding: 35px; border-radius: 16px; width: 90%;
+            max-width: 420px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); text-align: center;
+        }
+        .login-box h2 { color: #1e3a8a; margin-bottom: 8px; font-size: 24px; }
+        .login-box p { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+        .login-box input, .login-box select {
+            width: 100%; padding: 12px 15px; margin: 8px 0;
+            border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; outline: none;
+        }
+        .login-box input:focus, .login-box select:focus { border-color: #3b82f6; }
+        .enter-btn { background: #2563eb; color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 15px; font-size: 15px; }
+        .enter-btn:hover { background: #1d4ed8; }
+
+        /* Categorized Section Folders */
+        .section-card {
+            background: white; border-radius: 12px; padding: 18px; margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02); display: flex; align-items: center;
+            justify-content: space-between; cursor: pointer; border-left: 6px solid #cbd5e1;
+        }
+        .syllabus-folder { border-left-color: #06b6d4; }
+        .pyq-folder { border-left-color: #3b82f6; }
+        .mcq-folder { border-left-color: #8b5cf6; }
+        
+        .card-meta { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 16px; }
+        .syllabus-folder i { color: #06b6d4; }
+        .pyq-folder i { color: #3b82f6; }
+        .mcq-folder i { color: #8b5cf6; }
+
         .data-list-container { display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-left: 10px; }
-        .content-item { background: white; padding: 12px 18px; border-radius: 8px; font-size: 14px; display: flex; align-items: center; justify-content: space-between; border: 1px solid #e2e8f0; }
-        .action-link { color: white; padding: 6px 14px; border-radius: 6px; font-size: 12px; text-decoration: none; border: none; cursor: pointer; }
+        .content-item {
+            background: white; padding: 12px 18px; border-radius: 8px; font-size: 14px;
+            display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.01); border: 1px solid #e2e8f0;
+        }
+        .item-title { font-weight: 600; color: #334155; }
+        
+        .action-link {
+            color: white; padding: 6px 14px; border-radius: 6px; font-size: 12px;
+            text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px;
+        }
         .btn-blue { background: #2563eb; } .btn-cyan { background: #06b6d4; } .btn-purple { background: #8b5cf6; }
+
+        /* Quiz UI Elements */
         #quiz-box-screen { display: none; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-top: 20px; border-top: 6px solid #8b5cf6; }
         .q-wrapper { background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #e2e8f0; }
+        .q-txt { font-weight: 600; margin-bottom: 8px; }
         .option-trigger { display: block; width: 100%; text-align: left; padding: 10px; margin: 4px 0; background: white; border: 1px solid #cbd5e1; border-radius: 6px; cursor: pointer; }
-        .correct-ans { background: #d1fae5 !important; border-color: #10b981 !important; color: #065f46; }
+        .correct-ans { background: #d1fae5 !important; border-color: #10b981 !important; color: #065f46; font-weight: 600; }
         .wrong-ans { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b; }
+
+        .rotate-arrow { transform: rotate(180deg); }
+        .chevron { transition: transform 0.3s; color: #64748b; }
     </style>
 </head>
+    <script>
+    // यह स्क्रिप्ट वेबसाइट के नाम को अपने आप बदल देगी
+    window.onload = function() {
+        var elements = document.getElementsByTagName('*');
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i].innerHTML === "SBTE Smart Hub") {
+                elements[i].innerHTML = "SBTE Exam Guide";
+            }
+        }
+        document.title = "SBTE Exam Guide";
+    };
+    </script>
 <body>
+
     <header>
-        <div class="logo"><i class="fa-solid fa-graduation-cap"></i> SBTE Exam Guide</div>
+        <div class="logo"><i class="fa-solid fa-graduation-cap"></i> SBTE Smart Hub</div>
         <button class="logout-btn" id="logoutBtn" onclick="processLogout()"><i class="fa-solid fa-power-off"></i> Logout</button>
     </header>
-    ```
 
-### Part 2: Database Logic and Footer (लाइन 651 - 1274)
-(इसमें आपका पूरा MCQ डेटा और क्लीन किया हुआ स्क्रिप्ट लॉजिक है)
+    <div class="login-overlay" id="loginScreen">
+        <div class="login-box">
+            <h2>SBTE Portal Login</h2>
+            <p>अपनी डिटेल्स भरकर सीधे अपने सेमेस्टर डैशबोर्ड में जाएँ</p>
+            <input type="text" id="studentName" placeholder="अपना नाम दर्ज करें">
+            
+            <select id="branchOpt">
+                <option value="">अपनी ब्रांच चुनें</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Electronics Engineering">Electronics Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Automobile Engineering">Automobile Engineering</option>
+            </select>
 
-```javascript
-    <script>
-        const db = {};
-        const branches = ["Civil Engineering", "Electrical Engineering", "Electronics Engineering", "Mechanical Engineering", "Automobile Engineering"];
-        const semesters = ["1st Semester", "2nd Semester", "3rd Semester", "4th Semester", "5th Semester", "6th Semester"];
+            <select id="semOpt">
+                <option value="">अपना सेमेस्टर चुनें</option>
+                <option value="1st Semester">1st Semester</option>
+                <option value="2nd Semester">2nd Semester</option>
+                <option value="3rd Semester">3rd Semester</option>
+                <option value="4th Semester">4th Semester</option>
+                <option value="5th Semester">5th Semester</option>
+                <option value="6th Semester">6th Semester</option>
+            </select>
+
+            <button class="enter-btn" onclick="processLogin()">डैशबोर्ड खोलें</button>
+        </div>
+    </div>
+
+    <div class="container">
         
-        branches.forEach(b => { db[b] = {}; semesters.forEach(s => { db[b][s] = { syllabus: [], pyq: [], mcq: [] }; }); });
+        <div class="dashboard-banner" id="dashBanner">
+            <div class="user-details">
+                <h3 id="lblStudentName">नमस्ते, छात्र!</h3>
+                <p id="lblStudentTrack">ब्रांच और सेमेस्टर लोड हो रहा है...</p>
+                <span class="badge-tag" id="lblBadge">SBTE Active User</span>
+            </div>
+            <i class="fa-solid fa-id-card-clip" style="font-size: 40px; color: #2563eb;"></i>
+        </div>
 
-        // आपका पूरा डेटाबेस यहाँ सुरक्षित है (मैंने कोई लाइन कम नहीं की है)
-        db["Electronics Engineering"]["3rd Semester"].mcq = [
-            // (यहाँ आपके 50+ क्विज़ सवाल वैसे ही हैं जैसे आपने दिए थे)
-            { subject: "Principles of Electronics Communication MCQ Test", questions: [...] },
-            { subject: "Analog Electronics MCQ Test", questions: [...] }
-        ];
+        <div class="section-card syllabus-folder" onclick="toggleFolderZone('list-syllabus', 'arr-1')">
+            <div class="card-meta"><i class="fa-solid fa-book-bookmark"></i> <span>सेमेस्टर सिलेबस (Syllabus)</span></div>
+            <i class="fa-solid fa-chevron-down chevron" id="arr-1"></i>
+        </div>
+        <div class="data-list-container" id="list-syllabus"></div>
 
-        // CENTRAL LOGIC ENGINE (मैंने यहाँ से डुप्लीकेट स्क्रिप्ट्स हटाई हैं)
-        function renderDashboardData(branch, sem) {
-            // रेंडर लॉजिक...
-        }
-        
-        // लीडरबोर्ड और अन्य फंक्शन...
-    </script>
-</body>
-</html>
+        <div class="section-card pyq-folder" onclick="toggleFolderZone('list-pyq', 'arr-2')">
+            <div class="card-meta"><i class="fa-solid fa-file-pdf"></i> <span>प्रीवियस ईयर क्वेश्चन (PYQ & Old)</span></div>
+            <i class="fa-solid fa-chevron-down chevron" id="arr-2"></i>
+        </div>
+        <div class="data-list-container" id="list-pyq"></div>
+
+        <div class="section-card mcq-folder" onclick="toggleFolderZone('list-mcq', 'arr-3')">
+            <div class="card-meta"><i class="fa-solid fa-lightning"></i> <span>लाइव MCQ क्विज़ टेस्ट</span></div>
+            <i class="fa-solid fa-chevron-down chevron" id="arr-3"></i>
+        </div>
+        <div class="data-list-container" id="list-mcq"></div>
+
+        <div id="quiz-box-screen">
+            <h3 id="quiz-title" style="color:#8b5cf6; margin-bottom:12px;"></h3>
+            <div id="quiz-questions-render"></div>
+            <button class="enter-btn" style="background:#475569;" onclick="document.getElementById('quiz-box-screen').style.display='none'">क्विज़ विंडो बंद करें</button>
+        </div>
+
+    </div>
+
     <script>
-        // मास्टर डेटा स्ट्रक्चर
+        // मास्टर डेटा स्ट्रक्चर (सभी ब्रांचेस और सेमेस्टर्स के लिए)
+        // सिंटैक्स संरचना: db["Branch Name"]["Semester Name"] = { syllabus: [], pyq: [], mcq: [] }
         const db = {};
+
+        // सभी ब्रांचेस की डिफ़ॉल्ट लिस्ट बनाना
         const branches = ["Civil Engineering", "Electrical Engineering", "Electronics Engineering", "Mechanical Engineering", "Automobile Engineering"];
         const semesters = ["1st Semester", "2nd Semester", "3rd Semester", "4th Semester", "5th Semester", "6th Semester"];
 
         branches.forEach(b => {
             db[b] = {};
-            semesters.forEach(s => { db[b][s] = { syllabus: [], pyq: [], mcq: [] }; });
+            semesters.forEach(s => {
+                db[b][s] = { syllabus: [], pyq: [], mcq: [] };
+            });
         });
 
-        // ELECTRONICS ENGINEERING - 3rd SEMESTER MASTER DATA
-        db["Electronics Engineering"]["3rd Semester"].mcq = [
-            {
-                subject: "Principles of Electronics Communication MCQ Test",
-                questions: [
-                    { q: "Modulation की आवश्यकता क्यों होती है?", opts: ["Antenna की ऊंचाई कम करने के लिए", "सिग्नल कमजोर करने के लिए", "Noise बढ़ाने के लिए", "बैंडविड्थ घटाने के लिए"], ans: 0 },
-                    { q: "AM का पूर्ण रूप क्या है?", opts: ["Audio Modulation", "Amplitude Modulation", "Amplified Mode", "Alpha Modulation"], ans: 1 },
-                    { q: "FM में क्या स्थिर रहता है?", opts: ["आवृत्ति (Frequency)", "आयाम (Amplitude)", "फेज (Phase)", "इनमें से कोई नहीं"], ans: 1 }
-                ]
-            },
-            {
-                subject: "Analog Electronics MCQ Test",
-                questions: [
-                    { q: "PN Junction Diode एक कैसा डिवाइस है?", opts: ["Unidirectional", "Bidirectional", "Linear", "Passive"], ans: 0 },
-                    { q: "Zener Diode का उपयोग किस लिए होता है?", opts: ["Amplification", "Rectification", "Voltage Regulation", "Oscillation"], ans: 2 }
-                ]
-            }
-        ];
+        // ----------------------------------------------------------------------
+        // संकलन डेटा: सैंपल लोड (आप सीधे इसी पैटर्न पर नया डेटा इंजेक्ट करेंगे)
+        // ----------------------------------------------------------------------
+        
+        // सिविल इंजीनियरिंग - 1st Semester डेटा
+        db["Civil Engineering"]["1st Semester"].syllabus.push({ subject: "Engineering Mathematics-I", url: "#" });
+        db["Civil Engineering"]["1st Semester"].pyq.push({ subject: "Maths-1 (2024 Exam Paper)", url: "#" });
+        db["Civil Engineering"]["1st Semester"].mcq.push({
+            subject: "Maths-1 Quiz",
+            questions: [
+                { q: "d/dx (sin x) का मान क्या होता है?", opts: ["cos x", "-cos x", "tan x"], ans: 0 }
+            ]
+        });
 
-        // कोर लॉजिक: नाम और फोटो सिंकिंग (सभी पुराने रिपीटेड स्क्रिप्ट्स का एक ही समाधान)
+        // इलेक्ट्रॉनिक्स इंजीनियरिंग - 3rd Semester डेटा
+        db["Electronics Engineering"]["3rd Semester"].syllabus.push({ subject: "C Programming Syllabus", url: "#" });
+        db["Electronics Engineering"]["3rd Semester"].pyq.push({ subject: "C Programming Paper 2025", url: "#" });
+        db["Electronics Engineering"]["3rd Semester"].mcq.push({
+            subject: "C Programming Basics",
+            questions: [
+                { q: "C भाषा में मुख्य फ़ंक्शन का क्या नाम है?", opts: ["start()", "main()", "program()"], ans: 1 }
+            ]
+        });
+
+
+        // =========================================================================
+        // कोर लॉजिक इंजन - इसे आपको छूने या बदलने की कोई आवश्यकता नहीं है!
+        // =========================================================================
+        
+        window.onload = function() {
+            initSession();
+        };
+
+        function processLogin() {
+            const name = document.getElementById('studentName').value;
+            const branch = document.getElementById('branchOpt').value;
+            const sem = document.getElementById('semOpt').value;
+
+            if(!name.trim() || !branch || !sem) {
+                alert("कृपया अपना नाम, ब्रांच और सेमेस्टर तीनों सही-सही चुनें!");
+                return;
+            }
+
+            localStorage.setItem('sbte_name', name);
+            localStorage.setItem('sbte_branch', branch);
+            localStorage.setItem('sbte_sem', sem);
+            initSession();
+        }
+
         function initSession() {
             const name = localStorage.getItem('sbte_name');
             const branch = localStorage.getItem('sbte_branch');
-            const avatar = localStorage.getItem('sbte_avatar');
+            const sem = localStorage.getItem('sbte_sem');
 
-            if(name) {
+            if(name && branch && sem) {
+                // स्क्रीन स्विच करें
                 document.getElementById('loginScreen').style.display = "none";
-                // लीडरबोर्ड और डैशबोर्ड अपडेट लॉजिक
-                document.querySelectorAll('div, h3, p, span').forEach(el => {
-                    if (el.innerText.includes('Shivam')) el.innerText = el.innerText.replace('Shivam', name);
+                document.getElementById('dashBanner').style.display = "flex";
+                document.getElementById('logoutBtn').style.display = "block";
+
+                // लेबल सेट करें
+                document.getElementById('lblStudentName').innerText = "स्वागत है, " + name + "!";
+                document.getElementById('lblStudentTrack').innerText = branch + " | " + sem;
+                
+                // डेटा लोड करें
+                renderDashboardData(branch, sem);
+            } else {
+                document.getElementById('loginScreen').style.display = "flex";
+                document.getElementById('dashBanner').style.display = "none";
+                document.getElementById('logoutBtn').style.display = "none";
+            }
+        }
+
+        function processLogout() {
+            localStorage.removeItem('sbte_name');
+            localStorage.removeItem('sbte_branch');
+            localStorage.removeItem('sbte_sem');
+            
+            // इनपुट बॉक्स रीसेट करें
+            document.getElementById('studentName').value = "";
+            document.getElementById('branchOpt').value = "";
+            document.getElementById('semOpt').value = "";
+            
+            // क्विज़ बॉक्स छुपाएं
+            document.getElementById('quiz-box-screen').style.display = "none";
+            
+            initSession();
+        }
+
+        function renderDashboardData(branch, sem) {
+            const syllabusArea = document.getElementById('list-syllabus');
+            const pyqArea = document.getElementById('list-pyq');
+            const mcqArea = document.getElementById('list-mcq');
+
+            syllabusArea.innerHTML = "";
+            pyqArea.innerHTML = "";
+            mcqArea.innerHTML = "";
+
+            const targetData = db[branch]?.[sem] || { syllabus: [], pyq: [], mcq: [] };
+
+            // 1. लोड सिलेबस
+            if(targetData.syllabus.length === 0) {
+                syllabusArea.innerHTML = `<div class="content-item"><span class="item-title">इस सेमेस्टर का सिलेबस जल्द अपलोड होगा।</span></div>`;
+            } else {
+                targetData.syllabus.forEach(item => {
+                    syllabusArea.innerHTML += `
+                        <div class="content-item">
+                            <span class="item-title">${item.subject}</span>
+                            <a href="${item.url}" target="_blank" class="action-link btn-cyan"><i class="fa-solid fa-download"></i> View Syllabus</a>
+                        </div>`;
+                });
+            }
+
+            // 2. लोड PYQ
+            if(targetData.pyq.length === 0) {
+                pyqArea.innerHTML = `<div class="content-item"><span class="item-title">प्रीवियस ईयर पेपर जल्द आ रहे हैं...</span></div>`;
+            } else {
+                targetData.pyq.forEach(item => {
+                    pyqArea.innerHTML += `
+                        <div class="content-item">
+                            <span class="item-title">${item.subject}</span>
+                            <a href="${item.url}" target="_blank" class="action-link btn-blue"><i class="fa-solid fa-file-pdf"></i> Open Paper</a>
+                        </div>`;
+                });
+            }
+
+            // 3. लोड MCQ
+            if(targetData.mcq.length === 0) {
+                mcqArea.innerHTML = `<div class="content-item"><span class="item-title">इस सेक्शन के टेस्ट लाइव होने वाले हैं।</span></div>`;
+            } else {
+                targetData.mcq.forEach((item, index) => {
+                    mcqArea.innerHTML += `
+                        <div class="content-item">
+                            <span class="item-title">${item.subject}</span>
+                            <button class="action-link btn-purple" onclick="triggerQuiz('${branch}', '${sem}', ${index})"><i class="fa-solid fa-play"></i> Start Quiz</button>
+                        </div>`;
                 });
             }
         }
 
-        // क्विज़ इंजन
+        function toggleFolderZone(id, arrowId) {
+            const target = document.getElementById(id);
+            const isVisible = target.style.display === "flex";
+            target.style.display = isVisible ? "none" : "flex";
+            document.getElementById(arrowId).classList.toggle('rotate-arrow', !isVisible);
+        }
+
         function triggerQuiz(branch, sem, index) {
             const quizItem = db[branch][sem].mcq[index];
             const screen = document.getElementById('quiz-box-screen');
+            const title = document.getElementById('quiz-title');
+            const renderArea = document.getElementById('quiz-questions-render');
+
+            title.innerText = "🎯 " + quizItem.subject;
+            renderArea.innerHTML = "";
             screen.style.display = "block";
-            // यहाँ आपके ओरिजिनल क्विज़ रेंडरिंग फंक्शन का कॉल
+            screen.scrollIntoView({ behavior: 'smooth' });
+
+            quizItem.questions.forEach((qObj, qIdx) => {
+                let optHtml = "";
+                qObj.opts.forEach((opt, oIdx) => {
+                    optHtml += `<button class="option-trigger" onclick="checkQuizAns(this, ${oIdx === qObj.ans})">${opt}</button>`;
+                });
+                renderArea.innerHTML += `
+                    <div class="q-wrapper">
+                        <div class="q-txt">Q${qIdx + 1}. ${qObj.q}</div>
+                        <div>${optHtml}</div>
+                    </div>`;
+            });
         }
 
         function checkQuizAns(btn, isCorrect) {
-            btn.classList.add(isCorrect ? 'correct-ans' : 'wrong-ans');
-            btn.parentElement.querySelectorAll('button').forEach(b => b.disabled = true);
-        }
+            const container = btn.parentElement;
+            const buttons = container.querySelectorAll('.option-trigger');
+            buttons.forEach(b => b.disabled = true); // लॉक बटन
 
-        window.onload = initSession;
+            if(isCorrect) {
+                btn.classList.add('correct-ans');
+            } else {
+                btn.classList.add('wrong-ans');
+            }
+        }
     </script>
+    
+    <script>
+        // जब भी नया डेटा जोड़ना हो, उसे इसके नीचे लाइन-बाय-लाइन पेस्ट करते जाएं!
+    </script>
+
 </body>
 </html>
+<script>
+    // ----------------------------------------------------------------------
+    // ELECTRONICS ENGINEERING - 3rd SEMESTER MASTER INJECTION
+    // ----------------------------------------------------------------------
 
+    // पहले पुराने सैंपल डेटा को साफ करके नए सब्जेक्ट्स सेट करते हैं
+    db["Electronics Engineering"]["3rd Semester"].syllabus = [];
+    db["Electronics Engineering"]["3rd Semester"].pyq = [];
+    db["Electronics Engineering"]["3rd Semester"].mcq = [];
+
+    // 1. SUBJECT: Principles of Electronics Communication
+    db["Electronics Engineering"]["3rd Semester"].syllabus.push({ 
+        subject: "Principles of Electronics Communication Syllabus", 
+        url: "#" // यहाँ भविष्य में अपना Google Drive लिंक डालें
+    });
+    db["Electronics Engineering"]["3rd Semester"].pyq.push({ 
+        subject: "Principles of Electronics Communication PYQ", 
+        url: "#" 
+    });
+
+    // 2. SUBJECT: Analog Electronics
+    db["Electronics Engineering"]["3rd Semester"].syllabus.push({ 
+        subject: "Analog Electronics Syllabus", 
+        url: "#" 
+    });
+    db["Electronics Engineering"]["3rd Semester"].pyq.push({ 
+        subject: "Analog Electronics PYQ", 
+        url: "#" 
+    });
+
+    // 3. SUBJECT: Digital Electronics
+    db["Electronics Engineering"]["3rd Semester"].syllabus.push({ 
+        subject: "Digital Electronics Syllabus", 
+        url: "#" 
+    });
+    db["Electronics Engineering"]["3rd Semester"].pyq.push({ 
+        subject: "Digital Electronics PYQ", 
+        url: "#" 
+    });
+
+    // 4. SUBJECT: Measuring Instruments and Sensors
+    db["Electronics Engineering"]["3rd Semester"].syllabus.push({ 
+        subject: "Measuring Instruments and Sensors Syllabus", 
+        url: "#" 
+    });
+    db["Electronics Engineering"]["3rd Semester"].pyq.push({ 
+        subject: "Measuring Instruments and Sensors PYQ", 
+        url: "#" 
+    });
+
+
+    // ----------------------------------------------------------------------
+    // SAMPLE MCQ INJECTION: जब आप MCQ देंगे तो हम यहाँ क्वेश्चंस बदल देंगे
+    // ----------------------------------------------------------------------
+    db["Electronics Engineering"]["3rd Semester"].mcq.push({
+        subject: "Principles of Electronics Communication Quiz",
+        questions: [
+            { q: "Modulation की आवश्यकता क्यों होती है?", opts: ["Antenna की ऊंचाई कम करने के लिए", "Noise बढ़ाने के लिए", "सिग्नल कमजोर करने के लिए"], ans: 0 }
+        ]
+    });
+
+    db["Electronics Engineering"]["3rd Semester"].mcq.push({
+        subject: "Analog Electronics Quiz",
+        questions: [
+            { q: "PN Junction Diode एक कैसा डिवाइस है?", opts: ["Unidirectional (एकदिशीय)", "Bidirectional (द्विदिशीय)", "Linear"], ans: 0 }
+        ]
+    });
+
+    db["Electronics Engineering"]["3rd Semester"].mcq.push({
+        subject: "Digital Electronics Quiz",
+        questions: [
+            { q: "Inverter किस गेट को कहा जाता है?", opts: ["AND Gate", "OR Gate", "NOT Gate"], ans: 2 }
+        ]
+    });
+
+    db["Electronics Engineering"]["3rd Semester"].mcq.push({
+        subject: "Measuring Instruments and Sensors Quiz",
+        questions: [
+            { q: "CRO का फुल फॉर्म क्या होता है?", opts: ["Cathode Ray Oscilloscope", "Central Radio Officer", "Computer Record Output"], ans: 0 }
+        ]
+    });
+
+    // डेटा अपडेट होने के बाद स्क्रीन को दोबारा रेंडर करने के लिए कमांड
+    if(typeof localStorage !== 'undefined' && localStorage.getItem('sbte_name')) {
+        renderDashboardData(localStorage.getItem('sbte_branch'), localStorage.getItem('sbte_sem'));
+    }
+</script>
+<script>
+    // ----------------------------------------------------------------------
+    // SOUND EFFECTS ENGINE (सिस्टम में ऑडियो जोड़ने के लिए)
+    // ----------------------------------------------------------------------
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    // सही जवाब के लिए मधुर साउंड (Success Sound)
+    function playCorrectSound() {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.type = 'sine'; osc.frequency.setValueAtTime(528, audioCtx.currentTime); // 528Hz standard healing/success tone
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+    }
+
+    // गलत जवाब के लिए बज़ साउंड (Error Buzz Sound)
+    function playWrongSound() {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, audioCtx.currentTime); // Low frequency buzz
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.4);
+    }
+
+    // ----------------------------------------------------------------------
+    // UI को अपग्रेड करना: Syllabus सेक्शन को MCQ प्रैक्टिस टेस्ट में बदलना
+    // ----------------------------------------------------------------------
+    function renderDashboardData(branch, sem) {
+        const syllabusArea = document.getElementById('list-syllabus');
+        const pyqArea = document.getElementById('list-pyq');
+        const mcqArea = document.getElementById('list-mcq');
+
+        syllabusArea.innerHTML = "";
+        pyqArea.innerHTML = "";
+        mcqArea.innerHTML = "";
+
+        const targetData = db[branch]?.[sem] || { syllabus: [], pyq: [], mcq: [] };
+
+        // 1. रिप्लेसमेंट: सिलेबस की जगह अब MCQ सब्जेक्ट्स लोड होंगे
+        if(targetData.syllabus.length === 0) {
+            syllabusArea.innerHTML = `<div class="content-item"><span class="item-title">इस सेमेस्टर के सब्जेक्ट्स जल्द लोड होंगे।</span></div>`;
+        } else {
+            targetData.syllabus.forEach((item, index) => {
+                syllabusArea.innerHTML += `
+                    <div class="content-item">
+                        <span class="item-title"><i class="fa-solid fa-graduation-cap" style="color:#06b6d4;"></i> ${item.subject.replace(" Syllabus", "")}</span>
+                        <button class="action-link btn-cyan" onclick="triggerQuiz('${branch}', '${sem}', ${index})"><i class="fa-solid fa-play"></i> Start MCQ Test</button>
+                    </div>`;
+            });
+        }
+
+        // 2. लोड PYQ पेपर
+        if(targetData.pyq.length === 0) {
+            pyqArea.innerHTML = `<div class="content-item"><span class="item-title">प्रीवियस ईयर पेपर जल्द आ रहे हैं...</span></div>`;
+        } else {
+            targetData.pyq.forEach(item => {
+                pyqArea.innerHTML += `
+                    <div class="content-item">
+                        <span class="item-title">${item.subject}</span>
+                        <a href="${item.url}" target="_blank" class="action-link btn-blue"><i class="fa-solid fa-file-pdf"></i> Open Paper</a>
+                    </div>`;
+            });
+        }
+
+        // 3. एक्स्ट्रा लाइव टेस्ट जोन
+        if(targetData.mcq.length === 0) {
+            mcqArea.innerHTML = `<div class="content-item"><span class="item-title">इस सेक्शन के टेस्ट लाइव होने वाले हैं।</span></div>`;
+        } else {
+            targetData.mcq.forEach((item, index) => {
+                mcqArea.innerHTML += `
+                    <div class="content-item">
+                        <span class="item-title">${item.subject}</span>
+                        <button class="action-link btn-purple" onclick="triggerQuiz('${branch}', '${sem}', ${index})"><i class="fa-solid fa-play"></i> Start Quiz</button>
+                    </div>`;
+                });
+            }
+        }
+
+        // सही/गलत को परखने वाला नया फंक्शन (विजुअल और साउंड के साथ)
+        function checkQuizAns(btn, isCorrect) {
+            const container = btn.parentElement;
+            const buttons = container.querySelectorAll('.option-trigger');
+            
+            // छात्र के क्लिक करने के बाद सभी ऑप्शंस को लॉक करें ताकि दोबारा क्लिक न हो
+            buttons.forEach(b => b.disabled = true); 
+
+            if(isCorrect) {
+                btn.classList.add('correct-ans');
+                playCorrectSound(); // सही साउंड बजाएं
+            } else {
+                btn.classList.add('wrong-ans');
+                playWrongSound(); // गलत साउंड बजाएं
+                
+                // छात्र को सही उत्तर दिखाने के लिए सही बटन को हरा करें
+                buttons.forEach(b => {
+                    if(b.getAttribute('data-correct') === 'true') {
+                        b.classList.add('correct-ans');
+                    }
+                });
+            }
+        }
+
+        // अपडेटेड क्विज़ ट्रिगर इंजन जो 'data-correct' मार्क सेट करता है
+        function triggerQuiz(branch, sem, index) {
+            const quizItem = db[branch][sem].mcq[index];
+            const screen = document.getElementById('quiz-box-screen');
+            const title = document.getElementById('quiz-title');
+            const renderArea = document.getElementById('quiz-questions-render');
+
+            title.innerText = "🎯 " + quizItem.subject;
+            renderArea.innerHTML = "";
+            screen.style.display = "block";
+            screen.scrollIntoView({ behavior: 'smooth' });
+
+            quizItem.questions.forEach((qObj, qIdx) => {
+                let optHtml = "";
+                qObj.opts.forEach((opt, oIdx) => {
+                    const isTrue = oIdx === qObj.ans;
+                    optHtml += `<button class="option-trigger" data-correct="${isTrue}" onclick="checkQuizAns(this, ${isTrue})">${opt}</button>`;
+                });
+                renderArea.innerHTML += `
+                    <div class="q-wrapper">
+                        <div class="q-txt">Q${qIdx + 1}. ${qObj.q}</div>
+                        <div>${optHtml}</div>
+                    </div>`;
+            });
+        }
+
+    // ----------------------------------------------------------------------
+    // DATA CORE: ELECTRONICS 3rd SEMESTER 50-50 QUESTIONS DATABASE
+    // ----------------------------------------------------------------------
+    
+    db["Electronics Engineering"]["3rd Semester"].syllabus = [
+        { subject: "Principles of Electronics Communication Syllabus" },
+        { subject: "Analog Electronics Syllabus" },
+        { subject: "Digital Electronics Syllabus" },
+        { subject: "Measuring Instruments and Sensors Syllabus" }
+    ];
+
+    db["Electronics Engineering"]["3rd Semester"].mcq = [
+        // 1. Principles of Electronics Communication (सैंपल सवाल - इसे आप 50 तक बढ़ा सकते हैं)
+        {
+            subject: "Principles of Electronics Communication MCQ Test",
+            questions: [
+                { q: "Modulation की आवश्यकता क्यों होती है?", opts: ["Antenna की ऊंचाई कम करने के लिए", "सिग्नल कमजोर करने के लिए", "Noise बढ़ाने के लिए", "बैंडविड्थ घटाने के लिए"], ans: 0 },
+                { q: "AM का पूर्ण रूप क्या है?", opts: ["Audio Modulation", "Amplitude Modulation", "Amplified Mode", "Alpha Modulation"], ans: 1 },
+                { q: "FM में क्या स्थिर रहता है?", opts: ["आवृत्ति (Frequency)", "आयाम (Amplitude)", "फेज (Phase)", "इनमें से कोई नहीं"], ans: 1 }
+                // इसी तरह आप इसके आगे जितने चाहें सवाल जोड़ते जा सकते हैं...
+            ]
+        },
+        // 2. Analog Electronics
+        {
+            subject: "Analog Electronics MCQ Test",
+            questions: [
+                { q: "PN Junction Diode एक कैसा डिवाइस है?", opts: ["Unidirectional (एकदिशीय)", "Bidirectional (द्विदिशीय)", "Linear", "Passive"], ans: 0 },
+                { q: "Zenor Diode का उपयोग मुख्य रूप से किस लिए किया जाता है?", opts: ["Amplification", "Rectification", "Voltage Regulation", "Oscillation"], ans: 2 }
+            ]
+        },
+        // 3. Digital Electronics
+        {
+            subject: "Digital Electronics MCQ Test",
+            questions: [
+                { q: "Inverter किस गेट को कहा जाता है?", opts: ["AND Gate", "OR Gate", "NAND Gate", "NOT Gate"], ans: 3 },
+                { q: "Universal Gate कौन सा है?", opts: ["AND", "OR", "NAND", "XOR"], ans: 2 }
+            ]
+        },
+        // 4. Measuring Instruments and Sensors
+        {
+            subject: "Measuring Instruments and Sensors MCQ Test",
+            questions: [
+                { q: "CRO का फुल फॉर्म क्या होता है?", opts: ["Cathode Ray Oscilloscope", "Computer Record Output", "Central Radio Officer", "Control Resistance Output"], ans: 0 },
+                { q: "Multimeter से क्या नहीं नापा जा सकता?", opts: ["Current", "Voltage", "Resistance", "Frequency"], ans: 3 }
+            ]
+        }
+    ];
+
+    // बदलावों को तुरंत लाइव स्क्रीन पर रीसेट करने के लिए कमांड
+    if(typeof localStorage !== 'undefined' && localStorage.getItem('sbte_name')) {
+        renderDashboardData(localStorage.getItem('sbte_branch'), localStorage.getItem('sbte_sem'));
+    }
+</script>
+<script>
+    // ----------------------------------------------------------------------
+    // ELECTRONICS ENGINEERING - 3rd SEMESTER: 10-10 MCQ TESTING DATABASE
+    // ----------------------------------------------------------------------
+
+    db["Electronics Engineering"]["3rd Semester"].mcq = [
+        // 1. Principles of Electronics Communication (10 Questions)
+        {
+            subject: "Principles of Electronics Communication MCQ Test",
+            questions: [
+                { q: "Modulation की आवश्यकता क्यों होती है?", opts: ["Antenna की ऊंचाई कम करने के लिए", "सिग्नल कमजोर करने के लिए", "Noise बढ़ाने के लिए", "बैंडविड्थ घटाने के लिए"], ans: 0 },
+                { q: "AM का पूर्ण रूप क्या है?", opts: ["Audio Modulation", "Amplitude Modulation", "Amplified Mode", "Alpha Modulation"], ans: 1 },
+                { q: "FM में क्या स्थिर रहता है?", opts: ["आवृत्ति (Frequency)", "आयाम (Amplitude)", "फेज (Phase)", "इनमें से कोई नहीं"], ans: 1 },
+                { q: "सुपरहेटरोडाइन रिसीवर में 'IF' का मतलब क्या होता है?", opts: ["Input Frequency", "Internal Frequency", "Intermediate Frequency", "Index Frequency"], ans: 2 },
+                { q: "किन्हीं दो सिग्नलों को आपस में मिलाने की प्रक्रिया को क्या कहते हैं?", opts: ["Modulation", "Demodulation", "Mixing", "Amplification"], ans: 0 },
+                { q: "FM की तुलना में AM में शोर (Noise) कैसा होता है?", opts: ["कम", "अधिक", "बराबर", "शून्य"], ans: 1 },
+                { q: "Pulse Code Modulation (PCM) किस प्रकार का मॉड्यूलेशन है?", opts: ["Analog", "Digital", "Continuous", "Inverted"], ans: 1 },
+                { q: "रेडियो वेव की गति (Speed) कितनी होती है?", opts: ["300 m/s", "3 x 10^8 m/s", "1100 ft/s", "1500 m/s"], ans: 1 },
+                { q: "सिग्नल से वापस मूल मैसेज प्राप्त करने की प्रक्रिया क्या कहलाती है?", opts: ["Modulation", "Demodulation", "Attenuate", "Filter"], ans: 1 },
+                { q: "टेलीविजन ब्रॉडकास्टिंग में वीडियो सिग्नल के लिए कौन सा मॉड्यूलेशन उपयोग होता है?", opts: ["FM", "AM", "PM", "PAM"], ans: 1 }
+            ]
+        },
+
+        // 2. Analog Electronics (10 Questions)
+        {
+            subject: "Analog Electronics MCQ Test",
+            questions: [
+                { q: "PN Junction Diode एक कैसा डिवाइस है?", opts: ["Unidirectional (एकदिशीय)", "Bidirectional (द्विदिशीय)", "Linear", "Passive"], ans: 0 },
+                { q: "Zener Diode का उपयोग मुख्य रूप से किस लिए किया जाता है?", opts: ["Amplification", "Rectification", "Voltage Regulation", "Oscillation"], ans: 2 },
+                { q: "BJT (Bipolar Junction Transistor) में कितने टर्मिनल होते हैं?", opts: ["2", "3", "4", "5"], ans: 1 },
+                { q: "रेक्टिफायर (Rectifier) का मुख्य काम क्या है?", opts: ["DC को AC में बदलना", "AC को DC में बदलना", "वोल्टेज बढ़ाना", "फ्रीक्वेंसी घटाना"], ans: 1 },
+                { q: "सिलिकॉन (Silicon) डायोड का कट-इन (Cut-in) वोल्टेज लगभग कितना होता है?", opts: ["0.3V", "0.7V", "1.1V", "0V"], ans: 1. },
+                { q: "एक आदर्श (Ideal) ओप-एम्प (Op-Amp) का इनपुट इम्पीडेंस कितना होता है?", opts: ["शून्य", "कम", "बहुत अधिक", "अनंत (Infinite)"], ans: 3 },
+                { q: "CE (Common Emitter) एम्पलीफायर का मुख्य उपयोग किसके लिए होता है?", opts: ["Current Gain", "Voltage Gain", "दोनों (Power Gain)", "Impedance Matching"], ans: 2 },
+                { q: "जर्मेनियम (Germanium) के बाहरी शेल में कितने वैलेंस इलेक्ट्रॉन होते हैं?", opts: ["2", "3", "4", "5"], ans: 2 },
+                { q: "LED का फुल फॉर्म क्या होता है?", opts: ["Light Emitting Diode", "Low Energy Diode", "Laser Emitting Diode", "Liquid Electron Diode"], ans: 0 },
+                { q: "फिल्टर सर्किट (Filter Circuit) का उपयोग क्यों किया जाता है?", opts: ["AC रिपल्स हटाने के लिए", "DC को रोकने के लिए", "वोल्टेज बढ़ाने के लिए", "करंट रोकने के लिए"], ans: 0 }
+            ]
+        },
+
+        // 3. Digital Electronics (10 Questions)
+        {
+            subject: "Digital Electronics MCQ Test",
+            questions: [
+                { q: "Inverter किस गेट को कहा जाता है?", opts: ["AND Gate", "OR Gate", "NAND Gate", "NOT Gate"], ans: 3 },
+                { q: "Universal Gate कौन सा है?", opts: ["AND", "OR", "NAND", "XOR"], ans: 2 },
+                { q: "बाइनरी नंबर सिस्टम (Binary System) का बेस (Base) कितना होता है?", opts: ["2", "8", "10", "16"], ans: 0 },
+                { q: "डेसिमल नंबर 5 का बाइनरी कोड क्या होगा?", opts: ["100", "101", "110", "111"], ans: 1 },
+                { q: "एक निब्बल (Nibble) में कितने बिट्स (Bits) होते हैं?", opts: ["2 Bits", "4 Bits", "8 Bits", "16 Bits"], ans: 1 },
+                { q: "Flip-Flop का उपयोग मुख्य रूप से क्या स्टोर करने के लिए होता है?", opts: ["1 Byte", "1 Bit", "10 Bits", "अनंत डेटा"], ans: 1 },
+                { q: "Hexadecimal नंबर सिस्टम का बेस क्या होता है?", opts: ["10", "12", "16", "8"], ans: 2 },
+                { q: "A + 1 का बूलियन मान (Boolean Value) क्या होगा?", opts: ["A", "0", "1", "A'"], ans: 2 },
+                { q: "कौन सा सर्किट डेटा को कनवर्ट (Decode) करने के लिए उपयोग होता है?", opts: ["Encoder", "Decoder", "Multiplexer", "Flip-Flop"], ans: 1 },
+                { q: "XOR गेट का आउटपुट 1 कब होता है?", opts: ["दोनों इनपुट समान होने पर", "दोनों इनपुट अलग होने पर", "दोनों इनपुट 0 होने पर", "दोनों इनपुट 1 होने पर"], ans: 1 }
+            ]
+        },
+
+        // 4. Measuring Instruments and Sensors (10 Questions)
+        {
+            subject: "Measuring Instruments and Sensors MCQ Test",
+            questions: [
+                { q: "CRO का फुल फॉर्म क्या होता है?", opts: ["Cathode Ray Oscilloscope", "Computer Record Output", "Central Radio Officer", "Control Resistance Output"], ans: 0 },
+                { q: "Multimeter से क्या नहीं नापा जा सकता?", opts: ["Current", "Voltage", "Resistance", "Frequency"], ans: 3 },
+                { q: "एक अच्छे एमीटर (Ammeter) का आंतरिक प्रतिरोध कितना होना चाहिए?", opts: ["बहुत अधिक", "शून्य या बहुत कम", "अनंत", "मध्यम"], ans: 1 },
+                { q: "वोल्टमीटर (Voltmeter) को सर्किट में हमेशा कैसे जोड़ा जाता है?", opts: ["Series (श्रेणी)", "Parallel (समांतर)", "कैसे भी", "बिना कनेक्शन के"], ans: 1 },
+                { q: "LVDT किस प्रकार का ट्रांसड्यूसर है?", opts: ["Capacitive", "Inductive", "Resistive", "Piezoelectric"], ans: 1 },
+                { q: "तापमान (Temperature) नापने के लिए किसका उपयोग होता है?", opts: ["RTD", "Thermocouple", "Thermistor", "उपरोक्त सभी"], ans: 3 },
+                { q: "Piezoelectric ट्रांसड्यूसर का उपयोग क्या नापने में होता है?", opts: ["Static Pressure", "Dynamic Pressure/Force", "Temperature", "Resistance"], ans: 1 },
+                { q: "किसी इंस्ट्रूमेंट की छोटी से छोटी इनपुट वैल्यू को पहचानने की क्षमता क्या कहलाती है?", opts: ["Accuracy", "Sensitivity", "Resolution", "Precision"], ans: 2 },
+                { q: "मेगर (Megger) का उपयोग क्या मापने के लिए किया जाता है?", opts: ["कम प्रतिरोध", "उच्च इंसुलेशन प्रतिरोध", "एसी करंट", "फ्रीक्वेंसी"], ans: 1 },
+                { q: "CRO का दिल (Heart) किसे कहा जाता है?", opts: ["Horizontal Amplifier", "CRT (Cathode Ray Tube)", "Sweep Generator", "Delay Line"], ans: 1 }
+            ]
+        }
+    ];
+
+    // रेंडर रीफ्रेश कमांड
+    if(typeof localStorage !== 'undefined' && localStorage.getItem('sbte_name')) {
+        renderDashboardData(localStorage.getItem('sbte_branch'), localStorage.getItem('sbte_sem'));
+    }
+</script>
+<script>
+    // ----------------------------------------------------------------------
+    // 1. UI अपग्रेड: लॉगिन स्क्रीन में फोटो अपलोड का ऑप्शन जोड़ना
+    // ----------------------------------------------------------------------
+    const loginBox = document.querySelector('.login-box');
+    if (loginBox) {
+        // पुराने बटन से ठीक पहले फोटो अपलोड का इनपुट डालना
+        const enterBtn = loginBox.querySelector('.enter-btn');
+        const photoInputHTML = `
+            <div style="margin: 10px 0; text-align: left;">
+                <label style="font-size: 12px; color: #64748b; font-weight: 600; display: block; margin-bottom: 5px;">
+                    <i class="fa-solid fa-camera"></i> अपना फेस फोटो अपलोड करें (Optional):
+                </label>
+                <input type="file" id="studentPhoto" accept="image/*" style="padding: 5px;">
+            </div>
+        `;
+        enterBtn.insertAdjacentHTML('beforebegin', photoInputHTML);
+    }
+
+    // ----------------------------------------------------------------------
+    // 2. लीडरबोर्ड के लिए HTML ढांचा तैयार करना (डैशबोर्ड के नीचे)
+    // ----------------------------------------------------------------------
+    const containerDiv = document.querySelector('.container');
+    if (containerDiv) {
+        const leaderboardHTML = `
+            <div id="leaderboard-zone" style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-top: 25px; border-top: 6px solid #f59e0b;">
+                <h3 style="color: #b45309; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-trophy" style="color: #f59e0b;"></i> टॉपर्स लीडरबोर्ड (Top Performers)
+                </h3>
+                <div id="leaderboard-list" style="display: flex; flex-direction: column; gap: 10px;">
+                    </div>
+            </div>
+        `;
+        containerDiv.insertAdjacentHTML('beforeend', leaderboardHTML);
+    }
+
+    // ----------------------------------------------------------------------
+    // 3. डेटाबेस और लॉगिन लॉजिक को फोटो के साथ अपडेट करना
+    // ----------------------------------------------------------------------
+    // डमी लीडरबोर्ड डेटा (टेस्टिंग के लिए ताकि खाली न दिखे)
+    let localLeaderboardData = [
+        { name: "रोहित कुमार", score: 9, total: 10, photo: "https://www.w3schools.com/howto/img_avatar.png", branch: "Electronics Engineering", sem: "3rd Semester" },
+        { name: "अमित कुमार", score: 7, total: 10, photo: "https://www.w3schools.com/howto/img_avatar2.png", branch: "Electronics Engineering", sem: "3rd Semester" }
+    ];
+
+    // पुराने लॉगिन फंक्शन को रिप्लेस करना
+    processLogin = function() {
+        const name = document.getElementById('studentName').value;
+        const branch = document.getElementById('branchOpt').value;
+        const sem = document.getElementById('semOpt').value;
+        const photoFile = document.getElementById('studentPhoto').files[0];
+
+        if(!name.trim() || !branch || !sem) {
+            alert("कृपया अपना नाम, ब्रांच और सेमेस्टर चुनें!");
+            return;
+        }
+
+        localStorage.setItem('sbte_name', name);
+        localStorage.setItem('sbte_branch', branch);
+        localStorage.setItem('sbte_sem', sem);
+
+        if (photoFile) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                localStorage.setItem('sbte_photo', e.target.result); // बेस64 फॉर्मेट में फोटो सेव
+                initSession();
+            };
+            reader.readAsDataURL(photoFile);
+        } else {
+            localStorage.setItem('sbte_photo', "https://www.w3schools.com/howto/img_avatar.png"); // डिफ़ॉल्ट अवतार
+            initSession();
+        }
+    };
+
+    // ----------------------------------------------------------------------
+    // 4. क्विज़ सबमिट होने पर लीडरबोर्ड अपडेट करने का लॉजिक
+    // ----------------------------------------------------------------------
+    // पुराने चेक आंसर को ओवरराइड करके स्कोर ट्रैक करना
+    let currentQuizCorrectAnswers = 0;
+    
+    const originalTriggerQuiz = triggerQuiz;
+    triggerQuiz = function(branch, sem, index) {
+        currentQuizCorrectAnswers = 0; // नया क्विज़ शुरू होने पर स्कोर रीसेट
+        originalTriggerQuiz(branch, sem, index);
+        
+        // क्विज़ विंडो के बंद करने वाले बटन को 'रिजल्ट सबमिट' में बदलना
+        const quizBox = document.getElementById('quiz-box-screen');
+        const closeBtn = quizBox.querySelector('.enter-btn');
+        closeBtn.innerText = "अपना स्कोर लीडरबोर्ड में जोड़ें";
+        closeBtn.onclick = function() {
+            const name = localStorage.getItem('sbte_name');
+            const uBranch = localStorage.getItem('sbte_branch');
+            const uSem = localStorage.getItem('sbte_sem');
+            const uPhoto = localStorage.getItem('sbte_photo');
+            const quizItem = db[branch][sem].mcq[index];
+            
+            // लीडरबोर्ड एरे में नया स्कोर पुश करना
+            localLeaderboardData.push({
+                name: name,
+                score: currentQuizCorrectAnswers,
+                total: quizItem.questions.length,
+                photo: uPhoto,
+                branch: uBranch,
+                sem: uSem
+            });
+            
+            // स्कोर के हिसाब से सॉर्ट करना (सबसे ज्यादा सही वाला ऊपर)
+            localLeaderboardData.sort((a, b) => b.score - a.score);
+            
+            // दोबारा रेंडर करें
+            drawLeaderboard();
+            quizBox.style.display = 'none';
+        };
+    };
+
+    // आंसर चेक करने वाले फंक्शन को अपग्रेड करना ताकि सही स्कोर गिना जा सके
+    const originalCheckQuizAns = checkQuizAns;
+    checkQuizAns = function(btn, isCorrect) {
+        if (isCorrect) {
+            currentQuizCorrectAnswers++;
+        }
+        originalCheckQuizAns(btn, isCorrect);
+    };
+
+    // लीडरबोर्ड को स्क्रीन पर ड्रा (Render) करने का फंक्शन
+    function drawLeaderboard() {
+        const listArea = document.getElementById('leaderboard-list');
+        if (!listArea) return;
+        listArea.innerHTML = "";
+
+        const currentBranch = localStorage.getItem('sbte_branch');
+        const currentSem = localStorage.getItem('sbte_sem');
+
+        // सिर्फ उसी ब्रांच और सेमेस्टर के लोगों को फ़िल्टर करके दिखाना
+        const filteredData = localLeaderboardData.filter(user => user.branch === currentBranch && user.sem === currentSem);
+
+        if(filteredData.length === 0) {
+            listArea.innerHTML = `<div style="text-align:center; color:#64748b; font-size:13px;">अभी इस सेमेस्टर का कोई स्कोर उपलब्ध नहीं है। पहला टेस्ट देकर रैंक #1 लाएं!</div>`;
+            return;
+        }
+
+        filteredData.forEach((user, idx) => {
+            let medal = `<span style="font-weight:700; color:#64748b; width:25px;">#${idx + 1}</span>`;
+            if (idx === 0) medal = `🥇`;
+            if (idx === 1) medal = `🥈`;
+            if (idx === 2) medal = `🥉`;
+
+            listArea.innerHTML += `
+                <div style="display: flex; align-items: center; justify-content: space-between; background: #f8fafc; padding: 10px 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        ${medal}
+                        <img src="${user.photo}" alt="Face" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #f59e0b;">
+                        <div>
+                            <div style="font-weight: 600; font-size: 14px; color:#1e293b;">${user.name}</div>
+                            <div style="font-size: 11px; color: #64748b;">${user.branch}</div>
+                        </div>
+                    </div>
+                    <div style="background: #fef3c7; color: #92400e; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 13px;">
+                        Score: ${user.score} / ${user.total}
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    // इनिशियलाइज सेशन में लीडरबोर्ड को जोड़ना
+    const originalInitSession = initSession;
+    initSession = function() {
+        originalInitSession();
+        drawLeaderboard();
+    };
+</script>
+<script>
+    // ----------------------------------------------------------------------
+    // 🔧 लीडरबोर्ड क्लीनर इंजन (नकली नामों को हटाना)
+    // ----------------------------------------------------------------------
+
+    // पिछले कोड के नकली डेटा (रोहित और अमित) को पूरी तरह खाली (Reset) करना
+    localLeaderboardData = [];
+
+    // ब्राउज़र के लोकल स्टोरेज में अगर कोई पुराना डमी डेटा अटका हो तो उसे भी साफ़ करना
+    if(typeof localStorage !== 'undefined') {
+        // यह सुनिश्चित करेगा कि नया छात्र आने पर लीडरबोर्ड बिल्कुल फ्रेश और खाली मिले
+        if(localStorage.getItem('sbte_name')) {
+            renderDashboardData(localStorage.getItem('sbte_branch'), localStorage.getItem('sbte_sem'));
+        }
+    }
+
+    // ----------------------------------------------------------------------
+    // 🏆 अपडेटेड लीडरबोर्ड रेंडरर (खाली होने पर सुंदर संदेश दिखाने के लिए)
+    // ----------------------------------------------------------------------
+    const originalDrawLeaderboard = drawLeaderboard;
+    drawLeaderboard = function() {
+        const listArea = document.getElementById('leaderboard-list');
+        if (!listArea) return;
+
+        const currentBranch = localStorage.getItem('sbte_branch');
+        const currentSem = localStorage.getItem('sbte_sem');
+
+        // डेटा फ़िल्टर करना
+        const filteredData = localLeaderboardData.filter(user => user.branch === currentBranch && user.sem === currentSem);
+
+        // अगर कोई डेटा नहीं है, तो डमी नामों के बजाय एक साफ़ मैसेज दिखाएं
+        if(filteredData.length === 0) {
+            listArea.innerHTML = `
+                <div style="text-align:center; color:#64748b; font-size:13px; padding: 20px; background: #f8fafc; border-radius: 8px; border: 1px dashed #cbd5e1;">
+                    <i class="fa-solid fa-users" style="font-size: 24px; color: #94a3b8; margin-bottom: 8px; display: block;"></i>
+                    अभी इस सेमेस्टर का कोई स्कोर उपलब्ध नहीं है। <br><b>पहला टेस्ट देकर रैंक #1 (🥇) पर अपना नाम लाएं!</b>
+                </div>`;
+            return;
+        }
+
+        // अगर असली डेटा है, तो पुराना ओरिजिनल रेंडरर काम करेगा
+        originalDrawLeaderboard();
+    };
+
+    // स्क्रीन को तुरंत रीफ्रेश करें ताकि बदलाव तुरंत लागू हो जाएं
+    if(typeof drawLeaderboard === 'function') {
+        drawLeaderboard();
+    }
+</script>
+<script>
+    // ----------------------------------------------------------------------
+    // 🏆 FIXED MASTER LEADERBOARD ENGINE (डुप्लीकेट नाम हटाना और स्कोर जोड़ना)
+    // ----------------------------------------------------------------------
+
+    // पुराने टेस्टिंग डेटा को पूरी तरह साफ़ करना
+    localLeaderboardData = [];
+
+    // क्विज़ क्लोज़ बटन के लॉजिक को अपग्रेड करना (Unique Student Tracker)
+    triggerQuiz = function(branch, sem, index) {
+        currentQuizCorrectAnswers = 0; // नया टेस्ट शुरू होने पर करंट स्कोर 0
+        originalTriggerQuiz(branch, sem, index);
+        
+        const quizBox = document.getElementById('quiz-box-screen');
+        const closeBtn = quizBox.querySelector('.enter-btn');
+        closeBtn.innerText = "अपना स्कोर लीडरबोर्ड में जोड़ें";
+        
+        closeBtn.onclick = function() {
+            const name = localStorage.getItem('sbte_name');
+            const uBranch = localStorage.getItem('sbte_branch');
+            const uSem = localStorage.getItem('sbte_sem');
+            const uPhoto = localStorage.getItem('sbte_photo');
+            const quizItem = db[branch][sem].mcq[index];
+            
+            // 🔍 चेक करें कि क्या इस छात्र का नाम पहले से लीडरबोर्ड में मौजूद है?
+            const existingUser = localLeaderboardData.find(user => 
+                user.name === name && user.branch === uBranch && user.sem === uSem
+            );
+
+            if (existingUser) {
+                // अगर छात्र पहले से है, तो उसका नाम दोबारा जोड़ने के बजाय पुराने स्कोर में नया स्कोर जोड़ दें
+                existingUser.score += currentQuizCorrectAnswers;
+                existingUser.total += quizItem.questions.length;
+            } else {
+                // अगर छात्र पहली बार टेस्ट दे रहा है, तो नई एंट्री बनाएं
+                localLeaderboardData.push({
+                    name: name,
+                    score: currentQuizCorrectAnswers,
+                    total: quizItem.questions.length,
+                    photo: uPhoto,
+                    branch: uBranch,
+                    sem: uSem
+                });
+            }
+            
+            // स्कोर के आधार पर सॉर्ट करें (सबसे ज्यादा टोटल नंबर वाला छात्र सबसे ऊपर)
+            localLeaderboardData.sort((a, b) => b.score - a.score);
+            
+            // स्क्रीन पर लीडरबोर्ड को दोबारा साफ़ करके दिखाएं
+            drawLeaderboard();
+            quizBox.style.display = 'none';
+        };
+    };
+
+    // ----------------------------------------------------------------------
+    // 🎨 लीडरबोर्ड रेंडरर (UI रिफ्रेश)
+    // ----------------------------------------------------------------------
+    drawLeaderboard = function() {
+        const listArea = document.getElementById('leaderboard-list');
+        if (!listArea) return;
+        listArea.innerHTML = "";
+
+        const currentBranch = localStorage.getItem('sbte_branch');
+        const currentSem = localStorage.getItem('sbte_sem');
+
+        // सिर्फ वर्तमान ब्रांच और सेमेस्टर के छात्रों को फ़िल्टर करना
+        const filteredData = localLeaderboardData.filter(user => user.branch === currentBranch && user.sem === currentSem);
+
+        if(filteredData.length === 0) {
+            listArea.innerHTML = `
+                <div style="text-align:center; color:#64748b; font-size:13px; padding: 20px; background: #f8fafc; border-radius: 8px; border: 1px dashed #cbd5e1;">
+                    <i class="fa-solid fa-users" style="font-size: 24px; color: #94a3b8; margin-bottom: 8px; display: block;"></i>
+                    अभी इस सेमेस्टर का कोई स्कोर उपलब्ध नहीं है। <br><b>पहला टेस्ट देकर रैंक #1 (🥇) पर अपना नाम लाएं!</b>
+                </div>`;
+            return;
+        }
+
+        // स्क्रीन पर रैंक के हिसाब से लिस्ट बनाना
+        filteredData.forEach((user, idx) => {
+            let medal = `<span style="font-weight:700; color:#64748b; width:25px;">#${idx + 1}</span>`;
+            if (idx === 0) medal = `🥇`;
+            if (idx === 1) medal = `🥈`;
+            if (idx === 2) medal = `🥉`;
+
+            listArea.innerHTML += `
+                <div style="display: flex; align-items: center; justify-content: space-between; background: #f8fafc; padding: 10px 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 5px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        ${medal}
+                        <img src="${user.photo}" alt="Face" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #f59e0b;">
+                        <div>
+                            <div style="font-weight: 600; font-size: 14px; color:#1e293b;">${user.name}</div>
+                            <div style="font-size: 11px; color: #64748b;">${user.branch}</div>
+                        </div>
+                    </div>
+                    <div style="background: #fef3c7; color: #92400e; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 13px;">
+                        Total Score: ${user.score} / ${user.total}
+                    </div>
+                </div>
+            `;
+        });
+    };
+
+    // तुरंत स्क्रीन को क्लीन करके अपडेट लागू करें
+    drawLeaderboard();
+</script>
+<div id="custom-avatar-addon"></div>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. पुरानी फ़ाइल अपलोड वाली इनपुट को ढूँढकर हटाना
+    const oldFileInput = document.querySelector('input[type="file"]');
+    if (oldFileInput) {
+        oldFileInput.style.display = 'none';
+        // अगर उसके आस-पास कोई लेबल या टेक्स्ट है तो उसे भी हटाना
+        if(oldFileInput.previousElementSibling) oldFileInput.previousElementSibling.style.display = 'none';
+    }
+
+    // 2. आपकी 10 असली फोटो का सुंदर ग्रिड तैयार करना
+    const avatarList = [
+        "b35fdb62df77b809e3cf31e6518e863c.jpg",
+        "587e0c0e7aea8c0546dfaee48badb485.jpg",
+        "084047c7761e3f89b78723ec8dbb0432.jpg",
+        "91d5d95acceb45ee568650e35af54971.jpg",
+        "8e40f83a0f6b6f2e66803af56507b05d.jpg",
+        "87fa3b8a9a9cb9f0d6b23ace0edd2f5a.jpg",
+        "IMG_20260615_074856.jpg",
+        "IMG_20260615_074917.jpg",
+        "IMG_20260615_074934.jpg",
+        "b963870f4bcf17931ae3517aacfd9b16.jpg"
+    ];
+
+    // ग्रिड के लिए सुंदर स्टाइल (CSS) बनाना
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .addon-label { font-weight: bold; color: #1e3a8a; margin-top: 15px; margin-bottom: 8px; text-align: left; font-size: 14px; }
+        .addon-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 20px; background: #f8fafc; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .addon-img { width: 100%; aspect-ratio: 1; border-radius: 50%; border: 3px solid #cbd5e1; cursor: pointer; object-fit: cover; transition: all 0.2s; background: white; }
+        .addon-img.selected { border-color: #3b82f6; box-shadow: 0 0 8px rgba(59, 130, 246, 0.5); transform: scale(1.05); }
+    `;
+    document.head.appendChild(style);
+
+    // लॉगिन बॉक्स के अंदर इस ग्रिड को फिट करना
+    const loginBox = document.querySelector('.login-box') || document.querySelector('div[style*="background: white"]');
+    if (loginBox) {
+        const label = document.createElement('div');
+        label.className = 'addon-label';
+        label.innerText = 'अपनी प्रोफाइल फोटो चुनें (10 विकल्प):';
+        
+        const grid = document.createElement('div');
+        grid.className = 'addon-grid';
+
+        let selectedSrc = "https://sbteexam43.github.io/sbte-exam-guide/" + avatarList[0];
+        localStorage.setItem('sbte_avatar', selectedSrc); // डिफ़ॉल्ट फोटो सेट
+
+        avatarList.forEach((imgName, index) => {
+            const img = document.createElement('img');
+            img.src = "https://sbteexam43.github.io/sbte-exam-guide/" + imgName;
+            img.className = 'addon-img';
+            if(index === 0) img.classList.add('selected');
+
+            img.onclick = function() {
+                document.querySelectorAll('.addon-img').forEach(i => i.classList.remove('selected'));
+                img.classList.add('selected');
+                localStorage.setItem('sbte_avatar', img.src);
+            };
+            grid.appendChild(img);
+        });
+
+        // लॉगिन बटन से ठीक पहले इसे जोड़ना
+        const loginBtn = loginBox.querySelector('button');
+        if (loginBtn) {
+            loginBox.insertBefore(label, loginBtn);
+            loginBox.insertBefore(grid, loginBtn);
+            
+            // बटन के क्लिक पर फोटो को प्रोफाइल पर दिखाना
+            loginBtn.addEventListener('click', () => {
+                const finalAvatar = localStorage.getItem('sbte_avatar');
+                const profileImg = document.querySelector('.profile-pic') || document.getElementById('user-avatar') || document.querySelector('img[id*="avatar"]');
+                if (profileImg) profileImg.src = finalAvatar;
+            });
+        }
+    }
+
+    // अगर छात्र पहले से लॉगिन है तो पुरानी फोटो दिखाना
+    const savedAvatar = localStorage.getItem('sbte_avatar');
+    if (savedAvatar) {
+        const profileImg = document.querySelector('.profile-pic') || document.getElementById('user-avatar') || document.querySelector('img[id*="avatar"]');
+        if (profileImg) profileImg.src = savedAvatar;
+    }
+});
+</script>
+<script>
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const savedName = localStorage.getItem('sbte_name');
+        const savedBranch = localStorage.getItem('sbte_branch');
+        const savedAvatar = localStorage.getItem('sbte_avatar');
+
+        if (savedName && savedAvatar) {
+            // 1. लीडरबोर्ड में जहाँ नाम लिखा है, उसे ढूंढना
+            const leaderboardCards = document.querySelectorAll('.main-container div, #main-portal div, .welcome-msg ~ div');
+            
+            // पूरे पेज पर लीडरबोर्ड के कार्ड को ऑटो-अपडेट करना
+            document.querySelectorAll('div').forEach(div => {
+                if (div.innerText && (div.innerText.includes('Shivam kumar') || div.innerText.includes('Shivamकुमार'))) {
+                    // नाम और ब्रांच बदलना
+                    div.innerHTML = div.innerHTML.replace(/Shivam\s*kumar/i, savedName);
+                    if(savedBranch) {
+                        div.innerHTML = div.innerHTML.replace(/Electronics\s*Engineering/i, savedBranch);
+                    }
+                    
+                    // उस कार्ड के अंदर मौजूद पुरानी इमेज को हटाकर आपकी चुनी हुई असली फोटो लगाना
+                    const img = div.querySelector('img');
+                    if (img) {
+                        img.src = savedAvatar;
+                        img.style.objectFit = 'cover';
+                        img.style.borderRadius = '50%';
+                    }
+                }
+            });
+        }
+    }, 500); // पेज लोड होने के आधे सेकंड बाद यह कोड सब कुछ ऑटो-अपडेट कर देगा
+});
+</script>
+<script>
+(function() {
+    // हर 100 मिलीसेकंड (0.1 सेकंड) में बैकग्राउंड में फोटो को चेक और सिंक करते रहना
+    setInterval(() => {
+        const currentSavedAvatar = localStorage.getItem('sbte_avatar');
+        
+        // अगर छात्र ने कोई फोटो चुनी है, तो उसे पूरे पेज पर अपडेट करना
+        if (currentSavedAvatar) {
+            document.querySelectorAll('img').forEach(img => {
+                // लॉगिन ग्रिड की 10 फोटो को छोड़कर, बाकी सभी जगह (लीडरबोर्ड आदि) असली फोटो सेट करना
+                if (!img.classList.contains('addon-img')) {
+                    if (img.src !== currentSavedAvatar) {
+                        img.src = currentSavedAvatar;
+                        img.style.objectFit = 'cover';
+                        img.style.borderRadius = '50%';
+                    }
+                }
+            });
+        }
+
+        // इनपुट बॉक्स में छात्र जो भी नाम लिख रहा है, उसे लाइव पकड़ना
+        const textInputs = document.querySelectorAll('input[type="text"]');
+        if (textInputs.length >= 1) {
+            const typedName = textInputs[0].value.trim();
+            if (typedName !== "") {
+                localStorage.setItem('sbte_name', typedName);
+            }
+        }
+        
+        // ड्रॉपडाउन से ब्रांच का नाम लाइव पकड़ना
+        const selectDropdown = document.querySelector('select');
+        if (selectDropdown) {
+            const typedBranch = selectDropdown.options[selectDropdown.selectedIndex].text;
+            localStorage.setItem('sbte_branch', typedBranch);
+        }
+
+        // लीडरबोर्ड पर नाम और ब्रांच को लाइव बदलना
+        const finalSavedName = localStorage.getItem('sbte_name');
+        const finalSavedBranch = localStorage.getItem('sbte_branch');
+        
+        if (finalSavedName) {
+            document.querySelectorAll('div, h3, p, span').forEach(el => {
+                // अगर उसमें पुराना नाम "Shivam kumar" या "Shivam" दिख रहा है तो उसे छात्र के नाम से बदलना
+                if (el.innerText && (el.innerText.includes('Shivam') || el.innerText.includes('shivam'))) {
+                    el.innerHTML = el.innerHTML.replace(/Shivam\s*kumar/i, finalSavedName);
+                    if (finalSavedBranch) {
+                        el.innerHTML = el.innerHTML.replace(/Electronics\s*Engineering/i, finalSavedBranch);
+                    }
+                }
+            });
+        }
+    }, 100);
+})();
+</script>
+<script>
+(function() {
+    // WhatsApp और सोशल मीडिया के लिए मेटा टैग्स जोड़ना
+    const metaData = [
+        { property: 'og:title', content: 'SBTE Exam Guide - Ultimate Portal' },
+        { property: 'og:description', content: 'SBTE Exam Guide - सभी ब्रांच के लिए बेस्ट MCQ टेस्ट और लीडरबोर्ड।' },
+        { property: 'og:image', content: 'https://sbteexam43.github.io/sbte-exam-guide/1781487712333.png' },
+        { property: 'og:url', content: 'https://sbteexam43.github.io/sbte-exam-guide/' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' }
+    ];
+
+    metaData.forEach(item => {
+        let meta = document.createElement('meta');
+        meta.setAttribute('property', item.property);
+        meta.setAttribute('content', item.content);
+        document.head.appendChild(meta);
+    });
+})();
+    </script>
