@@ -170,7 +170,7 @@
         </div>
 
         <div class="section-card syllabus-folder" onclick="toggleFolderZone('list-syllabus', 'arr-1')">
-            <div class="card-meta"><i class="fa-solid fa-book-bookmark"></i> <span>सेमेस्टर सिलेबस (Syllabus)</span></div>
+            <div class="card-meta"><i class="fa-solid fa-book-bookmark"></i> <span>Course Module</span></div>
             <i class="fa-solid fa-chevron-down chevron" id="arr-1"></i>
         </div>
         <div class="data-list-container" id="list-syllabus"></div>
@@ -805,6 +805,110 @@
     if(typeof localStorage !== 'undefined' && localStorage.getItem('sbte_name')) {
         renderDashboardData(localStorage.getItem('sbte_branch'), localStorage.getItem('sbte_sem'));
     }
+        // ----------------------------------------------------------------------
+    // CIVIL ENGINEERING - 3rd SEMESTER: 10-10 MCQ TESTING DATABASE (50 QUESTIONS)
+    // ----------------------------------------------------------------------
+
+    db["Civil Engineering"]["3rd Semester"].syllabus = [
+        { subject: "Concrete Technology Syllabus" },
+        { subject: "Basic Surveying Syllabus" },
+        { subject: "Water Resource Engineering Syllabus" },
+        { subject: "Strength of Material Syllabus" },
+        { subject: "Building Construction & Material Syllabus" }
+    ];
+
+    db["Civil Engineering"]["3rd Semester"].mcq = [
+        // 1. Concrete Technology (10 Questions)
+        {
+            subject: "Concrete Technology MCQ Test",
+            questions: [
+                { q: "कंक्रीट में 'Slump Test' का उपयोग क्या है?", opts: ["Workability", "Strength", "Durability", "Setting time"], ans: 0 },
+                { q: "कंक्रीट की 'Tensile Strength' उसके 'Compressive Strength' का लगभग कितना हिस्सा होती है?", opts: ["1/2", "1/5", "1/10", "1/20"], ans: 2 },
+                { q: "पानी और सीमेंट का अनुपात (Water-Cement ratio) क्या निर्धारित करता है?", opts: ["Workability", "Strength", "दोनों", "कोई नहीं"], ans: 2 },
+                { q: "सीमेंट का प्रारंभिक जमाव काल (Initial setting time) कम से कम कितना होता है?", opts: ["30 min", "60 min", "10 min", "120 min"], ans: 0 },
+                { q: "कंक्रीट में 'Bleeding' का क्या अर्थ है?", opts: ["पानी ऊपर आना", "सीमेंट का जमना", "मजबूती बढ़ना", "कोई नहीं"], ans: 0 },
+                { q: "कंक्रीट के क्योरिंग (Curing) का मुख्य उद्देश्य क्या है?", opts: ["पानी देना", "नमी बनाए रखना", "तापमान कम करना", "रंग निखारना"], ans: 1 },
+                { q: "कंक्रीट मिक्स M20 में '20' क्या दर्शाता है?", opts: ["Compressive strength", "Water ratio", "Age", "Weight"], ans: 0 },
+                { q: "कंक्रीट के लिए सबसे अच्छा एग्रीगेट कौन सा है?", opts: ["गोल", "नुकीला", "अंडाकार", "फ्लैकी"], ans: 0 },
+                { q: "कंक्रीट में उपयोग होने वाला जिप्सम क्या कार्य करता है?", opts: ["जमने की गति धीमी करना", "मजबूती बढ़ाना", "रंग देना", "पानी सोखना"], ans: 0 },
+                { q: "कंक्रीट का घनत्व (Density) लगभग कितना होता है?", opts: ["2400 kg/m³", "1000 kg/m³", "3000 kg/m³", "500 kg/m³"], ans: 0 }
+            ]
+        },
+
+        // 2. Basic Surveying (10 Questions)
+        {
+            subject: "Basic Surveying MCQ Test",
+            questions: [
+                { q: "सर्वेइंग में चेन की मानक लंबाई कितनी होती है?", opts: ["20m", "30m", "10m", "5m"], ans: 1 },
+                { q: "थोडोलाइट का मुख्य उपयोग क्या है?", opts: ["कोण मापना", "दूरी मापना", "ऊंचाई मापना", "क्षेत्रफल निकालना"], ans: 0 },
+                { q: "लेवलिंग (Leveling) से क्या मापा जाता है?", opts: ["दूरी", "ऊंचाई का अंतर", "दिशा", "कोण"], ans: 1 },
+                { q: "बेयरिंग (Bearing) मापने के लिए किस उपकरण का उपयोग होता है?", opts: ["कंपास", "चेन", "लेवल", "टेप"], ans: 0 },
+                { q: "सर्वेइंग का मुख्य सिद्धांत क्या है?", opts: ["भाग से पूर्ण की ओर", "पूर्ण से भाग की ओर", "दूरी बढ़ाना", "कोण कम करना"], ans: 1 },
+                { q: "R.L. का पूर्ण रूप क्या है?", opts: ["Reduced Level", "Relative Level", "Right Level", "Rough Level"], ans: 0 },
+                { q: "सर्वेक्षण में 'Base Line' का महत्व क्यों है?", opts: ["लंबाई मापने के लिए", "त्रिभुजीकरण के लिए", "दिशा के लिए", "कोई नहीं"], ans: 1 },
+                { q: "दूरी मापने की सबसे सटीक विधि कौन सी है?", opts: ["चेनिंग", "ऑप्टिकल", "इलेक्ट्रॉनिक", "पैदल"], ans: 2 },
+                { q: "प्लेन टेबल सर्वे का उपयोग क्या है?", opts: ["ग्राफिकल प्लॉटिंग", "लेवलिंग", "कोण मापना", "कोई नहीं"], ans: 0 },
+                { q: "सर्वेइंग में 'Error' को कैसे दूर करते हैं?", opts: ["चेकिंग", "दोबारा मापकर", "औसत लेकर", "इन सभी से"], ans: 3 }
+            ]
+        },
+
+        // 3. Water Resource Engineering (10 Questions)
+        {
+            subject: "Water Resource Engineering MCQ Test",
+            questions: [
+                { q: "हाइड्रोलॉजी (Hydrology) किसका अध्ययन है?", opts: ["मिट्टी", "पानी", "हवा", "पहाड़"], ans: 1 },
+                { q: "कैनाल (Canal) का मुख्य कार्य क्या है?", opts: ["सिंचाई", "नदी जोड़ना", "बिजली बनाना", "कोई नहीं"], ans: 0 },
+                { q: "बांध (Dam) का मुख्य कार्य क्या है?", opts: ["पानी स्टोर करना", "पानी बहना", "सड़क बनाना", "कोई नहीं"], ans: 0 },
+                { q: "इरीगेशन का सबसे पुराना तरीका क्या है?", opts: ["फ्लो इरीगेशन", "ड्रिप", "स्प्रिंकलर", "कोई नहीं"], ans: 0 },
+                { q: "कैचमेंट एरिया (Catchment area) किसे कहते हैं?", opts: ["नदी का इलाका", "पानी का बहाव क्षेत्र", "डैम का एरिया", "कोई नहीं"], ans: 1 },
+                { q: "भूजल (Ground water) कैसे निकाला जाता है?", opts: ["ट्यूबवेल", "डैम", "नदी", "कोई नहीं"], ans: 0 },
+                { q: "नहरों के प्रकार क्या हैं?", opts: ["लाइन और अनलाइन", "पक्की", "कच्ची", "कोई नहीं"], ans: 0 },
+                { q: "पानी का वाष्पीकरण (Evaporation) कब अधिक होता है?", opts: ["गर्मी में", "सर्दी में", "बारिश में", "रात में"], ans: 0 },
+                { q: "स्प्रिंकलर इरीगेशन कब उपयोग करते हैं?", opts: ["पानी की कमी पर", "पहाड़ों में", "मैदान में", "कोई नहीं"], ans: 0 },
+                { q: "नहर के किनारे क्या बनाया जाता है?", opts: ["इंस्पेक्शन रोड", "सड़क", "पुल", "कोई नहीं"], ans: 0 }
+            ]
+        },
+
+        // 4. Strength of Material (10 Questions)
+        {
+            subject: "Strength of Material MCQ Test",
+            questions: [
+                { q: "स्ट्रेस (Stress) का मात्रक क्या है?", opts: ["N/mm²", "N", "mm", "kg"], ans: 0 },
+                { q: "यंग्स मापांक (Young's Modulus) किसका अनुपात है?", opts: ["Stress/Strain", "Strain/Stress", "Force/Area", "कोई नहीं"], ans: 0 },
+                { q: "बीम (Beam) के प्रकार क्या हैं?", opts: ["कैंटिलीवर", "सिंपली सपोर्टेड", "दोनों", "कोई नहीं"], ans: 2 },
+                { q: "बेंडिंग मोमेंट डायग्राम (BMD) कहाँ शून्य हो सकता है?", opts: ["हिंज पर", "फिक्स्ड पर", "बीच में", "कोई नहीं"], ans: 0 },
+                { q: "हुक का नियम (Hooke's Law) किस सीमा तक लागू होता है?", opts: ["प्रोपोर्शनल लिमिट", "ब्रेकिंग पॉइंट", "यल्ड पॉइंट", "कोई नहीं"], ans: 0 },
+                { q: "मटेरियल की कठोरता (Hardness) किससे मापी जाती है?", opts: ["ब्रिनेल टेस्ट", "टेंसाइल टेस्ट", "कंप्रेशन टेस्ट", "कोई नहीं"], ans: 0 },
+                { q: "पॉइजन अनुपात (Poisson's Ratio) का मान हमेशा किसके बीच होता है?", opts: ["0 और 0.5", "1 और 2", "10 और 20", "कोई नहीं"], ans: 0 },
+                { q: "कॉलम (Column) किस प्रकार का लोड सहता है?", opts: ["कंप्रेशन", "टेंशन", "टॉर्क", "कोई नहीं"], ans: 0 },
+                { q: "इलास्टिसिटी (Elasticity) का अर्थ क्या है?", opts: ["मूल रूप में वापस आना", "टूट जाना", "मुड़ जाना", "कोई नहीं"], ans: 0 },
+                { q: "टॉर्क (Torque) किससे संबंधित है?", opts: ["ट्विस्टिंग", "बेंडिंग", "खींचना", "कोई नहीं"], ans: 0 }
+            ]
+        },
+
+        // 5. Building Construction & Material (10 Questions)
+        {
+            subject: "Building Construction & Material MCQ Test",
+            questions: [
+                { q: "ईंट (Brick) का मानक आकार (Standard size) क्या है?", opts: ["19x9x9 cm", "20x10x10 cm", "15x7x7 cm", "कोई नहीं"], ans: 0 },
+                { q: "बिल्डिंग की नींव (Foundation) का काम क्या है?", opts: ["भार ट्रांसफर करना", "सुंदरता", "जगह बढ़ाना", "कोई नहीं"], ans: 0 },
+                { q: "टिम्बर (Timber) का मुख्य उपयोग क्या है?", opts: ["दरवाजे-खिड़की", "नींव", "छत", "कोई नहीं"], ans: 0 },
+                { q: "सीमेंट के थैले का वजन कितना होता है?", opts: ["50 kg", "40 kg", "60 kg", "25 kg"], ans: 0 },
+                { q: "डीपीसी (DPC) का उपयोग क्यों करते हैं?", opts: ["नमी रोकने के लिए", "मजबूती के लिए", "रंग के लिए", "कोई नहीं"], ans: 0 },
+                { q: "लिंटेल (Lintel) कहाँ लगाया जाता है?", opts: ["दरवाजे के ऊपर", "नींव में", "छत में", "कोई नहीं"], ans: 0 },
+                { q: "कंक्रीट में सरिया (Steel) क्यों डालते हैं?", opts: ["टेंशन के लिए", "कंप्रेशन के लिए", "दिखावट", "कोई नहीं"], ans: 0 },
+                { q: "पेंट का मुख्य उपयोग क्या है?", opts: ["संरक्षण और सजावट", "मजबूती", "ठंडक", "कोई नहीं"], ans: 0 },
+                { q: "छत (Roof) कितने प्रकार की होती है?", opts: ["फ्लैट और स्लोपिंग", "गोल", "त्रिकोणीय", "कोई नहीं"], ans: 0 },
+                { q: "सीमेंट कंक्रीट में मिलाया जाने वाला पदार्थ क्या कहलाता है?", opts: ["एडमिक्सचर", "कलर", "मिट्टी", "कोई नहीं"], ans: 0 }
+            ]
+        }
+    ];
+
+    // रेंडर रीफ्रेश कमांड
+    if(typeof localStorage !== 'undefined' && localStorage.getItem('sbte_name')) {
+        renderDashboardData(localStorage.getItem('sbte_branch'), localStorage.getItem('sbte_sem'));
+    }
+
 </script>
 <script>
     // ----------------------------------------------------------------------
