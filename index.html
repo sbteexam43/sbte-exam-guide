@@ -909,6 +909,110 @@
         renderDashboardData(localStorage.getItem('sbte_branch'), localStorage.getItem('sbte_sem'));
     }
 
+    // ----------------------------------------------------------------------
+    // ELECTRICAL ENGINEERING - 3rd SEMESTER: 10-10 MCQ TESTING DATABASE (50 QUESTIONS)
+    // ----------------------------------------------------------------------
+
+    db["Electrical Engineering"]["3rd Semester"].syllabus = [
+        { subject: "Electrical Power Generation Transmission Distribution Syllabus" },
+        { subject: "Electrical Measurements and Instrumentation Syllabus" },
+        { subject: "DC Machines and Transformers Syllabus" },
+        { subject: "Electrical Circuit & Networks Syllabus" },
+        { subject: "Python Programming Syllabus" }
+    ];
+
+    db["Electrical Engineering"]["3rd Semester"].mcq = [
+        // 1. Electrical Power Generation, Transmission & Distribution (10 Questions)
+        {
+            subject: "Power Gen, Trans & Dist MCQ Test",
+            questions: [
+                { q: "हाइड्रो-इलेक्ट्रिक पावर प्लांट में पानी की ऊर्जा क्या कहलाती है?", opts: ["Potential Energy", "Kinetic Energy", "Chemical Energy", "Thermal Energy"], ans: 0 },
+                { q: "ट्रांसमिशन लाइन में वोल्टेज बढ़ाने का क्या कारण है?", opts: ["Loss कम करना", "Loss बढ़ाना", "दूरी कम करना", "कोई नहीं"], ans: 0 },
+                { q: "भारत में मानक फ्रीक्वेंसी कितनी है?", opts: ["60 Hz", "50 Hz", "40 Hz", "100 Hz"], ans: 1 },
+                { q: "पॉवर ग्रिड का मुख्य उद्देश्य क्या है?", opts: ["बिजली वितरण", "बिजली बनाना", "सुरक्षा", "कोई नहीं"], ans: 0 },
+                { q: "इंसुलेटर का काम क्या है?", opts: ["करंट रोकना", "करंट बहाना", "वोल्टेज बढ़ाना", "कोई नहीं"], ans: 0 },
+                { q: "सबसे सस्ता बिजली उत्पादन साधन कौन सा है?", opts: ["सोलर", "हाइड्रो", "कोयला", "न्यूक्लियर"], ans: 1 },
+                { q: "कंडक्टर का मटेरियल क्या होता है?", opts: ["कॉपर/एल्युमिनियम", "लोहा", "प्लास्टिक", "लकड़ी"], ans: 0 },
+                { q: "ट्रांसमिशन लाइन में कोरोना का क्या कारण है?", opts: ["हाई वोल्टेज", "लो वोल्टेज", "हवा की गति", "कोई नहीं"], ans: 0 },
+                { q: "अर्थिंग का मुख्य उद्देश्य क्या है?", opts: ["सुरक्षा", "बिजली बढ़ाना", "सजावट", "कोई नहीं"], ans: 0 },
+                { q: "डिस्ट्रीब्यूशन में वोल्टेज कैसा होता है?", opts: ["लो वोल्टेज", "हाई वोल्टेज", "एक्स्ट्रा हाई", "कोई नहीं"], ans: 0 }
+            ]
+        },
+
+        // 2. Electrical Measurements and Instrumentation (10 Questions)
+        {
+            subject: "Electrical Measurements MCQ Test",
+            questions: [
+                { q: "एमीटर को सर्किट में कैसे जोड़ते हैं?", opts: ["Series", "Parallel", "दोनों", "कोई नहीं"], ans: 0 },
+                { q: "वोल्टमीटर का आंतरिक प्रतिरोध कैसा होना चाहिए?", opts: ["बहुत ज्यादा", "बहुत कम", "शून्य", "कोई नहीं"], ans: 0 },
+                { q: "मेगर का उपयोग क्या नापने में होता है?", opts: ["इंसुलेशन रेजिस्टेंस", "करंट", "वोल्टेज", "कोई नहीं"], ans: 0 },
+                { q: "ट्रांसड्यूसर का क्या काम है?", opts: ["ऊर्जा बदलना", "वोल्टेज बढ़ाना", "करंट नापना", "कोई नहीं"], ans: 0 },
+                { q: "C.R.O. का पूरा नाम?", opts: ["Cathode Ray Oscilloscope", "Current Record", "कोई नहीं", "Input"], ans: 0 },
+                { q: "मल्टीमीटर क्या नाप सकता है?", opts: ["वोल्टेज, करंट, रेजिस्टेंस", "सिर्फ करंट", "सिर्फ वोल्टेज", "कोई नहीं"], ans: 0 },
+                { q: "एरर कितने प्रकार के होते हैं?", opts: ["3", "1", "5", "कोई नहीं"], ans: 0 },
+                { q: "सेंसिटिविटी की इकाई क्या है?", opts: ["Ohm/Volt", "Volt/Ohm", "Amp", "कोई नहीं"], ans: 0 },
+                { q: "वाटमीटर से क्या नापते हैं?", opts: ["पावर", "करंट", "वोल्टेज", "कोई नहीं"], ans: 0 },
+                { q: "कैलिब्रेशन का क्या अर्थ है?", opts: ["सटीकता जांचना", "रिपेयरिंग", "सफाई", "कोई नहीं"], ans: 0 }
+            ]
+        },
+
+        // 3. DC Machines and Transformers (10 Questions)
+        {
+            subject: "DC Machines and Transformers MCQ Test",
+            questions: [
+                { q: "ट्रांसफॉर्मर किस सिद्धांत पर काम करता है?", opts: ["Mutual Induction", "Self Induction", "दोनों", "कोई नहीं"], ans: 0 },
+                { q: "DC मशीन में कम्यूटेटर का क्या काम है?", opts: ["AC को DC बनाना", "DC को AC बनाना", "वोल्टेज बढ़ाना", "कोई नहीं"], ans: 0 },
+                { q: "ट्रांसफॉर्मर की कोर किस मटेरियल की होती है?", opts: ["Silicon Steel", "कॉपर", "एल्युमिनियम", "कोई नहीं"], ans: 0 },
+                { q: "DC मोटर का मुख्य भाग क्या है?", opts: ["आर्मेचर", "फिल्ड", "दोनों", "कोई नहीं"], ans: 2 },
+                { q: "ट्रांसफॉर्मर में 'Open Circuit Test' से क्या ज्ञात होता है?", opts: ["Core loss", "Copper loss", "दोनों", "कोई नहीं"], ans: 0 },
+                { q: "DC जनरेटर का नियम क्या है?", opts: ["Fleming's Right Hand", "Left Hand", "कोई नहीं", "कोई नहीं"], ans: 0 },
+                { q: "ट्रांसफॉर्मर में कौन सा लॉसेस नहीं होता?", opts: ["Mechanical", "Iron", "Copper", "कोई नहीं"], ans: 0 },
+                { q: "आर्मेचर में कौन सा करंट बहता है?", opts: ["AC", "DC", "दोनों", "कोई नहीं"], ans: 0 },
+                { q: "ब्रश का मटेरियल क्या होता है?", opts: ["कार्बन", "कॉपर", "लोहा", "कोई नहीं"], ans: 0 },
+                { q: "ट्रांसफॉर्मर की दक्षता (Efficiency) कितनी होती है?", opts: ["95-98%", "50%", "10%", "कोई नहीं"], ans: 0 }
+            ]
+        },
+
+        // 4. Electrical Circuits & Networks (10 Questions)
+        {
+            subject: "Electrical Circuit & Networks MCQ Test",
+            questions: [
+                { q: "किरचॉफ का करंट लॉ (KCL) किस पर आधारित है?", opts: ["Charge Conservation", "Energy", "दोनों", "कोई नहीं"], ans: 0 },
+                { q: "ओह्म का नियम (Ohm's Law) किसके लिए है?", opts: ["Resistor", "Diode", "Transistor", "कोई नहीं"], ans: 0 },
+                { q: "नोड (Node) किसे कहते हैं?", opts: ["जंक्शन", "लाइन", "सप्लाई", "कोई नहीं"], ans: 0 },
+                { q: "थवेनिन प्रमेय (Thevenin's Theorem) का मुख्य उपयोग?", opts: ["Simplification", "जटिलता बढ़ाना", "सजावट", "कोई नहीं"], ans: 0 },
+                { q: "सीरीज सर्किट में क्या समान रहता है?", opts: ["करंट", "वोल्टेज", "दोनों", "कोई नहीं"], ans: 0 },
+                { q: "पैरेलल सर्किट में क्या समान रहता है?", opts: ["वोल्टेज", "करंट", "दोनों", "कोई नहीं"], ans: 0 },
+                { q: "कैपेसिटर में ऊर्जा किस रूप में होती है?", opts: ["Electric Field", "Magnetic Field", "Heat", "कोई नहीं"], ans: 0 },
+                { q: "इन्डक्टर में ऊर्जा किस रूप में होती है?", opts: ["Magnetic Field", "Electric Field", "Heat", "कोई नहीं"], ans: 0 },
+                { q: "पावर की इकाई क्या है?", opts: ["Watt", "Volt", "Amp", "कोई नहीं"], ans: 0 },
+                { q: "एक्टिव एलिमेंट कौन सा है?", opts: ["Battery", "Resistor", "Capacitor", "कोई नहीं"], ans: 0 }
+            ]
+        },
+
+        // 5. Python Programming (10 Questions)
+        {
+            subject: "Python Programming MCQ Test",
+            questions: [
+                { q: "पायथन क्या है?", opts: ["Programming Language", "OS", "Hardware", "कोई नहीं"], ans: 0 },
+                { q: "पायथन में कमेंट के लिए क्या उपयोग होता है?", opts: ["#", "//", "/*", "कोई नहीं"], ans: 0 },
+                { q: "पायथन फाइल का एक्सटेंशन क्या है?", opts: [".py", ".c", ".java", "कोई नहीं"], ans: 0 },
+                { q: "प्रिंट के लिए क्या उपयोग होता है?", opts: ["print()", "show()", "write()", "कोई नहीं"], ans: 0 },
+                { q: "वेरिएबल कैसे घोषित करते हैं?", opts: ["Direct", "int", "char", "कोई नहीं"], ans: 0 },
+                { q: "पायथन का डेवलपर कौन है?", opts: ["Guido van Rossum", "Bill Gates", "कोई नहीं", "कोई नहीं"], ans: 0 },
+                { q: "लिस्ट (List) के लिए ब्रैकेट कौन सा है?", opts: ["[]", "()", "{}", "कोई नहीं"], ans: 0 },
+                { q: "इनपुट लेने के लिए फंक्शन क्या है?", opts: ["input()", "get()", "take()", "कोई नहीं"], ans: 0 },
+                { q: "लूप कितने प्रकार के हैं?", opts: ["for, while", "for, if", "if, else", "कोई नहीं"], ans: 0 },
+                { q: "पायथन कौन सा लैंग्वेज है?", opts: ["Interpreted", "Compiled", "दोनों", "कोई नहीं"], ans: 0 }
+            ]
+        }
+    ];
+
+    // रेंडर रीफ्रेश कमांड
+    if(typeof localStorage !== 'undefined' && localStorage.getItem('sbte_name')) {
+        renderDashboardData(localStorage.getItem('sbte_branch'), localStorage.getItem('sbte_sem'));
+                 }
+
 </script>
 <script>
     // ----------------------------------------------------------------------
