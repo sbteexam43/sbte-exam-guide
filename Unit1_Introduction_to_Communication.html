@@ -1,1 +1,745 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Notes: Unit 1.0 - Introduction to Communication System</title>
+    <style>
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #1565c0;
+            --accent-color: #00838f;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-color: #212121;
+            --border-color: #dcdcdc;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            color: #ffffff;
+            background: var(--secondary-color);
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-top: 40px;
+            font-size: 21px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin-top: 25px;
+            font-size: 18px;
+        }
+
+        .diagram-box {
+            background: #1e1e1e;
+            color: #00ff66;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            padding: 22px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.4;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .en-def {
+            color: #37474f;
+            font-style: italic;
+            background: #eceff1;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 14.5px;
+        }
+
+        .hi-def {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .sub-section {
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+
+        .sub-title {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        .example-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffb300;
+            padding: 10px 15px;
+            margin-top: 10px;
+            font-size: 14px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .math-box {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            color: #1b5e20;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+        }
+
+        table, th, td {
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 11px;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        ul, ol {
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 0; width: 100%; }
+            .diagram-box { background: #f5f5f5; color: #000; border: 1px solid #000; }
+            h2 { page-break-before: always; color: #000; background: #ddd; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 1.0: Introduction to Communication System</h1>
+
+    <!-- TOPIC 1.1 -->
+    <h2>1.1 Basic Building Blocks of Communication System</h2>
+    <p>संचार प्रणाली (Communication System) वह व्यवस्था है जिसके माध्यम से सूचना या संदेश को एक स्थान (Source) से दूसरे स्थान (Destination) तक सफलतापूर्वक पहुँचाया जाता है। इसका संपूर्ण क्रमिक ब्लॉक डायग्राम (Sequential Block Diagram) नीचे दर्शाया गया है:</p>
+
+    <div class="diagram-box">
+[ 1. Input Signal ] (मूल संदेश / डेटा)
+         │
+         ▼
+[ 2. Encoder ] (डेटा को कोड में बदलना)
+         │
+         ▼
+[ 3. Multiplexer ] (कई सिग्नलों को एक लाइन पर मिलाना)
+         │
+         ▼
+[ 4. Transmitter ] (सिग्नल को मॉड्युलेट व एम्पलीफाई करना)
+         │
+         ▼
+[ 5. Transmitting Antenna ] (इलेक्ट्रिकल सिग्नल ➔ EM Waves)
+         │
+         ▼
+================== [ 6. CHANNEL / माध्यम ] ==================
+         │
+         ▼
+[ 7. Receiving Antenna ] (EM Waves ➔ इलेक्ट्रिकल सिग्नल)
+         │
+         ▼
+[ 8. Receiver ] (सिग्नल को फ़िल्टर व डिमॉड्युलेट करना)
+         │
+         ▼
+[ 9. Decoder ] (कोड को मूल रूप में वापस बदलना)
+         │
+         ▼
+[ 10. Output Signal ] (अंतिम प्राप्त संदेश / डेस्टिनेशन)
+    </div>
+
+    <h3>सभी 10 घटकों का विस्तृत विवरण (Detailed Components):</h3>
+
+    <!-- 1 -->
+    <div class="card">
+        <div class="card-title">1. Input Signal / Message Source (इनपुट सिग्नल)</div>
+        <div class="en-def"><strong>English:</strong> The original information or message generated by the user or source (such as human voice, text, image, or video) that needs to be transmitted over a distance.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> यह संचार प्रणाली का पहला चरण है। स्रोत (Source) द्वारा उत्पन्न वह मूल संदेश जिसे हम भेजना चाहते हैं, इनपुट सिग्नल कहलाता है। आमतौर पर यह एक नॉन-इलेक्ट्रिकल सिग्नल (जैसे हमारी आवाज या भौतिक दृश्य) होता है जिसे ट्रांसड्यूसर (जैसे माइक या कैमरा) की मदद से इलेक्ट्रिकल सिग्नल में बदला जाता है। इसे <strong>Baseband Signal</strong> भी कहते हैं।</div>
+        <div class="example-box"><strong>व्यावहारिक उदाहरण:</strong> जब आप फोन पर बोलते हैं, तो आपकी आवाज (Sound Waves) माइक द्वारा विद्युत तरंगों (Electrical Voltage) में बदल दी जाती है। यही इनपुट सिग्नल है।</div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+        <div class="card-title">2. Encoder (इन्कोडर)</div>
+        <div class="en-def"><strong>English:</strong> An encoder is an electronic device or algorithm that converts the analog/digital input signal into a specific coded binary format for data compression, error detection, and security.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> इन्कोडर मूल सिग्नल को एक विशेष कोड या बाइनरी फॉर्मेट (0s और 1s) में बदलता है। 
+        <br><strong>मुख्य कार्य:</strong>
+        <ul>
+            <li><strong>Data Compression:</strong> डेटा का आकार छोटा करना ताकि कम बैंडविड्थ लगे।</li>
+            <li><strong>Encryption:</strong> डेटा को गुप्त कोड में बदलना ताकि कोई बीच में इसे चुरा न सके।</li>
+            <li><strong>Error Correction Coding:</strong> ऐसे अतिरिक्त बिट्स जोड़ना जिससे चैनल में शोर के कारण होने वाली गलतियों को पकड़ा जा सके।</li>
+        </ul>
+        </div>
+        <div class="example-box"><strong>व्यावहारिक उदाहरण:</strong> एनालॉग ऑडियो सिग्नल को PCM (Pulse Code Modulation) का उपयोग करके डिजिटल कोड (01101...) में बदलना।</div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+        <div class="card-title">3. Multiplexer (मल्टीप्लेक्सर - MUX)</div>
+        <div class="en-def"><strong>English:</strong> A multiplexer is a combinational logic circuit that accepts multiple encoded input signals from different sources and combines them into a single transmission stream to share a common channel.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> जब एक ही संचार माध्यम (चैनल) से एक से अधिक उपयोगकर्ताओं का डेटा भेजना होता है, तब मल्टीप्लेक्सर का उपयोग किया जाता है। यह "Many-into-One" की तरह काम करता है। यह अलग-अलग डेटा सिग्नलों को समय (TDM) या फ्रीक्वेंसी (FDM) के आधार पर व्यवस्थित करके एक ही भौतिक लाइन पर भेजता है। इससे चैनल की क्षमता का पूर्ण उपयोग होता है और लागत में भारी कमी आती है।</div>
+        <div class="example-box"><strong>व्यावहारिक उदाहरण:</strong> केबल टीवी वायर (Coaxial Cable), जिसमें एक ही तार के जरिए सैकड़ों टीवी चैनल्स के सिग्नल एक साथ आपके घर तक आते हैं।</div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+        <div class="card-title">4. Transmitter (ट्रांसमीटर)</div>
+        <div class="en-def"><strong>English:</strong> The transmitter is a complex unit that modifies, modulates, and amplifies the input signal so that it gains enough strength and high frequency to travel long distances through the channel.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> मूल मैसेज सिग्नल की ऊर्जा और फ्रीक्वेंसी बहुत कम होती है, जिससे वह हवा या तार में ज्यादा दूर जाने पर नष्ट हो जाता है। ट्रांसमीटर इस सिग्नल को एक उच्च आवृत्ति वाली वाहक तरंग (High-frequency Carrier Wave) के साथ मिलाता है (जिसे <strong>Modulation</strong> कहते हैं) और फिर पावर एम्पलीफायर की मदद से उसकी शक्ति (Power) को कई गुना बढ़ा देता है।</div>
+        <div class="sub-section"><span class="sub-title">ट्रांसमीटर के मुख्य भाग:</span> Modulator, High-Frequency Oscillator, Power Amplifier.</div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+        <div class="card-title">5. Transmitting Antenna (ट्रांसमिटिंग एंटीना)</div>
+        <div class="en-def"><strong>English:</strong> An antenna is an electrical transducer that converts high-frequency guided electrical signals coming from the transmitter into electromagnetic (EM) waves and radiates them into space.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> वायरलेस संचार में ट्रांसमिटिंग एंटीना बहुत ही महत्वपूर्ण भूमिका निभाता है। ट्रांसमीटर से निकलने वाले वोल्टेज और करंट के रूप वाले इलेक्ट्रिकल सिग्नल को एंटीना हवा में तैरने वाली इलेक्ट्रोमैग्नेटिक तरंगों (EM Waves) में बदल देता है। एंटीना का आकार भेजी जाने वाली तरंगों की तरंगदैर्ध्य (Wavelength - λ) पर निर्भर करता है।</div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+        <div class="card-title">6. Communication Channel / Medium (चैनल)</div>
+        <div class="en-def"><strong>English:</strong> The channel is the physical medium or propagation path present between the transmitter and receiver through which the transmitted signal travels.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> चैनल वह भौतिक रास्ता है जो ट्रांसमीटर और रिसीवर को आपस में जोड़ता है।
+        <br><strong>चैनल दो प्रकार के होते हैं:</strong>
+        <ol>
+            <li><strong>Guided / Wired Medium:</strong> जैसे कॉपर वायर, कोएक्सिएल केबल, ऑप्टिकल फाइबर।</li>
+            <li><strong>Unguided / Wireless Medium:</strong> जैसे हवा, वैक्यूम या स्पेस।</li>
+        </ol>
+        <strong>चैनल की समस्या:</strong> सिग्नल जब चैनल से गुजरता है, तो उसमें <em>Attenuation</em> (कमजोरी), <em>Distortion</em> (विकृति), और <em>Noise</em> (अवांछित शोर) जुड़ जाते हैं।</div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card">
+        <div class="card-title">7. Receiving Antenna (रिसीविंग एंटीना)</div>
+        <div class="en-def"><strong>English:</strong> Located at the destination side, this antenna intercepts the incoming electromagnetic waves from space and converts them back into high-frequency electrical signals.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> यह ट्रांसमिटिंग एंटीना का ठीक उल्टा कार्य करता है। हवा या माध्यम में बह रही इलेक्ट्रोमैग्नेटिक तरंगों को यह कैप्चर (Intercept) करता है और उन्हें वापस इलेक्ट्रिकल वोल्टेज और करंट सिग्नल में बदल देता है, जिसे रिसीवर सर्किट को भेजा जाता है।</div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card">
+        <div class="card-title">8. Receiver (रिसीवर)</div>
+        <div class="en-def"><strong>English:</strong> The receiver is an electronic system that accepts the weak signal from the receiving antenna, amplifies it, filters out unwanted noise, and demodulates it to extract the original signal.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> लंबी दूरी तय करने के बाद सिग्नल बहुत कमजोर हो जाता है और उसमें शोर (Noise) मिल जाता है। रिसीवर सबसे पहले सिग्नल को साफ़ (Filter) करता है, उसे एम्पलीफाई (Amplify) करता है, और फिर <strong>Demodulator</strong> सर्किट की मदद से उच्च-आवृत्ति वाहक तरंग को हटाकर मूल मैसेज सिग्नल को बाहर निकालता है।</div>
+        <div class="sub-section"><span class="sub-title">रिसीवर के मुख्य भाग:</span> Bandpass Filter, Low-Noise Amplifier (LNA), Demodulator (Detector).</div>
+    </div>
+
+    <!-- 9 -->
+    <div class="card">
+        <div class="card-title">9. Decoder (डिकोडर)</div>
+        <div class="en-def"><strong>English:</strong> A decoder performs the inverse operation of an encoder by processing the received coded/binary data back into its original uncompressed and readable format.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> डिकोडर, इन्कोडर द्वारा बनाए गए विशेष बाइनरी कोड (0s और 1s) को दोबारा समझ में आने वाले डेटा (जैसे डिजिटल वॉइस या वीडियो बिट्स) में बदल देता है। यदि डेटा एन्क्रिप्टेड था, तो डिकोडर उसे डिक्रिप्ट करके मूल रूप में लाता है।</div>
+    </div>
+
+    <!-- 10 -->
+    <div class="card">
+        <div class="card-title">10. Output Signal / Destination (आउटपुट सिग्नल)</div>
+        <div class="en-def"><strong>English:</strong> The final reconstructed message signal that is delivered to the output transducer (like speaker, screen, or printer) for the end-user.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> यह संचार प्रक्रिया का अंतिम चरण है। यहाँ डिकोड किया गया इलेक्ट्रिकल सिग्नल एक आउटपुट ट्रांसड्यूसर (जैसे मोबाइल का स्पीकर या टीवी स्क्रीन) को दिया जाता है, जो इसे वापस हमारे सुनने या देखने योग्य भौतिक रूप (जैसे आवाज या चित्र) में बदल देता है।</div>
+    </div>
+
+    <!-- SPECIAL TOPIC: NEED OF MODULATION -->
+    <h2>[Special Core Topic] Concept and Need of Modulation</h2>
+    
+    <div class="card">
+        <div class="card-title">Modulation (मॉड्यूलेशन) क्या है?</div>
+        <div class="en-def"><strong>Definition:</strong> Modulation is the process of varying one or more properties (Amplitude, Frequency, or Phase) of a high-frequency carrier wave in accordance with the instantaneous value of a low-frequency message signal (Baseband signal).</div>
+        <div class="hi-def"><strong>सरल भाषा में समझें:</strong> कम आवृत्ति (Low Frequency) वाले ऑडियो या मैसेज सिग्नल को लंबी दूरी तक भेजने के लिए उसे एक बहुत ही उच्च आवृत्ति (High Frequency) वाली वाहक तरंग (Carrier Wave) के ऊपर सुपरइम्पोज (सवार) करने की प्रक्रिया को <strong>Modulation</strong> कहते हैं।</div>
+        <div class="example-box"><strong>उदाहरण / सादृश्य:</strong> यदि आप एक कागज के टुकड़े (मैसेज सिग्नल) को फेंकेंगे, तो वह 2 मीटर दूर भी नहीं जाएगा। लेकिन यदि आप उस कागज को एक भारी पत्थर (Carrier Wave) में लपेटकर फेंकेंगे, तो वह बहुत दूर तक चला जाएगा। यहाँ पत्थर पर कागज लपेटना ही 'Modulation' है!</div>
+    </div>
+
+    <h3>Need of Modulation (मॉड्यूलेशन की आवश्यकता क्यों है? - 4 प्रमुख कारण):</h3>
+
+    <div class="card">
+        <div class="card-title">1. Practical Antenna Height (एंटीना की ऊँचाई को व्यावहारिक बनाना)</div>
+        <div class="hi-def">इलेक्ट्रोमैग्नेटिक तरंगों के कुशल प्रसारण (Efficient Radiation) के लिए एंटीना की ऊँचाई (h) कम से कम प्रसारित तरंगदैर्ध्य (λ) की एक-चौथाई होनी चाहिए:</div>
+        
+        <div class="math-box">
+            <strong>गणितीय सूत्र:</strong><br>
+            Antenna Height (h) = λ / 4 <br>
+            चूँकि, λ = c / f &nbsp;&nbsp;&nbsp;&nbsp; (जहाँ c = 3 × 10<sup>8</sup> m/s, f = सिग्नल की फ्रीक्वेंसी)
+        </div>
+
+        <p><strong>स्थिति A: बिना मॉड्यूलेशन के (Without Modulation):</strong></p>
+        <p>मान लीजिए हमें 15 kHz (15,000 Hz) का ऑडियो सिग्नल बिना मॉड्यूलेशन के भेजना है:</p>
+        <ul>
+            <li>λ = (3 × 10<sup>8</sup>) / (15 × 10<sup>3</sup>) = 20,000 मीटर (20 km)</li>
+            <li>एंटीना की ऊँचाई (h) = 20 km / 4 = <strong>5,000 मीटर (5 किलोमीटर)</strong>!</li>
+        </ul>
+        <p><em>निष्कर्ष: 5 किलोमीटर ऊँचा एंटीना बनाना और उसे हवा में खड़ा रखना असंभव है।</em></p>
+
+        <p><strong>स्थिति B: मॉड्यूलेशन के बाद (With Modulation):</strong></p>
+        <p>यदि हम इस 15 kHz सिग्नल को 1 MHz (1,000,000 Hz) की हाई-फ्रीक्वेंसी कैरियर वेव पर मॉड्यूलेट कर दें:</p>
+        <ul>
+            <li>λ = (3 × 10<sup>8</sup>) / (1 × 10<sup>6</sup>) = 300 मीटर</li>
+            <li>एंटीना की ऊँचाई (h) = 300 m / 4 = <strong>75 मीटर</strong>!</li>
+        </ul>
+        <p><em>निष्कर्ष: 75 मीटर का एंटीना आसानी से बनाया और लगाया जा सकता है। इसलिए मॉड्यूलेशन बहुत ज़रूरी है।</em></p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">2. Avoid Mixing of Signals (सिग्नलों का आपस में मिलना रोकना)</div>
+        <div class="hi-def">मान लीजिए एक शहर में 10 अलग-अलग रेडियो स्टेशन हैं और सभी लोग अपनी आवाज (ऑडियो फ्रीक्वेंसी: 20 Hz – 20 kHz) को बिना मॉड्यूलेशन के सीधे प्रसारित करते हैं। परिणाम यह होगा कि सभी स्टेशनों के सिग्नल हवा में आपस में मिक्स हो जाएँगे और रिसीवर पर केवल शोर (Noise) सुनाई देगा।</div>
+        <div class="hi-def"><strong>समाधान:</strong> मॉड्यूलेशन के द्वारा हर रेडियो स्टेशन को एक अलग carrier frequency आवंटित कर दी जाती है (जैसे: 92.7 MHz, 93.5 MHz, 98.3 MHz)। इससे सभी सिग्नल अपनी-अपनी फ्रीक्वेंसी बैंड पर अलग-अलग यात्रा करते हैं और आपस में नहीं टकराते।</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">3. Increases Operating Range (संचरण की दूरी बढ़ाना)</div>
+        <div class="hi-def">कम फ्रीक्वेंसी वाले ऑडियो सिग्नलों में ऊर्जा (Energy) बहुत कम होती है (E = h × f)। जब ये सिग्नल वातावरण में यात्रा करते हैं, तो हवा के कणों और बाधाओं के कारण इनकी ऊर्जा तेजी से क्षीण (Attenuate) हो जाती है। उच्च आवृत्ति वाली तरंगों में ऊर्जा अधिक होती है, जिससे वे बिना नष्ट हुए हजारों किलोमीटर की दूरी तय कर सकती हैं।</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">4. Allows Multiplexing (मल्टीप्लेक्सिंग को संभव बनाना)</div>
+        <div class="hi-def">मल्टीप्लेक्सिंग का मतलब है एक ही चैनल या तार के माध्यम से एक साथ कई सिग्नलों को भेजना। यदि सिग्नल अलग-अलग Carrier Frequencies पर मॉड्यूलेट किए गए हों, तो हम Frequency Division Multiplexing (FDM) का उपयोग करके एक ही ऑप्टिकल फाइबर या केबल से हजारों कॉल एक साथ भेज सकते हैं।</div>
+    </div>
+
+    <!-- TOPIC 1.2 -->
+    <h2>1.2 Electromagnetic Spectrum, Frequency Bands & Bandwidth</h2>
+
+    <div class="card">
+        <div class="card-title">Electromagnetic Spectrum (इलेक्ट्रोमैग्नेटिक स्पेक्ट्रम) क्या है?</div>
+        <div class="hi-def">इलेक्ट्रोमैग्नेटिक तरंगें (प्रकाश, रेडियो तरंगें, X-rays आदि) जब अंतरिक्ष में गति करती हैं, तो उनकी फ्रीक्वेंसी और वेवलेंथ अलग-अलग होती है। फ्रीक्वेंसी के बढ़ते हुए क्रम (या वेवलेंथ के घटते हुए क्रम) में इन तरंगों के संपूर्ण वर्गीकरण को <strong>Electromagnetic Spectrum</strong> कहते हैं।</div>
+    </div>
+
+    <h3>Frequency Bands and Their Applications (विस्तृत सारणी):</h3>
+    <p>संचार के लिए उपयोग किए जाने वाले प्रमुख फ्रीक्वेंसी बैंड्स नीचे दिए गए हैं:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Band Name</th>
+                <th>Full Form</th>
+                <th>Frequency Range</th>
+                <th>Wavelength (λ)</th>
+                <th>Primary Applications</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>VLF</strong></td>
+                <td>Very Low Frequency</td>
+                <td>3 kHz – 30 kHz</td>
+                <td>100 km – 10 km</td>
+                <td>Submarine (पनडुब्बी) संचार, समय सिग्नल।</td>
+            </tr>
+            <tr>
+                <td><strong>LF</strong></td>
+                <td>Low Frequency</td>
+                <td>30 kHz – 300 kHz</td>
+                <td>10 km – 1 km</td>
+                <td>समुद्री व हवाई नेविगेशन (Longwave Radio)।</td>
+            </tr>
+            <tr>
+                <td><strong>MF</strong></td>
+                <td>Medium Frequency</td>
+                <td>300 kHz – 3 MHz</td>
+                <td>1 km – 100 m</td>
+                <td><strong>AM Radio Broadcasting</strong>, मरीन संचार।</td>
+            </tr>
+            <tr>
+                <td><strong>HF</strong></td>
+                <td>High Frequency</td>
+                <td>3 MHz – 30 MHz</td>
+                <td>100 m – 10 m</td>
+                <td>Shortwave Radio, Skywave (आकाश तरंग) संचार, एमेच्योर रेडियो।</td>
+            </tr>
+            <tr>
+                <td><strong>VHF</strong></td>
+                <td>Very High Frequency</td>
+                <td>30 MHz – 300 MHz</td>
+                <td>10 m – 1 m</td>
+                <td><strong>FM Radio (88-108 MHz)</strong>, TV ब्रॉडकास्ट, एयर ट्रैफिक कंट्रोल।</td>
+            </tr>
+            <tr>
+                <td><strong>UHF</strong></td>
+                <td>Ultra High Frequency</td>
+                <td>300 MHz – 3 GHz</td>
+                <td>1 m – 10 cm</td>
+                <td><strong>Mobile Communication (2G/3G/4G)</strong>, Wi-Fi, Bluetooth, GPS, Cable TV।</td>
+            </tr>
+            <tr>
+                <td><strong>SHF</strong></td>
+                <td>Super High Frequency</td>
+                <td>3 GHz – 30 GHz</td>
+                <td>10 cm – 1 cm</td>
+                <td><strong>Satellite Communication</strong>, 5G नेटवर्क, राडार सिस्टम, माइक्रोवेव लिंक।</td>
+            </tr>
+            <tr>
+                <td><strong>EHF</strong></td>
+                <td>Extremely High Frequency</td>
+                <td>30 GHz – 300 GHz</td>
+                <td>1 cm – 1 mm</td>
+                <td>रेडियो एस्ट्रोनॉमी, उन्नत सैटेलाइट लिंक, मिलिमीटर वेब रिसर्च।</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Concept of Bandwidth (बैंडविड्थ का सिद्धांत):</h3>
+
+    <div class="card">
+        <div class="card-title">Bandwidth (बैंडविड्थ) की परिभाषा:</div>
+        <div class="en-def"><strong>English:</strong> Bandwidth is defined as the width of the frequency range that a signal occupies, or the range of frequencies that a channel can transmit with minimal attenuation.</div>
+        <div class="hi-def"><strong>हिंदी परिभाषा:</strong> किसी सिग्नल में मौजूद उच्चतम आवृत्ति (f<sub>max</sub>) और न्यूनतम आवृत्ति (f<sub>min</sub>) के बीच के अंतर (Difference) को <strong>Bandwidth</strong> कहा जाता है। यह इस बात का माप है कि कोई सिग्नल कितना डेटा ले जा सकता है।</div>
+        
+        <div class="math-box">
+            <strong>सूत्र (Formula):</strong><br>
+            Bandwidth (BW) = f<sub>max</sub> - f<sub>min</sub> &nbsp;&nbsp;(Hertz - Hz में)
+        </div>
+
+        <p><strong>महत्वपूर्ण व्यावहारिक उदाहरण (Examples for Exam):</strong></p>
+        <ol>
+            <li><strong>Voice/Speech Signal (मानव आवाज):</strong> 
+                <br>फ्रीक्वेंसी सीमा = 300 Hz से 3400 Hz
+                <br>Bandwidth = 3400 Hz - 300 Hz = <strong>3100 Hz (या 3.1 kHz)</strong> (टेलीफोन लाइन में उपयोगी)।
+            </li>
+            <li><strong>Human Hearing Range (संगीत / ऑडियो सिग्नल):</strong> 
+                <br>फ्रीक्वेंसी सीमा = 20 Hz से 20,000 Hz
+                <br>Bandwidth = 20,000 Hz - 20 Hz = <strong>19,980 Hz (लगभग 20 kHz)</strong>।
+            </li>
+            <li><strong>TV Video Signal (टीवी सिग्नल):</strong> 
+                <br>वीडियो डेटा में बहुत अधिक जानकारी होती है, इसलिए टीवी सिग्नल की बैंडविड्थ लगभग <strong>6 MHz</strong> होती है।
+            </li>
+        </ol>
+    </div>
+
+    <!-- TOPIC 1.3 -->
+    <h2>1.3 Modes of Communication</h2>
+    <p>संचार के मोड्स (Modes of Communication) यह दर्शाते हैं कि दो कनेक्टेड उपकरणों के बीच सूचना का प्रवाह (Data Flow) किस दिशा में और किस समय हो रहा है। ये मुख्य रूप से 3 प्रकार के होते हैं:</p>
+
+    <!-- Simplex -->
+    <div class="card">
+        <div class="card-title">1. Simplex Mode (सिम्प्लेक्स मोड)</div>
+        <div class="en-def"><strong>English:</strong> In Simplex mode, the communication is strictly unidirectional. Only one device can transmit the data, and the other device can only receive it.</div>
+        <div class="hi-def"><strong>विस्तृत विवरण:</strong> इस मोड में डेटा का प्रवाह केवल एक ही दिशा में (Unidirectional) होता है। सेंडर केवल डेटा भेज सकता है (वह प्राप्त नहीं कर सकता), और रिसीवर केवल डेटा प्राप्त कर सकता है (वह वापस जवाब नहीं भेज सकता)। इसमें पूरे चैनल की बैंडविड्थ केवल एक ही दिशा में डेटा भेजने के लिए आरक्षित रहती है।</div>
+        <div class="example-box"><strong>व्यावहारिक उदाहरण:</strong> 
+            <ul>
+                <li>रेडियो ब्रॉडकास्ट और केबल टीवी (स्टेशन से सिग्नल आपके टीवी तक आता है, आप वापस सिग्नल नहीं भेज सकते)।</li>
+                <li>कंप्यूटर कीबोर्ड (कीबोर्ड से डेटा मॉनिटर की तरफ जाता है)।</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Half Duplex -->
+    <div class="card">
+        <div class="card-title">2. Half-Duplex Mode (हाफ-ड्यूप्लेक्स मोड)</div>
+        <div class="en-def"><strong>English:</strong> In Half-Duplex mode, data can flow in both directions, but only in one direction at a time (not simultaneously).</div>
+        <div class="hi-def"><strong>विस्तृत विवरण:</strong> इस मोड में दोनों उपकरण (Sender & Receiver) डेटा भेज भी सकते हैं और प्राप्त भी कर सकते हैं, लेकिन <strong>एक समय में केवल एक ही स्टेशन</strong> डेटा ट्रांसफर कर सकता है। जब एक उपकरण डेटा भेज रहा होता है, तो दूसरे को केवल रिसीव करना पड़ता है।</div>
+        <div class="example-box"><strong>व्यावहारिक उदाहरण:</strong> 
+            <ul>
+                <li><strong>Walkie-Talkie (वॉकी-टॉकी):</strong> इसमें एक व्यक्ति अपनी बात बोलने के बाद "Over" बोलता है, जिसके बाद ही दूसरी तरफ वाला व्यक्ति बटन दबाकर बोलना शुरू कर सकता है।</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Full Duplex -->
+    <div class="card">
+        <div class="card-title">3. Full-Duplex Mode (फुल-ड्यूप्लेक्स मोड)</div>
+        <div class="en-def"><strong>English:</strong> In Full-Duplex mode, data can travel in both directions simultaneously (at the same time).</div>
+        <div class="hi-def"><strong>विस्तृत विवरण:</strong> इस मोड में दोनों स्टेशन एक ही समय पर (Simultaneously) एक साथ डेटा भेज भी सकते हैं और प्राप्त भी कर सकते हैं। यह सबसे तेज़ और आधुनिक मोड है। इसमें चैनल की क्षमता को दो भागों में विभाजित कर दिया जाता है (एक भेजने के लिए और दूसरा प्राप्त करने के लिए)।</div>
+        <div class="example-box"><strong>व्यावहारिक उदाहरण:</strong> 
+            <ul>
+                <li><strong>Mobile Phone Call / Telephone:</strong> जब आप फोन पर बात करते हैं, तो आप और आपका मित्र दोनों एक ही समय पर एक-दूसरे की बात सुन भी सकते हैं और बोल भी सकते हैं।</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Modes Comparison Table (तुलनात्मक सारणी):</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Simplex</th>
+                <th>Half-Duplex</th>
+                <th>Full-Duplex</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Direction of Flow</strong></td>
+                <td>Unidirectional (केवल एक दिशा में)</td>
+                <td>Bidirectional (दोनों दिशाओं में, पर एक समय में एक)</td>
+                <td>Bidirectional (दोनों दिशाओं में एक साथ)</td>
+            </tr>
+            <tr>
+                <td><strong>Operation</strong></td>
+                <td>केवल Sender भेजता है, Receiver पाता है।</td>
+                <td>दोनों भेज व पा सकते हैं, बारी-बारी से।</td>
+                <td>दोनों एक साथ भेज और प्राप्त कर सकते हैं।</td>
+            </tr>
+            <tr>
+                <td><strong>Channel Utilization</strong></td>
+                <td>कम (एक ही तरफ डेटा जाता है)</td>
+                <td>मध्यम</td>
+                <td>उच्चतम (एफिशिएंट)</td>
+            </tr>
+            <tr>
+                <td><strong>Complexity</strong></td>
+                <td>सबसे सरल सर्किट</td>
+                <td>मध्यम जटिलता</td>
+                <td>सबसे जटिल सर्किट</td>
+            </tr>
+            <tr>
+                <td><strong>Real Example</strong></td>
+                <td>Keyboard, Commercial Radio</td>
+                <td>Walkie-Talkie</td>
+                <td>Mobile Phone Network</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- TOPIC 1.4 -->
+    <h2>1.4 Examples of Wired and Wireless Channels</h2>
+    <p>संचार माध्यम (Communication Channels) वे भौतिक रास्ते हैं जिनके जरिए सूचना एक स्थान से दूसरे स्थान तक संचरित होती है।</p>
+
+    <h3>A. Wired Channels (गाइडेड / बद्ध माध्यम):</h3>
+    <p>इनमें सिग्नल तारों की भौतिक संरचना के भीतर ही सीमित होकर आगे बढ़ता है।</p>
+
+    <div class="card">
+        <div class="card-title">1. Telephone Channel (Twisted Pair Cable)</div>
+        <div class="hi-def">
+            <ul>
+                <li><strong>संरचना:</strong> इसमें तांबे (Copper) के दो इंसुलेटेड तारों को आपस में एक सर्पिलाकार (Helix/Twist) रूप में लपेटा जाता है।</li>
+                <li><strong>ट्विस्ट करने का कारण:</strong> तारों को आपस में मरोड़ने (Twist) से बाहरी इलेक्ट्रोमैग्नेटिक इंटरफेरेंस (EMI) और पास वाले तारों के क्रॉस-टॉक (Crosstalk) का प्रभाव समाप्त हो जाता है।</li>
+                <li><strong>प्रकार:</strong> Unshielded Twisted Pair (UTP) और Shielded Twisted Pair (STP)।</li>
+                <li><strong>उपयोग:</strong> टेलीफोन लाइनों, LAN नेटवर्क (Ethernet cables - Cat5/Cat6)।</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">2. Coaxial Cable (कोएक्सिएल केबल)</div>
+        <div class="hi-def">
+            <ul>
+                <li><strong>संरचना:</strong> इसमें सबसे अंदर एक ठोस तांबे का कंडक्टिंग वायर (Inner Conductor) होता है। इसके ऊपर प्लास्टिक इंसुलेशन, फिर उसके ऊपर तांबे की बनी जाली (Outer Mesh Shield) होती है, और सबसे बाहर एक मजबूत जैकेट होती है।</li>
+                <li><strong>विशेषता:</strong> बाहरी जालीदार शील्ड के कारण इसमें शोर (Noise) का प्रभाव बहुत कम होता है। इसकी बैंडविड्थ ट्विस्टेड पेयर से अधिक होती है।</li>
+                <li><strong>उपयोग:</strong> केबल टीवी (Cable TV Networks), पुराने कंप्यूटर नेटवर्क्स।</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">3. Optical Fiber Cable - OFC (ऑप्टिकल फाइबर केबल)</div>
+        <div class="hi-def">
+            <ul>
+                <li><strong>संरचना:</strong> यह बहुत ही पतले कांच (Silica) या प्लास्टिक के रेशों से बना होता है। इसमें मुख्य रूप से दो भाग होते हैं: अंदरूनी भाग को <strong>Core</strong> और बाहरी परत को <strong>Cladding</strong> कहते हैं। Core का अपवर्तनांक (Refractive Index - n<sub>1</sub>), Cladding (n<sub>2</sub>) से अधिक रखा जाता है (n<sub>1</sub> > n<sub>2</sub>)।</li>
+                <li><strong>कार्य सिद्धांत:</strong> यह <strong>Total Internal Reflection - TIR (पूर्ण आंतरिक परावर्तन)</strong> के सिद्धांत पर काम करता है। इसमें डेटा इलेक्ट्रिकल सिग्नल के रूप में नहीं, बल्कि <strong>प्रकाश (Light Rays)</strong> के रूप में भेजा जाता है।</li>
+                <li><strong>लाभ:</strong> अत्यधिक उच्च बैंडविड्थ (Gbps/Tbps), न्यूनतम सिग्नल हानि, और EMI (इलेक्ट्रोमैग्नेटिक नॉइज़) का 0% प्रभाव।</li>
+                <li><strong>उपयोग:</strong> हाई-स्पीड ब्रॉडबैंड इंटरनेट, अंडर-सी (समुद्र के नीचे) डेटा केबल्स।</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>B. Wireless Channel (अनगाइडेड / खुला माध्यम):</h3>
+
+    <div class="card">
+        <div class="card-title">Wireless Broadcast Channel (वायरलेस ब्रॉडकास्ट चैनल)</div>
+        <div class="hi-def">
+            <ul>
+                <li><strong>विवरण:</strong> इसमें डेटा को बिना किसी भौतिक तार के, हवा (Air) या स्पेस में इलेक्ट्रोमैग्नेटिक तरंगों (रेडियो वेव्स या माइक्रोवेव्स) के रूप में भेजा जाता है।</li>
+                <li><strong>तरंग संचरण के प्रकार (Propagation Modes):</strong>
+                    <ol>
+                        <li><em>Ground Wave Propagation:</em> कम फ्रीक्वेंसी तरंगें जो जमीन की सतह के साथ चलती हैं।</li>
+                        <li><em>Sky Wave Propagation:</em> HF तरंगें जो आयनमंडल (Ionosphere) से परावर्तित होकर वापस आती हैं।</li>
+                        <li><em>Space Wave / Line-of-Sight (LOS) Propagation:</em> VHF, UHF तरंगें जो एंटीना से एंटीना तक सीधे सीधी रेखा में चलती हैं (जैसे मोबाइल टॉवर)।</li>
+                    </ol>
+                </li>
+                <li><strong>उपयोग:</strong> मोबाइल नेटवर्क (4G/5G), Wi-Fi, Satellite ब्रॉडकास्ट, GPS।</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Wired vs Wireless Channel Comparison:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Wired Communication</th>
+                <th>Wireless Communication</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Medium</strong></td>
+                <td>भौतिक तार (Copper, Fiber) का उपयोग।</td>
+                <td>हवा / फ्री स्पेस का उपयोग।</td>
+            </tr>
+            <tr>
+                <td><strong>Mobility</strong></td>
+                <td>गतिशीलता नहीं होती (उपकरण एक जगह फिक्स रहता है)।</td>
+                <td>पूर्ण गतिशीलता (चलते-फिरते उपयोग कर सकते हैं)।</td>
+            </tr>
+            <tr>
+                <td><strong>Installation Cost</strong></td>
+                <td>तार बिछाने की शुरुआती लागत अधिक।</td>
+                <td>एंटीना/टॉवर की लागत, लेकिन तार बिछाने का झंझट नहीं।</td>
+            </tr>
+            <tr>
+                <td><strong>Noise & Interference</strong></td>
+                <td>बहुत कम (विशेषकर Optical Fiber में)।</td>
+                <td>मौसम, बारिश और बाधाओं से प्रभावित होता है।</td>
+            </tr>
+            <tr>
+                <td><strong>Security</strong></td>
+                <td>अधिक सुरक्षित (तार टैप करना कठिन है)।</td>
+                <td>कम सुरक्षित (डेटा हवा में होता है, Encryption आवश्यक है)।</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- TOPIC 1.5 -->
+    <h2>1.5 Difference Between Analog and Digital Communication</h2>
+
+    <div class="card">
+        <div class="card-title">सिग्नलों का मूलभूत परिचय:</div>
+        <div class="hi-def">
+            <ul>
+                <li><strong>Analog Signal:</strong> वह सिग्नल जो समय (Time) के साथ निरंतर (Continuous) बदलता रहता है और जिसके मान अनंत (Infinite) हो सकते हैं। (उदाहरण: साइन वेव)।</li>
+                <li><strong>Digital Signal:</strong> वह सिग्नल जो केवल विवेकाधीन (Discrete) मान रखता है। आमतौर पर इसमें केवल दो ही स्तर (States) होते हैं - <strong>0 (Low)</strong> और <strong>1 (High)</strong>।</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Analog vs Digital Communication (विस्तृत तुलनात्मक सारणी):</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Analog Communication</th>
+                <th>Digital Communication</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Signal Nature</strong></td>
+                <td>Continuous waves (समय के साथ निरंतर बदलने वाला)।</td>
+                <td>Discrete values (केवल 0 और 1 बाइनरी फॉर्म)।</td>
+            </tr>
+            <tr>
+                <td><strong>Noise Immunity (शोर से सुरक्षा)</strong></td>
+                <td><strong>बहुत कम:</strong> सिग्नल में मामूली नॉइज़ आने पर भी एम्पलीफायर उसे भी बढ़ा देता है, जिससे सिग्नल खराब हो जाता है।</td>
+                <td><strong>बहुत उच्च:</strong> केवल 0 और 1 पहचानना होता है, इसलिए नॉइज़ का प्रभाव आसानी से दूर हो जाता है।</td>
+            </tr>
+            <tr>
+                <td><strong>Bandwidth Requirement</strong></td>
+                <td>कम बैंडविड्थ की आवश्यकता होती है।</td>
+                <td>अधिक बैंडविड्थ की आवश्यकता होती है।</td>
+            </tr>
+            <tr>
+                <td><strong>Data Security & Encryption</strong></td>
+                <td>सुरक्षा बहुत कम होती है; इसे आसानी से टैप किया जा सकता है।</td>
+                <td>अत्यधिक सुरक्षित; इसमें डेटा को एन्क्रिप्ट (Encrypt) किया जा सकता है।</td>
+            </tr>
+            <tr>
+                <td><strong>Equipment Complexity</strong></td>
+                <td>सर्किट की जटिलता कम होती है, लेकिन अपग्रेड करना कठिन है।</td>
+                <td>सर्किट जटिल होते हैं (Microprocessors), पर आसानी से प्रोग्राम किए जा सकते हैं।</td>
+            </tr>
+            <tr>
+                <td><strong>Storage & Processing</strong></td>
+                <td>एनालॉग सिग्नल को स्टोर करना कठिन और महंगा होता है।</td>
+                <td>डिजिटल डेटा को मेमोरी (RAM, Hard Disk) में आसानी से स्टोर किया जा सकता है।</td>
+            </tr>
+            <tr>
+                <td><strong>Error Detection & Correction</strong></td>
+                <td>एनालॉग में गलतियों को सुधारना संभव नहीं है।</td>
+                <td>Error Detection & Correction codes का उपयोग करके गलतियों को पूरी तरह ठीक किया जा सकता है।</td>
+            </tr>
+            <tr>
+                <td><strong>Cost</strong></td>
+                <td>शुरुआत में सस्ता, लेकिन लंबी दूरी के लिए महंगा।</td>
+                <td>आधुनिक ICs के कारण अब बहुत सस्ता और टिकाऊ।</td>
+            </tr>
+            <tr>
+                <td><strong>Real Examples</strong></td>
+                <td>पारंपरिक AM/FM रेडियो, लैंडलाइन फोन।</td>
+                <td>4G/5G मोबाइल कॉलिंग, Wi-Fi, इंटरनेट डेटा।</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="card">
+        <div class="card-title">डिजिटल कम्युनिकेशन के प्रमुख लाभ (Advantages of Digital over Analog):</div>
+        <div class="hi-def">
+            <ol>
+                <li><strong>उच्च नॉइज़ प्रतिरोधक क्षमता (High Noise Immunity):</strong> इसमें रीजेनरेटिव रिपीटर्स (Regenerative Repeaters) का उपयोग करके लंबी दूरी पर सिग्नल को बिना नॉइज़ के बिल्कुल नया जैसा बनाया जा सकता है।</li>
+                <li><strong>सुरक्षा (Security):</strong> क्रिप्टोग्राफी तकनीक से डेटा को हैक होने से बचाया जा सकता है।</li>
+                <li><strong>मल्टीप्लेक्सिंग की सुगमता:</strong> TDM (Time Division Multiplexing) के जरिए विभिन्न प्रकार के डेटा (वॉइस, वीडियो, टेक्स्ट) को एक साथ भेजा जा सकता है।</li>
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
