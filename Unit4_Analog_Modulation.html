@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Notes: Unit 4.0 - Analog Modulation</title>
+    <style>
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #1565c0;
+            --accent-color: #00838f;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-color: #212121;
+            --border-color: #dcdcdc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            color: #ffffff;
+            background: var(--secondary-color);
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-top: 40px;
+            font-size: 21px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin-top: 25px;
+            font-size: 18px;
+        }
+
+        .diagram-box {
+            background: #1e1e1e;
+            color: #00ff66;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.4;
+            margin: 20px 0;
+            font-size: 13.5px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .en-def {
+            color: #37474f;
+            font-style: italic;
+            background: #eceff1;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 14.5px;
+        }
+
+        .hi-def {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .example-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffb300;
+            padding: 10px 15px;
+            margin-top: 10px;
+            font-size: 14px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .math-box {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            color: #1b5e20;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+        }
+
+        table, th, td {
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 11px;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        ul, ol {
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 0; width: 100%; }
+            .diagram-box { background: #f5f5f5; color: #000; border: 1px solid #000; }
+            h2 { page-break-before: always; color: #000; background: #ddd; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 4.0: Analog Modulation</h1>
+
+    <!-- TOPIC 4.1 -->
+    <h2>4.1 Concept and Need for Modulation</h2>
+
+    <!-- What is Modulation -->
+    <div class="card">
+        <div class="card-title">1. Concept of Modulation (मॉड्यूलेशन की अवधारणा)</div>
+        <div class="en-def"><strong>English Definition:</strong> Modulation is the process of varying one or more properties (Amplitude, Frequency, or Phase) of a high-frequency carrier signal in accordance with the instantaneous amplitude of a low-frequency baseband (message) signal.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> हमारी आवाज या डेटा सिग्नल (Baseband Signal) की आवृत्ति बहुत कम (20 Hz - 20 kHz) होती है, जिसके कारण इसे सीधे लंबी दूरी तक नहीं भेजा जा सकता। मॉड्यूलेशन एक ऐसी प्रक्रिया है जिसमें एक कम आवृत्ति वाले मैसेज सिग्नल [m(t)] का उपयोग करके एक उच्च आवृत्ति वाली कैरियर तरंग [c(t)] के किसी भौतिक गुण (जैसे Amplitude, Frequency या Phase) को परिवर्तित किया जाता है।</div>
+
+        <div class="diagram-box">
+Message Signal m(t) [Low Frequency] ────┐
+                                         ├─► [ MODULATOR ] ──► Modulated Signal s(t) [High Frequency]
+Carrier Signal c(t) [High Frequency] ───┘
+        </div>
+    </div>
+
+    <!-- Need for Modulation -->
+    <div class="card">
+        <div class="card-title">2. Need for Modulation (मॉड्यूलेशन की आवश्यकता क्यों है?)</div>
+        <div class="hi-def">कम आवृत्ति वाले मैसेज सिग्नल्स को बिना मॉड्यूलेशन के सीधे हवा (Wireless Channel) में प्रसारित करना असंभव है। इसके मुख्य कारण निम्नलिखित हैं:</div>
+
+        <ol>
+            <li><strong>Reduction in Antenna Height (एंटीना की ऊंचाई कम करना):</strong><br>
+                सफल प्रसारण के लिए एंटीना की न्यूनतम व्यावहारिक ऊंचाई सिग्नल की तरंगदैर्ध्य की कम से कम एक चौथाई होने चाहिए (h = λ / 4)।<br>
+                • λ = c / f (जहाँ c = 3 × 10<sup>8</sup> m/s)<br>
+                • यदि बेसबैंड फ्रीक्वेंसी f = 15 kHz हो, तो λ = (3 × 10<sup>8</sup>) / (15 × 10<sup>3</sup>) = 20,000 मीटर।<br>
+                • एंटीना की ऊंचाई: <strong>h = 20,000 / 4 = 5,000 मीटर (5 किमी)</strong> — जो कि भौतिक रूप से असंभव है।<br>
+                • मॉड्यूलेशन के बाद (यदि कैरियर फ्रीक्वेंसी f = 1 MHz ली जाए): λ = 300 मीटर, अतः एंटीना ऊंचाई <strong>h = 300 / 4 = 75 मीटर</strong> हो जाती है, जिसे आसानी से बनाया जा सकता है।
+            </li>
+            <li><strong>Avoid Mixing of Signals / Multiplexing (सिग्नल्स के आपस में मिलने को रोकना):</strong><br>
+                यदि सभी रेडियो स्टेशन अपनी आवाज (Audio Range: 20Hz–20kHz) सीधे प्रसारित करेंगे, तो सभी सिग्नल्स आपस में ओवरलैप होकर खराब हो जाएँगे। मॉड्यूलेशन द्वारा प्रत्येक स्टेशन को एक अलग कैरियर फ्रीक्वेंसी (Channel) आवंटित की जाती है (FDM - Frequency Division Multiplexing)।
+            </li>
+            <li><strong>Increases Range of Communication (प्रसारण की सीमा बढ़ाना):</strong><br>
+                कम फ्रीक्वेंसी वाले सिग्नल्स में ऊर्जा बहुत कम होती है और वे वातावरण में जल्दी समाप्त हो जाते हैं। उच्च फ्रीक्वेंसी कैरियर सिग्नल अत्यधिक ऊर्जावान होते हैं और लंबी दूरी तय कर सकते हैं।
+            </li>
+            <li><strong>Improves Quality of Reception (SNR बढ़ाना):</strong><br>
+                मॉड्यूलेशन तकनीकें (विशेष रूप से FM) शोर (Noise) के प्रभाव को बहुत कम कर देती हैं और रिसीवर पर उच्च गुणवत्ता वाला सिग्नल प्रदान करती हैं।
+            </li>
+            <li><strong>Allows Wireless Communication (वायरलेस संचार को संभव बनाना):</strong><br>
+                इलेक्ट्रोमैग्नेटिक तरंगों को मुक्त स्थान (Free Space) में विकिरित (Radiate) करने के लिए उच्च फ्रीक्वेंसी की आवश्यकता होती है।
+            </li>
+        </ol>
+    </div>
+
+    <!-- TOPIC 4.2 -->
+    <h2>4.2 Amplitude Modulation (AM)</h2>
+
+    <!-- Mathematical Representation -->
+    <div class="card">
+        <div class="card-title">1. Mathematical Representation of Standard AM</div>
+        <div class="en-def"><strong>Definition:</strong> Amplitude Modulation is a process in which the amplitude of the carrier wave is varied linearly in accordance with the instantaneous amplitude of the message signal.</div>
+        
+        <div class="math-box">
+            <strong>मैसेज सिग्नल (Message Signal):</strong> m(t) = A<sub>m</sub> cos(2π f<sub>m</sub> t)<br>
+            <strong>कैरियर सिग्नल (Carrier Signal):</strong> c(t) = A<sub>c</sub> cos(2π f<sub>c</sub> t)<br><br>
+            <strong>AM सिग्नल का सामान्य समीकरण:</strong><br>
+            s<sub>AM</sub>(t) = [A<sub>c</sub> + m(t)] cos(2π f<sub>c</sub> t)<br>
+            s<sub>AM</sub>(t) = [A<sub>c</sub> + A<sub>m</sub> cos(2π f<sub>m</sub> t)] cos(2π f<sub>c</sub> t)<br>
+            s<sub>AM</sub>(t) = A<sub>c</sub> [1 + (A<sub>m</sub> / A<sub>c</sub>) cos(2π f<sub>m</sub> t)] cos(2π f<sub>c</sub> t)<br><br>
+            यहाँ <strong>μ = A<sub>m</sub> / A<sub>c</sub></strong> को <strong>Modulation Index (मॉड्यूलेशन इंडेक्स)</strong> कहते हैं।<br><br>
+            <strong>विस्तारित रूप (Expanded Frequency Form):</strong><br>
+            <strong>s<sub>AM</sub>(t) = A<sub>c</sub> cos(2π f<sub>c</sub> t) + (μ A<sub>c</sub> / 2) cos(2π (f<sub>c</sub> + f<sub>m</sub>) t) + (μ A<sub>c</sub> / 2) cos(2π (f<sub>c</sub> - f<sub>m</sub>) t)</strong>
+        </div>
+
+        <div class="hi-def">
+            उपरोक्त समीकरण से स्पष्ट है कि एक Standard AM सिग्नल में 3 फ्रीक्वेंसी घटक होते हैं:
+            <ul>
+                <li><strong>f<sub>c</sub>:</strong> Carrier Frequency (केन्द्रीय कैरियर घटक)</li>
+                <li><strong>f<sub>c</sub> + f<sub>m</sub>:</strong> Upper Sideband (USB - ऊपरी पार्श्व बैंड)</li>
+                <li><strong>f<sub>c</sub> - f<sub>m</sub>:</strong> Lower Sideband (LSB - निचला पार्श्व बैंड)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modulation Index and Bandwidth -->
+    <div class="card">
+        <div class="card-title">2. Percentage of Modulation & Bandwidth</div>
+        <div class="math-box">
+            <strong>Modulation Index (μ):</strong><br>
+            μ = A<sub>m</sub> / A<sub>c</sub> = (V<sub>max</sub> - V<sub>min</sub>) / (V<sub>max</sub> + V<sub>min</sub>)<br>
+            <strong>Percentage Modulation (%m):</strong> %m = μ × 100%<br><br>
+            <strong>मॉड्यूलेशन की स्थितियां:</strong><br>
+            1. <strong>Under Modulation (μ < 1):</strong> सिग्नल बिना किसी डिस्टॉर्शन के प्राप्त होता है (आदर्श स्थिति)।<br>
+            2. <strong>Critical Modulation (μ = 1):</strong> 100% मॉड्यूलेशन, अधिकतम संभव दक्षता।<br>
+            3. <strong>Over Modulation (μ > 1):</strong> एनवेलप में Phase Reversal होता है जिससे डिस्टॉर्शन (Phase Inversion) उत्पन्न होता है।<br><br>
+            <strong>Bandwidth of AM Signal:</strong><br>
+            Bandwidth (BW) = f<sub>highest</sub> - f<sub>lowest</sub> = (f<sub>c</sub> + f<sub>m</sub>) - (f<sub>c</sub> - f<sub>m</sub>)<br>
+            <strong>BW = 2 · f<sub>m</sub></strong>
+        </div>
+    </div>
+
+    <!-- Power Calculations in AM -->
+    <div class="card">
+        <div class="card-title">3. Power Requirements and Efficiency in AM</div>
+        <div class="hi-def">AM सिग्नल में कुल ट्रांसमिटेड पावर (P<sub>T</sub>) कैरियर पावर (P<sub>c</sub>) और साइडबैंड पावर (P<sub>SB</sub>) का योग होती है:</div>
+
+        <div class="math-box">
+            <strong>Carrier Power:</strong> P<sub>c</sub> = A<sub>c</sub><sup>2</sup> / (2 R)<br>
+            <strong>USB Power:</strong> P<sub>USB</sub> = (μ A<sub>c</sub> / 2)<sup>2</sup> / (2 R) = P<sub>c</sub> · μ<sup>2</sup> / 4<br>
+            <strong>LSB Power:</strong> P<sub>LSB</sub> = P<sub>c</sub> · μ<sup>2</sup> / 4<br>
+            <strong>Total Sideband Power:</strong> P<sub>SB</sub> = P<sub>USB</sub> + P<sub>LSB</sub> = P<sub>c</sub> · μ<sup>2</sup> / 2<br><br>
+            <strong>Total Power Formula:</strong><br>
+            P<sub>T</sub> = P<sub>c</sub> + P<sub>SB</sub> ➔ <strong>P<sub>T</sub> = P<sub>c</sub> [ 1 + (μ<sup>2</sup> / 2) ]</strong><br><br>
+            <strong>Efficiency (दक्षता - η):</strong><br>
+            η = (Useful Power / Total Power) = (P<sub>SB</sub> / P<sub>T</sub>)<br>
+            η = [ (P<sub>c</sub> · μ<sup>2</sup> / 2) / (P<sub>c</sub> (1 + μ<sup>2</sup> / 2)) ] ➔ <strong>η = [ μ<sup>2</sup> / (2 + μ<sup>2</sup>) ] × 100%</strong><br><br>
+            <strong>महत्वपूर्ण निष्कर्ष:</strong> जब μ = 1 (100% modulation), तब अधिकतम दक्षता <strong>η = 1/3 = 33.33%</strong> होती है। इसका अर्थ यह है कि Standard AM में 66.67% पावर व्यर्थ (कैरियर में) हो जाती है!
+        </div>
+    </div>
+
+    <!-- AM Variants: DSB-SC and SSB-SC -->
+    <div class="card">
+        <div class="card-title">4. Suppression Techniques: DSB-SC & SSB-SC</div>
+        <div class="hi-def">Standard AM की पावर और बैंडविड्थ बर्बादी को रोकने के लिए निम्नलिखित तकनीकों का उपयोग किया जाता है:</div>
+
+        <h3>A. DSB-SC (Double Sideband Suppressed Carrier):</h3>
+        <ul>
+            <li>इसमें अवांछित <strong>कैरियर सिग्नल (f<sub>c</sub>) को दबा दिया (Suppress) जाता है</strong>, केवल दोनों साइडबैंड (USB और LSB) प्रसारित किए जाते हैं।</li>
+            <li><strong>समीकरण:</strong> s<sub>DSB</sub>(t) = m(t) · c(t) = A<sub>m</sub> A<sub>c</sub> cos(2π f<sub>m</sub> t) cos(2π f<sub>c</sub> t)</li>
+            <li><strong>Bandwidth:</strong> 2 f<sub>m</sub></li>
+            <li><strong>Power Saved:</strong> 66.67% (चूँकि P<sub>c</sub> का प्रसारण नहीं होता)। Power efficiency = 100%.</li>
+        </ul>
+
+        <h3>B. SSB-SC (Single Sideband Suppressed Carrier):</h3>
+        <ul>
+            <li>चूँकि दोनों साइडबैंड्स (USB और LSB) में एक ही सूचना होती है, अतः <strong>कैरियर के साथ-साथ किसी एक साइडबैंड को भी दबा दिया जाता है</strong>। केवल एक ही साइडबैंड भेजा जाता है।</li>
+            <li><strong>समीकरण (USB के लिए):</strong> s<sub>SSB</sub>(t) = (A<sub>m</sub> A<sub>c</sub> / 2) cos[2π (f<sub>c</sub> + f<sub>m</sub>) t]</li>
+            <li><strong>Bandwidth:</strong> <strong>f<sub>m</sub></strong> (बैंडविड्थ आधी हो जाती है!)</li>
+            <li><strong>Power Savings:</strong> 83.3% पावर की बचत होती है।</li>
+        </ul>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>मापदंड (Parameter)</th>
+                    <th>Standard AM (DSB-FC)</th>
+                    <th>DSB-SC</th>
+                    <th>SSB-SC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>घटक (Components)</strong></td>
+                    <td>Carrier + USB + LSB</td>
+                    <td>USB + LSB</td>
+                    <td>केवल USB या LSB</td>
+                </tr>
+                <tr>
+                    <td><strong>बैंडविड्थ (Bandwidth)</strong></td>
+                    <td>2 f<sub>m</sub></td>
+                    <td>2 f<sub>m</sub></td>
+                    <td>f<sub>m</sub></td>
+                </tr>
+                <tr>
+                    <td><strong>पावर बचत (Power Saving)</strong></td>
+                    <td>0% (न्यूनतम दक्षता)</td>
+                    <td>66.67%</td>
+                    <td>83.33% (अधिकतम बचत)</td>
+                </tr>
+                <tr>
+                    <td><strong>जटिलता (Complexity)</strong></td>
+                    <td>बहुत सरल</td>
+                    <td>मध्यम</td>
+                    <td>अत्यधिक जटिल</td>
+                </tr>
+                <tr>
+                    <td><strong>उपयोग (Applications)</strong></td>
+                    <td>AM Commercial Radio Broadcast</td>
+                    <td>Color TV Audio, Point-to-Point</td>
+                    <td>Military, Mobile Marine Comm.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Generation and Detection of AM -->
+    <div class="card">
+        <div class="card-title">5. Generation and Detection of AM (Basic Idea)</div>
+        
+        <h3>A. Generation of AM (Square Law Modulator):</h3>
+        <p>यह एक नॉन-लीनियर डिवाइस (जैसे Diode या FET) का उपयोग करता है। जब मैसेज m(t) और कैरियर c(t) को डायोड पर दिया जाता है, तो इसके V-I करैक्टरिस्टिक के Square-law टर्म के कारण विभिन्न फ्रीक्वेंसी कॉम्पोनेंट्स उत्पन्न होते हैं। इसके बाद एक <strong>Band Pass Filter (BPF)</strong> का उपयोग करके केवल f<sub>c</sub>, (f<sub>c</sub>+f<sub>m</sub>) और (f<sub>c</sub>-f<sub>m</sub>) को चुन लिया जाता है।</p>
+
+        <h3>B. Detection/Demodulation of AM (Envelope Detector):</h3>
+        <p>AM सिग्नल से मूल मैसेज सिग्नल निकालने की सबसे सरल और लोकप्रिय विधि **Envelope Detector (Diode Detector)** है।</p>
+
+        <div class="diagram-box">
+AM Signal in ──► [ Diode ] ──┬──► [ Resistor R ] ──┬──► [ Blocking Capacitor ] ──► Original Message Output m(t)
+                            │                   │
+                           └──── [ Capacitor C ] ┘
+        </div>
+
+        <p><strong>कार्य प्रणाली:</strong></p>
+        <ol>
+            <li><strong>Diode:</strong> AM सिग्नल के केवल धनात्मक हाफ-साइकिल (Positive Half Cycle) को पास करता है (Rectification)।</li>
+            <li><strong>RC Filter:</strong> जब सिग्नल का वोल्टेज बढ़ता है तो कैपेसिटर चार्ज होता है, और वोल्टेज घटने पर कैपेसिटर रेजिस्टर R के माध्यम से डिस्चार्ज होता है। RC टाइम कांस्टेंट को इस प्रकार चुना जाता है कि कैपेसिटर वोल्टेज सिग्नल के एनवेलप (आकृति) का पालन करे।</li>
+            <li><strong>ड्रॉबैक (Diagonal Clipping):</strong> यदि RC मान बहुत अधिक हो, तो कैपेसिटर धीरे-धीरे डिस्चार्ज होगा जिससे **Diagonal Clipping** डिस्टॉर्शन होता है।
+            <br><em>शर्त:</em> <strong>RC ≤ √(1 - μ<sup>2</sup>) / (μ · ω<sub>m</sub>)</strong></li>
+        </ol>
+    </div>
+
+    <!-- TOPIC 4.3 -->
+    <h2>4.3 Angle Modulation: FM and PM</h2>
+
+    <!-- FM and PM Concepts -->
+    <div class="card">
+        <div class="card-title">1. Angle Modulation Concept: FM vs PM</div>
+        <div class="en-def"><strong>Definition:</strong> Angle modulation is the process in which the frequency or phase of the carrier wave is varied in proportion to the instantaneous amplitude of the message signal.</div>
+        
+        <h3>A. Frequency Modulation (FM - आवृत्ति मॉड्यूलेशन):</h3>
+        <div class="hi-def">इसमें कैरियर की **आवृत्ति (Frequency)** मैसेज सिग्नल के आयाम (Amplitude) के अनुसार बदलती है, जबकि कैरियर का एम्प्लिट्यूड और फेज नियत रहता है।</div>
+
+        <div class="math-box">
+            <strong>Instantaneous Frequency:</strong> f<sub>i</sub>(t) = f<sub>c</sub> + k<sub>f</sub> · m(t)<br>
+            <strong>Frequency Deviation (आवृत्ति विचलन - Δf):</strong> Δf = k<sub>f</sub> · A<sub>m</sub><br><br>
+            <strong>FM सिग्नल का गणितीय समीकरण:</strong><br>
+            s<sub>FM</sub>(t) = A<sub>c</sub> cos [ 2π f<sub>c</sub> t + 2π k<sub>f</sub> ∫ m(t) dt ]<br>
+            एकल टोन के लिए: <strong>s<sub>FM</sub>(t) = A<sub>c</sub> cos [ 2π f<sub>c</sub> t + β<sub>f</sub> sin(2π f<sub>m</sub> t) ]</strong><br><br>
+            जहाँ <strong>β<sub>f</sub> = Δf / f<sub>m</sub></strong> (FM Modulation Index).
+        </div>
+
+        <h3>B. Phase Modulation (PM - कला मॉड्यूलेशन):</h3>
+        <div class="hi-def">इसमें कैरियर का **फेज / कला (Phase)** मैसेज सिग्नल के आयाम के अनुसार सीधे बदलता है।</div>
+
+        <div class="math-box">
+            <strong>Instantaneous Phase:</strong> θ<sub>i</sub>(t) = 2π f<sub>c</sub> t + k<sub>p</sub> · m(t)<br>
+            <strong>Phase Deviation (Δθ):</strong> Δθ = k<sub>p</sub> · A<sub>m</sub> = β<sub>p</sub><br><br>
+            <strong>PM सिग्नल का गणितीय समीकरण:</strong><br>
+            <strong>s<sub>PM</sub>(t) = A<sub>c</sub> cos [ 2π f<sub>c</sub> t + β<sub>p</sub> cos(2π f<sub>m</sub> t) ]</strong>
+        </div>
+    </div>
+
+    <!-- Bandwidth and Power in FM/PM -->
+    <div class="card">
+        <div class="card-title">2. Bandwidth and Power Requirement in FM & PM</div>
+        
+        <h3>A. Bandwidth Requirement (Carson's Rule):</h3>
+        <div class="hi-def">सैद्धांतिक रूप से (Theoretically) एक FM सिग्नल में अनन्त पार्श्व बैंड (Infinite Sidebands) होते हैं, इसलिए इसकी बैंडविड्थ अनन्त होती है। लेकिन व्यावहारिक रूप से 98% शक्ति को शामिल करने के लिए **Carson's Rule** का उपयोग किया जाता है:</div>
+
+        <div class="math-box">
+            <strong>Carson's Rule for Bandwidth:</strong><br>
+            Bandwidth (BW) = 2 (Δf + f<sub>m</sub>)<br>
+            या Modulation Index β के पदों में: <strong>BW = 2 f<sub>m</sub> (β + 1)</strong>
+        </div>
+
+        <h3>B. Power Requirement in Angle Modulation:</h3>
+        <div class="hi-def">Angle Modulation (FM और PM) में सिग्नल का एम्प्लिट्यूड (A<sub>c</sub>) हमेशा **नियत (Constant)** रहता है। इसलिए कुल ट्रांसमिटेड पावर मॉड्यूलेशन इंडेक्स (β) या मैसेज सिग्नल पर निर्भर नहीं करती!</div>
+
+        <div class="math-box">
+            <strong>Total Power in FM/PM:</strong><br>
+            P<sub>T</sub> = A<sub>c</sub><sup>2</sup> / (2 R)<br><br>
+            <em>निष्कर्ष:</em> FM में कुल पावर हमेशा अन-मॉड्यूलेटेड कैरियर पावर के बराबर होती है। मॉड्यूलेशन के दौरान पावर का केवल पुनर्वितरण (Redistribution) कैरियर और साइडबैंड्स के बीच होता है।
+        </div>
+    </div>
+
+    <!-- FM Generation Principles -->
+    <div class="card">
+        <div class="card-title">3. Principles of Operation of FM Generation</div>
+        <div class="hi-def">FM सिग्नल जनरेट करने की प्रत्यक्ष विधि (Direct Method) में ऐसा सर्किट उपयोग किया जाता है जिसकी दोलन आवृत्ति (Oscillation Frequency) इनपुट वोल्टेज पर निर्भर करे।</div>
+
+        <h3>A. FM Generation Using Varactor Diode:</h3>
+        <p>Varactor Diode एक ऐसा सेमीकंडक्टर डायोड है जो रिवर्स बायस (Reverse Bias) में एक **वोल्टेज-वेरिएबल कैपेसिटर (C<sub>v</sub>)** की तरह काम करता है।</p>
+
+        <div class="math-box">
+            Junction Capacitance: C<sub>j</sub> ∝ 1 / √(V<sub>R</sub>)<br>
+            Tank Circuit Frequency: f<sub>0</sub> = 1 / [ 2π √(L · C) ]
+        </div>
+
+        <div class="hi-def">
+            <strong>कार्य सिद्धांत:</strong>
+            <ol>
+                <li>वैरेक्टर डायोड को LC ऑसिलेटर के टैंक सर्किट के साथ समानांतर (Parallel) में जोड़ा जाता है।</li>
+                <li>जब मैसेज सिग्नल m(t) को डायोड पर रिवर्स बायस वोल्टेज के साथ दिया जाता है, तो डायोड का जंक्शन कैपेसिटेंस C<sub>v</sub> मैसेज सिग्नल के आयाम के अनुसार बदलता है।</li>
+                <li>टैंक सर्किट की कुल धारिता बदलने से ऑसिलेटर से निकलने वाली आवृत्ति f<sub>c</sub> लगातार बदलती है, जिससे **Direct FM** प्राप्त होता है।</li>
+            </ol>
+        </div>
+
+        <h3>B. FM Generation Using Voltage Controlled Oscillator (VCO):</h3>
+        <p>VCO एक ऐसा इलेक्ट्रॉनिक ऑसिलेटर है जिसकी आउटपुट फ्रीक्वेंसी सीधे इनपुट कंट्रोल वोल्टेज [m(t)] के समानुपाती होती है।</p>
+
+        <div class="diagram-box">
+Modulating Message Signal m(t) ──► [ Control Input (VCO) ] ──► FM Output s_FM(t)
+                                           │
+                        (Internal Astable Multivibrator / Current Source)
+        </div>
+
+        <div class="hi-def">
+            <strong>कार्य सिद्धांत:</strong>
+            <ol>
+                <li>VCO के अंदर आमतौर पर एक मल्टीवाइब्रेटर या चार्जिंग/डिस्चार्जिंग कैपेसिटर नेटवर्क होता है जिसे एक निरंतर करंट सोर्स चार्ज करता है।</li>
+                <li>इन्सटेंटेनियस मैसेज वोल्टेज m(t) कैपेसिटर के चार्जिंग/डिस्चार्जिंग करंट को नियंत्रित करता है।</li>
+                <li>जब m(t) बढ़ता है, कैपेसिटर तेजी से चार्ज होता है जिससे आउटपुट फ्रीक्वेंसी बढ़ती है; और जब m(t) घटता है, तो फ्रीक्वेंसी घटती है।</li>
+                <li>इस प्रकार VCO के आउटपुट पर एक सटीक **Frequency Modulated Signal** प्राप्त होता है। इसका उपयोग IC 566 और IC 4046 में व्यापक रूप से किया जाता है।</li>
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
