@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Notes: Unit 3.0 - Noise in Communication System</title>
+    <style>
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #1565c0;
+            --accent-color: #00838f;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-color: #212121;
+            --border-color: #dcdcdc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            color: #ffffff;
+            background: var(--secondary-color);
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-top: 40px;
+            font-size: 21px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin-top: 25px;
+            font-size: 18px;
+        }
+
+        .diagram-box {
+            background: #1e1e1e;
+            color: #00ff66;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.4;
+            margin: 20px 0;
+            font-size: 13.5px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .en-def {
+            color: #37474f;
+            font-style: italic;
+            background: #eceff1;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 14.5px;
+        }
+
+        .hi-def {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .sub-title {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        .example-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffb300;
+            padding: 10px 15px;
+            margin-top: 10px;
+            font-size: 14px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .math-box {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            color: #1b5e20;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+        }
+
+        table, th, td {
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 11px;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        ul, ol {
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 0; width: 100%; }
+            .diagram-box { background: #f5f5f5; color: #000; border: 1px solid #000; }
+            h2 { page-break-before: always; color: #000; background: #ddd; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 3.0: Noise in Communication System</h1>
+
+    <!-- TOPIC 3.1 -->
+    <h2>3.1 Introduction: Noise, Sources of Noise, and Noise vs Error</h2>
+
+    <!-- What is Noise -->
+    <div class="card">
+        <div class="card-title">1. Noise (नॉइज़ / अवांछित शोर) क्या है?</div>
+        <div class="en-def"><strong>English Definition:</strong> Electrical noise is defined as any unwanted, random electrical signal that interferes with or degrades the quality of the desired message signal during its transmission, reception, or processing.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> संचार प्रणाली में <strong>Noise</strong> एक ऐसा अवांछित (Unwanted) इलेक्ट्रिकल सिग्नल होता है जो मूल सूचना वाले सिग्नल के साथ जुड़ जाता है और उसे विकृत (Distort) कर देता है। नॉइज़ यादृच्छिक (Random) प्रकृति का होता है, यानी इसके परिमाण (Magnitude) और दिशा का सटीक अनुमान लगाना संभव नहीं होता। यह सिग्नल की गुणवत्ता को खराब करता है और टीवी पर झिलमिलाहट (Snow/Static) या फोन पर सरसराहट की आवाज के रूप में दिखाई/सुनाई देता है।</div>
+        
+        <div class="diagram-box">
+Original Signal s(t) ─────┐
+                          ├─► [+] ─────► Received Signal r(t) = s(t) + n(t)
+Noise Signal n(t) ────────┘
+        </div>
+    </div>
+
+    <!-- Sources of Noise -->
+    <div class="card">
+        <div class="card-title">2. Sources of Noise (नॉइज़ के स्रोत)</div>
+        <div class="hi-def">संचार प्रणाली में उत्पन्न होने वाले शोर को उसके उत्पत्ति स्थान के आधार पर मुख्य रूप से दो प्रमुख वर्गों में विभाजित किया जाता है:</div>
+
+        <h3>A. External Sources of Noise (बाहरी स्रोत):</h3>
+        <p>यह शोर संचार उपकरण (Transmitter/Receiver) के बाहर वातावरण या माध्यम में उत्पन्न होता है। इस पर सिस्टम डिज़ाइनर का कोई नियंत्रण नहीं होता।</p>
+        <ul>
+            <li><strong>Atmospheric Noise (वायुमंडलीय शोर):</strong> प्राकृतिक वायुमंडलीय घटनाओं जैसे बिजली के कड़कने (Lightning discharges), बादलों के घर्षण और प्राकृतिक विद्युतीय गड़बड़ी के कारण उत्पन्न होता है। इसे Static Noise भी कहते हैं। यह 30 MHz से कम आवृत्ति वाले सिग्नल्स (जैसे AM Radio) को सबसे अधिक प्रभावित करता है।</li>
+            <li><strong>Extraterrestrial Noise (अंतरिक्षीय शोर):</strong> पृथ्वी के वातावरण से बाहर ब्रह्मांड से आने वाला शोर। यह दो प्रकार का होता है:
+                <ol>
+                    <li><em>Solar Noise:</em> सूर्य के उच्च तापमान और विकिरणों (Radiation) से उत्पन्न होने वाला शोर।</li>
+                    <li><em>Cosmic Noise:</em> आकाशगंगा (Milky Way) के अन्य तारों और दूरस्थ पिंडों से लगातार आने वाला रेडियो शोर। यह 8 MHz से 1.5 GHz फ्रीक्वेंसी रेंज में प्रभाव डालता है।</li>
+                </ol>
+            </li>
+            <li><strong>Industrial / Man-made Noise (मानव निर्मित शोर):</strong> इंसानों द्वारा बनाए गए इलेक्ट्रॉनिक उपकरणों, ऑटोमोबाइल के स्पार्क प्लग, हाई-वोल्टेज ट्रांसमिशन लाइनों, इलेक्ट्रिक मोटर्स और वेल्डिंग मशीनों से उत्पन्न होने वाला इलेक्ट्रोमैग्नेटिक शोर।</li>
+        </ul>
+
+        <h3>B. Internal Sources of Noise (आंतरिक स्रोत):</h3>
+        <p>यह शोर रिसीवर या ट्रांसमीटर के आंतरिक घटकों (जैसे रेजिस्टर, ट्रांजिस्टर, डायोड, वैक्यूम ट्यूब) के भौतिक गुणों के कारण उत्पन्न होता है। इसे सही सर्किट डिज़ाइन द्वारा कम किया जा सकता है।</p>
+        <ul>
+            <li><strong>Thermal Noise (तापीय शोर):</strong> चालकों में इलेक्ट्रॉनों की यादृच्छिक तापीय गति के कारण।</li>
+            <li><strong>Shot Noise:</strong> पी-एन जंक्शन (Semiconductor Junctions) के आर-पार चार्ज कैरियर्स के असतत प्रवाह के कारण।</li>
+            <li><strong>Transit-Time Noise:</strong> उच्च आवृत्तियों पर इलेक्ट्रॉन के ट्रांजिट टाइम के कारण।</li>
+            <li><strong>Flicker Noise:</strong> अर्धचालक सतहों की खामियों के कारण निम्न आवृत्तियों पर।</li>
+        </ul>
+    </div>
+
+    <!-- Difference between Noise and Error -->
+    <div class="card">
+        <div class="card-title">3. Difference Between Noise and Error (नॉइज़ और एरर में अंतर)</div>
+        <div class="hi-def">अक्सर छात्र Noise और Error को एक ही मान लेते हैं, लेकिन दोनों में मूलभूत तकनीकी अंतर होता है:</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>मापदंड (Parameter)</th>
+                    <th>Noise (नॉइज़)</th>
+                    <th>Error (एरर / त्रुटि)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>मूल परिभाषा</strong></td>
+                    <td>यह एक अवांछित भौतिक इलेक्ट्रिकल सिग्नल है जो मूल सिग्नल में जुड़ जाता है।</td>
+                    <td>यह प्राप्त डेटा (Received Data) और भेजे गए वास्तविक डेटा के बीच का गणितीय अंतर है।</td>
+                </tr>
+                <tr>
+                    <td><strong>प्रकृति (Nature)</strong></td>
+                    <td>यह एक निरंतर (Continuous) एनालॉग और यादृच्छिक (Random) परिघटना है।</td>
+                    <td>यह डिजिटल मानों में भिन्नता (जैसे Bit Flip: 0 का 1 बन जाना) का परिणाम है।</td>
+                </tr>
+                <tr>
+                    <td><strong>कारण (Cause)</strong></td>
+                    <td>तापीय उथल-पुथल, वायुमंडलीय गड़बड़ी, और घटकों की आंतरिक कमियों से उत्पन्न होता है।</td>
+                    <td>अत्यधिक नॉइज़ के कारण सिग्नल थ्रेशोल्ड क्रॉस कर जाने, या सिस्टम की गलत कोडिंग/कैलिब्रेशन से होता है।</td>
+                </tr>
+                <tr>
+                    <td><strong>मापन (Measurement)</strong></td>
+                    <td>इसे वॉल्ट, वाट या SNR (Signal to Noise Ratio - dB) में मापा जाता है।</td>
+                    <td>इसे BER (Bit Error Rate) या प्रतिशत त्रुटि (% Error) के रूप में मापा जाता है।</td>
+                </tr>
+                <tr>
+                    <td><strong>निवारण (Mitigation)</strong></td>
+                    <td>इसे फ़िल्टर, एम्पलीफायर और शिल्डिंग की मदद से कम (Reduce) किया जा सकता है, पर 0 नहीं किया जा सकता।</td>
+                    <td>इसे Error Detection & Correction Codes (जैसे Hamming Code, CRC) से 100% ठीक किया जा सकता है।</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- TOPIC 3.2 -->
+    <h2>3.2 Classification of Noise</h2>
+    <p>आंतरिक और विश्लेषणात्मक आधार पर संचार प्रणाली में नॉइज़ का वर्गीकरण निम्नलिखित 6 प्रमुख श्रेणियों में किया जाता है:</p>
+
+    <!-- Thermal Noise -->
+    <div class="card">
+        <div class="card-title">1. Thermal Noise / Johnson-Nyquist Noise (तापीय शोर)</div>
+        <div class="en-def"><strong>Definition:</strong> Thermal noise is the electronic noise generated by the thermal agitation of charge carriers (usually electrons) inside an electrical conductor at a non-zero temperature.</div>
+        <div class="hi-def"><strong>विस्तृत विवरण:</strong> यह किसी भी प्रतिरोधी घटक (Resistor) में इलेक्ट्रॉनों की अव्यवस्थित (Random) तापीय गति के कारण उत्पन्न होता है। जब तापमान T > 0 Kelvin होता है, तो इलेक्ट्रॉन कंपन करते हैं जिससे यादृच्छिक वोल्टेज उत्पन्न होता है। इसे **White Noise** भी कहते हैं क्योंकि इसका पावर स्पेक्ट्रल डेंसिटी सभी आवृत्तियों पर एकसमान रहता है।</div>
+
+        <div class="math-box">
+            <strong>तापीय शोर वोल्टेज का सूत्र (Thermal Noise Voltage Formula):</strong><br>
+            V<sub>n</sub><sup>2</sup> = 4 · k · T · B · R <br>
+            V<sub>n</sub> = √(4 k T B R) &nbsp;&nbsp; Volts (RMS)<br><br>
+            <strong>अधिकतम उपलब्ध शोर शक्ति (Maximum Available Noise Power):</strong><br>
+            P<sub>n</sub> = (V<sub>n</sub> / 2)<sup>2</sup> / R = (4 k T B R) / (4 R) ➔ <strong>P<sub>n</sub> = k · T · B</strong><br><br>
+            जहाँ:<br>
+            • k = Boltzmann Constant = 1.38 × 10<sup>-23</sup> Joules/Kelvin<br>
+            • T = Absolute Temperature in Kelvin (K = °C + 273)<br>
+            • B = Noise Bandwidth in Hertz (Hz)<br>
+            • R = Resistance in Ohms (Ω)
+        </div>
+        <div class="example-box"><strong>परीक्षा के लिए टिप:</strong> P<sub>n</sub> = kTB सूत्र से स्पष्ट है कि थर्मल नॉइज़ केवल **तापमान (T)** और **बैंडविड्थ (B)** पर निर्भर करता है, यह प्रतिरोध (R) के मान पर निर्भर नहीं करता!</div>
+    </div>
+
+    <!-- Shot Noise -->
+    <div class="card">
+        <div class="card-title">2. Shot Noise (शॉट नॉइज़)</div>
+        <div class="en-def"><strong>Definition:</strong> Shot noise occurs in semiconductor devices due to the discrete nature of electric charge carriers (electrons and holes) crossing a potential barrier randomly.</div>
+        <div class="hi-def"><strong>विस्तृत विवरण:</strong> विद्युत धारा को हम आमतौर पर सतत (Continuous) मानते हैं, लेकिन वास्तव में धारा discrete इलेक्ट्रॉनों का एक समूह होती है। जब ये इलेक्ट्रॉन PN जंक्शन या वैक्यूम ट्यूब में बैरियर को पार करते हैं, तो उनके पार करने का समय यादृच्छिक (Random Arrival) होता है। इस अनियमितता के कारण करंट में छोटे-छोटे उतार-चढ़ाव आते हैं, जिसे Shot Noise कहते हैं।</div>
+
+        <div class="math-box">
+            <strong>शॉट नॉइज़ करंट का सूत्र (Shot Noise Current Formula):</strong><br>
+            I<sub>n</sub><sup>2</sup> = 2 · q · I<sub>dc</sub> · B <br>
+            I<sub>n</sub> = √(2 q I<sub>dc</sub> B) &nbsp;&nbsp; Amperes (RMS)<br><br>
+            जहाँ:<br>
+            • q = Charge of Electron = 1.6 × 10<sup>-19</sup> Coulombs<br>
+            • I<sub>dc</sub> = Direct Current (DC) flowing through junction<br>
+            • B = Bandwidth in Hz
+        </div>
+    </div>
+
+    <!-- Partition Noise -->
+    <div class="card">
+        <div class="card-title">3. Partition Noise (विभाजन शोर)</div>
+        <div class="en-def"><strong>Definition:</strong> Partition noise is generated in active devices when a single current stream is randomly divided into two or more paths.</div>
+        <div class="hi-def"><strong>विस्तृत विवरण:</strong> यह शोर केवल उन उपकरणों में उत्पन्न होता है जहाँ धारा दो या दो से अधिक रास्तों में विभाजित होती है। उदाहरण के लिए, एक BJT ट्रांजिस्टर में एमिटर करंट जब बेस और कलेक्टर में बंटता है, तो किस क्षण कितने इलेक्ट्रॉन बेस में जाएँगे और कितने कलेक्टर में, यह पूरी तरह यादृच्छिक (Random) होता है। इस अनिश्चित विभाजन के कारण कलेक्टर करंट में नॉइज़ उत्पन्न होती है। यही कारण है कि Diode (1 पथ) की तुलना में Transistor (2 पथ) में अधिक नॉइज़ होती है।</div>
+    </div>
+
+    <!-- Flicker Noise -->
+    <div class="card">
+        <div class="card-title">4. Flicker Noise / 1/f Noise (फ्लिकर शोर)</div>
+        <div class="en-def"><strong>Definition:</strong> Flicker noise is a low-frequency noise whose power spectral density is inversely proportional to the frequency (PSD ∝ 1/f).</div>
+        <div class="hi-def"><strong>विस्तृत विवरण:</strong> इसे **Pink Noise** या Low-Frequency Noise भी कहा जाता है। यह सेमीकंडक्टर सामग्री की क्रिस्टल संरचना की सतह पर मौजूद खामियों (Surface Recombination Centers) और अशुद्धियों के कारण उत्पन्न होता है।
+        <br>चूँकि इसकी पावर 1/f के समानुपाती होती है, इसलिए 1 kHz से कम आवृत्ति (Low Frequency) पर इसका मान बहुत अधिक होता है, लेकिन उच्च आवृत्तियों (High Frequency > 1 MHz) पर यह लगभग नगण्य हो जाता है।</div>
+        
+        <div class="math-box">
+            <strong>Power Spectral Density:</strong> S(f) ∝ 1 / f<sup>α</sup> &nbsp;&nbsp; (जहाँ α ≈ 1)
+        </div>
+    </div>
+
+    <!-- High Frequency Noise -->
+    <div class="card">
+        <div class="card-title">5. High-Frequency Noise / Transit-Time Noise (उच्च-आवृत्ति शोर)</div>
+        <div class="en-def"><strong>Definition:</strong> High-frequency noise occurs when the time taken by electrons to travel across a semiconductor junction (Transit Time) becomes comparable to the time period of the RF signal.</div>
+        <div class="hi-def"><strong>विस्तृत विवरण:</strong> निम्न आवृत्तियों पर इलेक्ट्रॉन द्वारा जंक्शन पार करने में लगा समय (Transit Time 'τ') सिग्नल के टाइम पीरियड (T) की तुलना में नगण्य होता है। लेकिन जब सिग्नल की आवृत्ति बहुत अधिक (High Frequency > GHz) हो जाती है, तो ट्रांसिट टाइम सिग्नल के समय चक्र के बराबर होने लगता है। इसके कारण इनपुट टर्मिनल से कुछ धारा वापस लीक होने लगती है और इनपुट कंडक्टेंस घट जाता है, जिससे उच्च-आवृत्ति नॉइज़ उत्पन्न होता है।</div>
+    </div>
+
+    <!-- AWGN -->
+    <div class="card">
+        <div class="card-title">6. Additive White Gaussian Noise - AWGN (एडिटिव व्हाइट गॉसियन नॉइज़)</div>
+        <div class="en-def"><strong>Definition:</strong> AWGN is a basic mathematical noise model used in information theory to mimic the effect of random processes that occur in nature.</div>
+        <div class="hi-def">संचार चैनलों के गणितीय विश्लेषण के लिए यह सबसे महत्वपूर्ण और मानक नॉइज़ मॉडल है। इसके नाम के तीन शब्दों का गहरा अर्थ है:
+        <ol>
+            <li><strong>Additive (एडिटिव):</strong> यह शोर चैनल में मूल मैसेज सिग्नल x(t) के साथ सीधे गणितीय रूप से जुड़ जाता है ➔ <em>r(t) = x(t) + n(t)</em>।</li>
+            <li><strong>White (व्हाइट):</strong> जैसे सफेद प्रकाश में दृश्यमान स्पेक्ट्रम की सभी तरंगदैर्ध्य समान रूप से मौजूद होती हैं, वैसे ही इस नॉइज़ का पावर स्पेक्ट्रल डेंसिटी (PSD) सभी आवृत्तियों पर नियत (Flat/Constant) रहता है। ➔ <em>S<sub>n</sub>(f) = N<sub>0</sub> / 2  Watts/Hz</em>।</li>
+            <li><strong>Gaussian (गॉसियन):</strong> इस नॉइज़ के समय-डोमेन एम्पलीट्यूड का संभाव्यता घनत्व फलन (Probability Density Function - PDF) शून्य-माध्य वाली **गॉसियन (सामान्य) घंटी के आकार की वक्र (Bell-shaped curve)** का पालन करता है।</li>
+        </ol>
+        </div>
+
+        <div class="math-box">
+            <strong>Gaussian PDF Formula:</strong><br>
+            p(x) = [1 / (σ √(2π))] · exp [ - (x - μ)<sup>2</sup> / (2σ<sup>2</sup>) ]<br>
+            (जहाँ μ = Mean = 0, σ<sup>2</sup> = Variance = Noise Power)
+        </div>
+
+        <div class="diagram-box">
+AWGN Power Spectral Density S_n(f):      Gaussian Probability Density Function p(x):
+       ^ S_n(f)                                 ^ p(x)
+       |                                        |         ┌───┐
+ N0/2 ─┼─────────────────────────              |        /     \
+       |                                        |       /       \
+  ─────┼─────────────────────────> f     ───────┼──────/    |    \──────> Amplitude
+      -B            0           +B             -3σ   -σ    0   +σ   +3σ
+        </div>
+    </div>
+
+    <!-- TOPIC 3.3 -->
+    <h2>3.3 Noise Calculations and System Parameters</h2>
+    <p>संचार प्रणालियों के प्रदर्शन और क्षमता का आकलन करने के लिए उपयोग किए जाने वाले सभी प्रमुख गणितीय सूत्र और मानक निम्नलिखित हैं:</p>
+
+    <!-- Relation Noise Power and Bandwidth -->
+    <div class="card">
+        <div class="card-title">1. Relation Between Noise Power and Bandwidth</div>
+        <div class="hi-def">जॉनसन-नाइक्विस्ट के सिद्धांत के अनुसार, एक प्रतिरोधी नेटवर्क द्वारा उत्पन्न तापीय शोर की कुल शक्ति (Noise Power) उस सिस्टम की पासबैंड बैंडविड्थ (B) के सीधे समानुपाती (Directly Proportional) होती है।</div>
+        
+        <div class="math-box">
+            P<sub>n</sub> ∝ B &nbsp;&nbsp; और &nbsp;&nbsp; P<sub>n</sub> ∝ T <br>
+            <strong>P<sub>n</sub> = k · T · B</strong><br><br>
+            <em>निष्कर्ष:</em> प्रणाली की बैंडविड्थ जितनी अधिक होगी, उसमें प्रवेश करने वाला शोर (Noise Power) उतना ही अधिक होगा। इसलिए अवांछित शोर को रोकने के लिए बैंडविड्थ को आवश्यकतानुसार सीमित किया जाता है।
+        </div>
+    </div>
+
+    <!-- Equivalent Noise Bandwidth -->
+    <div class="card">
+        <div class="card-title">2. Equivalent Noise Bandwidth (तुल्यकाली नॉइज़ बैंडविड्थ - B<sub>n</sub>)</div>
+        <div class="en-def"><strong>Definition:</strong> The noise bandwidth of an actual non-ideal filter is defined as the bandwidth of an ideal rectangular filter that would pass the same total noise power as the actual filter, assuming both have the same peak gain.</div>
+        <div class="hi-def">व्यावहारिक फ़िल्टर (Practical Filters) का फ्रीक्वेंसी रेस्पॉन्स कभी भी पूरी तरह से आयताकार (Rectangular) नहीं होता, बल्कि उनके किनारे झुके हुए (Rolloff) होते हैं। गणना को सरल बनाने के लिए हम एक काल्पनिक आयताकार फ़िल्टर की बैंडविड्थ मानते हैं जो समान नॉइज़ पावर पास करे। इसे B<sub>n</sub> कहते हैं।</div>
+
+        <div class="math-box">
+            <strong>गणितीय सूत्र (Mathematical Formula):</strong><br>
+            B<sub>n</sub> = [ 1 / |H<sub>0</sub>|<sup>2</sup> ] · ∫<sub>0</sub><sup>∞</sup> |H(f)|<sup>2</sup> df <br><br>
+            (जहाँ H(f) फ़िल्टर का ट्रांसफर फलन है और H<sub>0</sub> मध्य-बैंड का अधिकतम गेन है)।
+        </div>
+    </div>
+
+    <!-- SNR -->
+    <div class="card">
+        <div class="card-title">3. Signal-to-Noise Ratio (SNR / S/N)</div>
+        <div class="en-def"><strong>Definition:</strong> SNR is the ratio of the desired signal power to the unwanted noise power present at a specific point in the system.</div>
+        <div class="hi-def">यह सिग्नल की स्पष्टता और गुणवत्ता मापने का सबसे प्राथमिक पैमाना है। SNR का मान जितना अधिक होगा, सिग्नल की गुणवत्ता उतनी ही बेहतर होगी।</div>
+
+        <div class="math-box">
+            SNR = P<sub>signal</sub> / P<sub>noise</sub> = S / N <br><br>
+            <strong>डेसिबल (Decibel - dB) में निरूपण:</strong><br>
+            <strong>SNR (in dB) = 10 log<sub>10</sub> (S / N)</strong> <br>
+            या वोल्टेज के रूप में: SNR (in dB) = 20 log<sub>10</sub> (V<sub>signal</sub> / V<sub>noise</sub>)
+        </div>
+    </div>
+
+    <!-- Noise Factor & Noise Figure -->
+    <div class="card">
+        <div class="card-title">4. Noise Factor (F) and Noise Figure (NF)</div>
+        <div class="en-def"><strong>Definition:</strong> Noise Factor (F) is a measure of the degradation of the Signal-to-Noise Ratio caused by components in a signal chain.</div>
+        <div class="hi-def">जब कोई सिग्नल किसी एम्पलीफायर या नेटवर्क से गुजरता है, तो एम्पलीफायर न केवल इनपुट सिग्नल को बढ़ाता है बल्कि अपना खुद का आंतरिक शोर भी जोड़ देता है। इससे आउटपुट का SNR हमेशा इनपुट के SNR से कम हो जाता है। इसी गिरावट के अनुपात को **Noise Factor (F)** कहते हैं।</div>
+
+        <div class="math-box">
+            <strong>Noise Factor Formula:</strong><br>
+            F = (SNR)<sub>input</sub> / (SNR)<sub>output</sub> = (S<sub>i</sub> / N<sub>i</sub>) / (S<sub>o</sub> / N<sub>o</sub>)<br><br>
+            • आदर्श (Ideal) नेटवर्क के लिए: F = 1 (कोई आंतरिक शोर नहीं जोड़ता)।<br>
+            • व्यावहारिक (Practical) नेटवर्क के लिए: F > 1 होता है।<br><br>
+            <strong>Noise Figure (NF - डेसिबल में):</strong><br>
+            <strong>NF = 10 log<sub>10</sub> (F) dB</strong>
+        </div>
+    </div>
+
+    <!-- Figure of Merit -->
+    <div class="card">
+        <div class="card-title">5. Figure of Merit (योग्यता गुणांक - γ)</div>
+        <div class="en-def"><strong>Definition:</strong> Figure of Merit is defined as the ratio of output Signal-to-Noise Ratio to the channel Signal-to-Noise Ratio (baseband SNR) for a modulation system.</div>
+        <div class="hi-def">इसका उपयोग विभिन्न मॉड्यूलेशन तकनीकों (जैसे AM, FM, SSB) के प्रदर्शन की आपस में तुलना करने के लिए किया जाता है। यह बताता है कि एक विशिष्ट मॉड्यूलेटर/डिमॉड्यूलेटर चैनल के सापेक्ष कितना बेहतर प्रदर्शन देता है।</div>
+
+        <div class="math-box">
+            <strong>Figure of Merit (γ) = (SNR)<sub>output</sub> / (SNR)<sub>channel</sub></strong>
+        </div>
+    </div>
+
+    <!-- Noise Temperature -->
+    <div class="card">
+        <div class="card-title">6. Equivalent Noise Temperature (तुल्यकाली नॉइज़ तापमान - T<sub>e</sub>)</div>
+        <div class="en-def"><strong>Definition:</strong> Equivalent noise temperature is a convenient measure of the noise generated by a device, expressed as the absolute temperature (in Kelvin) that a resistor would need to be at to produce the same noise power.</div>
+        <div class="hi-def">अत्यंत कम शोर वाले रिसीवरों (जैसे RF Amplifiers, Satellite Receivers) के लिए Noise Factor की जगह **Noise Temperature (T<sub>e</sub>)** का उपयोग करना अधिक सुविधाजनक होता है। यह वह काल्पनिक तापीय तापमान है जिस पर एक प्रतिरोधक उतनी ही नॉइज़ पावर उत्पन्न करेगा जितनी डिवाइस द्वारा जोड़ी गई है।</div>
+
+        <div class="math-box">
+            <strong>Noise Factor और Noise Temperature के बीच संबंध:</strong><br>
+            <strong>T<sub>e</sub> = (F - 1) · T<sub>0</sub></strong><br><br>
+            जहाँ T<sub>0</sub> = मानक कमरे का तापमान = 290 K (17 °C)।<br>
+            यदि F = 1 (Ideal), तो T<sub>e</sub> = 0 Kelvin.
+        </div>
+    </div>
+
+    <!-- Equivalent Noise Temperature of Amplifiers in Cascade -->
+    <div class="card">
+        <div class="card-title">7. Amplifiers Connected in Cascade (Friis' Formula)</div>
+        <div class="hi-def">जब दो या अधिक एम्पलीफायरों को श्रेणीक्रम (Cascade) में जोड़ा जाता है (जैसा कि रिसीवर के RF, Mixer, और IF स्टेज में होता है), तो पूरे सिस्टम का कुल Noise Factor और कुल Noise Temperature निकालने के लिए **Friis' Formula** का उपयोग किया जाता है।</div>
+
+        <div class="diagram-box">
+In ──► [ Stage 1: Gain G1, F1, Te1 ] ──► [ Stage 2: Gain G2, F2, Te2 ] ──► [ Stage 3: Gain G3, F3, Te3 ] ──► Out
+        </div>
+
+        <div class="math-box">
+            <strong>Friis' Formula for Overall Noise Factor (F<sub>sys</sub>):</strong><br>
+            F<sub>sys</sub> = F<sub>1</sub> + [ (F<sub>2</sub> - 1) / G<sub>1</sub> ] + [ (F<sub>3</sub> - 1) / (G<sub>1</sub> · G<sub>2</sub>) ] + ... + [ (F<sub>n</sub> - 1) / (G<sub>1</sub> · G<sub>2</sub> ... G<sub>n-1</sub>) ]<br><br>
+
+            <strong>Friis' Formula for Overall Equivalent Noise Temperature (T<sub>eq</sub>):</strong><br>
+            T<sub>eq</sub> = T<sub>e1</sub> + [ T<sub>e2</sub> / G<sub>1</sub> ] + [ T<sub>e3</sub> / (G<sub>1</sub> · G<sub>2</sub>) ] + ... + [ T<sub>en</sub> / (G<sub>1</sub> · G<sub>2</sub> ... G<sub>n-1</sub>) ]
+        </div>
+
+        <div class="card-title" style="font-size: 15px; margin-top:10px;">Friis' Formula का अत्यंत महत्वपूर्ण निष्कर्ष (Exam Master Concept):</div>
+        <div class="hi-def">
+            सूत्र से स्पष्ट है कि दूसरे और तीसरे स्टेज के Noise Factor (F<sub>2</sub>, F<sub>3</sub>) के प्रभाव को पहले स्टेज का गेन (G<sub>1</sub>) विभाजित करके बहुत छोटा कर देता है।
+            <br><strong>मुख्य नियम:</strong> किसी भी मल्टी-स्टेज रिसीवर का <strong>पहला एम्पलीफायर (Low Noise Amplifier - LNA)</strong> ऐसा होना चाहिए जिसका <strong>Gain (G<sub>1</sub>) बहुत उच्च हो</strong> और <strong>Noise Factor (F<sub>1</sub>) न्यूनतम हो</strong>। यदि पहला स्टेज अच्छा है, तो पूरे सिस्टम का शोर न्यूनतम रहेगा!
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
