@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Notes: Unit 2.0 - Introduction to Signals</title>
+    <style>
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #1565c0;
+            --accent-color: #00838f;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-color: #212121;
+            --border-color: #dcdcdc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            color: #ffffff;
+            background: var(--secondary-color);
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-top: 40px;
+            font-size: 21px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin-top: 25px;
+            font-size: 18px;
+        }
+
+        .diagram-box {
+            background: #1e1e1e;
+            color: #00ff66;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.4;
+            margin: 20px 0;
+            font-size: 13.5px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .en-def {
+            color: #37474f;
+            font-style: italic;
+            background: #eceff1;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 14.5px;
+        }
+
+        .hi-def {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .sub-section {
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+
+        .sub-title {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        .example-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffb300;
+            padding: 10px 15px;
+            margin-top: 10px;
+            font-size: 14px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .math-box {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            color: #1b5e20;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+        }
+
+        table, th, td {
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 11px;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        ul, ol {
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 0; width: 100%; }
+            .diagram-box { background: #f5f5f5; color: #000; border: 1px solid #000; }
+            h2 { page-break-before: always; color: #000; background: #ddd; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 2.0: Introduction to Signals</h1>
+
+    <div class="card">
+        <div class="card-title">सिग्नल (Signal) की मूलभूत परिभाषा:</div>
+        <div class="en-def"><strong>English:</strong> A signal is a physical quantity that varies with time, space, or any independent variable and conveys information about a physical phenomenon.</div>
+        <div class="hi-def"><strong>विस्तृत हिंदी विवरण:</strong> गणितीय दृष्टिकोण से, सिग्नल एक स्वतंत्र चर (Independent Variable - जैसे समय 't') का एक फलन (Function) होता है जो किसी भौतिक घटना की जानकारी या डेटा को वहन करता है। जैसे हमारी आवाज (Sound Pressure changing with time), वोल्टेज सिग्नल, या इमेज (Intensity changing with spatial coordinates x, y)।</div>
+    </div>
+
+    <!-- TOPIC 2.1 -->
+    <h2>2.1 Representation of Standard Test Signals</h2>
+    <p>किसी भी इलेक्ट्रॉनिक्स या संचार प्रणाली (System) के व्यवहार और रेस्पॉन्स को जांचने के लिए स्टैंडर्ड टेस्ट सिग्नल्स (Standard Test Signals) का उपयोग किया जाता है। प्रमुख सिग्नल्स का विस्तृत विवरण नीचे दिया गया है:</p>
+
+    <!-- Unit Impulse -->
+    <div class="card">
+        <div class="card-title">1. Unit Impulse Signal / Dirac Delta Function - δ(t)</div>
+        <div class="en-def"><strong>Definition:</strong> An impulse signal is a signal that has infinite amplitude at t = 0 and zero amplitude everywhere else, with a total enclosed area equal to unity (1).</div>
+        <div class="hi-def"><strong>व्याख्या:</strong> यह एक ऐसा आदर्श सिग्नल है जो केवल समय t = 0 पर अस्तित्व में रहता है जहाँ इसका मान अनंत (Infinite) होता है, और अन्य सभी समय पर इसका मान शून्य होता है। इसके ग्राफ का कुल क्षेत्रफल (Area under curve) हमेशा 1 के बराबर होता है।</div>
+        
+        <div class="math-box">
+            <strong>गणितीय निरूपण (Mathematical Form):</strong><br>
+            δ(t) = ∞ ; for t = 0<br>
+            δ(t) = 0 ; for t ≠ 0<br>
+            और &nbsp; ∫<sub>-∞</sub><sup>+∞</sup> δ(t) dt = 1
+        </div>
+
+        <div class="diagram-box">
+Continuous Impulse δ(t):              Discrete Impulse δ[n]:
+       ^ δ(t)                                 ^ δ[n]
+     (1)|                                   (1)|
+        |                                      |
+ ───────┴───────> t                     ───────o───────> n
+        0                                      0
+        </div>
+    </div>
+
+    <!-- Unit Step -->
+    <div class="card">
+        <div class="card-title">2. Unit Step Signal - u(t)</div>
+        <div class="en-def"><strong>Definition:</strong> A signal that suddenly switches its value from 0 to 1 at t = 0 and stays constantly at 1 for all positive time (t ≥ 0).</div>
+        <div class="hi-def"><strong>व्याख्या:</strong> यह सिग्नल समय t &lt; 0 के लिए शून्य रहता है और t ≥ 0 होने पर तुरंत 1 का नियत (Constant) मान धारण कर लेता है। यह सिस्टम के स्विच-ऑन (Switch ON) रेस्पॉन्स को दर्शाने के लिए इस्तेमाल होता है।</div>
+        
+        <div class="math-box">
+            <strong>गणितीय निरूपण:</strong><br>
+            u(t) = 1 ; for t ≥ 0<br>
+            u(t) = 0 ; for t &lt; 0<br><br>
+            <strong>Impulse और Step के बीच संबंध:</strong><br>
+            δ(t) = d/dt [u(t)] &nbsp;&nbsp;&nbsp; तथा &nbsp;&nbsp;&nbsp; u(t) = ∫<sub>-∞</sub><sup>t</sup> δ(τ) dτ
+        </div>
+
+        <div class="diagram-box">
+Continuous Step u(t):                 Discrete Step u[n]:
+        1|──────────────────                 1| o  o  o  o  o
+         |                                    | |  |  |  |  |
+ ────────┴─────────────────> t        ────────o─┴──┴──┴──┴──┴──> n
+         0                                    0 1  2  3  4  5
+        </div>
+    </div>
+
+    <!-- Unit Ramp -->
+    <div class="card">
+        <div class="card-title">3. Unit Ramp Signal - r(t)</div>
+        <div class="en-def"><strong>Definition:</strong> A signal whose amplitude increases linearly with time starting at t = 0.</div>
+        <div class="hi-def"><strong>व्याख्या:</strong> यह सिग्नल t = 0 से समय के साथ रेखीय (Linearly) रूप से बढ़ता है। इसका ढाल (Slope) 1 के बराबर होता है।</div>
+        
+        <div class="math-box">
+            <strong>गणितीय निरूपण:</strong><br>
+            r(t) = t ; for t ≥ 0<br>
+            r(t) = 0 ; for t &lt; 0<br><br>
+            <strong>सम्बन्ध:</strong> r(t) = t · u(t) &nbsp;&nbsp;&nbsp; तथा &nbsp;&nbsp;&nbsp; d/dt [r(t)] = u(t)
+        </div>
+    </div>
+
+    <!-- Sinusoidal -->
+    <div class="card">
+        <div class="card-title">4. Sinusoidal Signals (Sine and Cosine)</div>
+        <div class="en-def"><strong>Definition:</strong> Periodic continuous signals that vary smooth and harmonically over time.</div>
+        <div class="hi-def"><strong>व्याख्या:</strong> साइन और कोसाइन सिग्नल्स संचार प्रणालियों में सबसे मूलभूत आवर्ती (Periodic) सिग्नल्स हैं। carrier waves के रूप में इनका मुख्य उपयोग होता है।</div>
+        
+        <div class="math-box">
+            <strong>गणितीय निरूपण:</strong><br>
+            x(t) = A sin(ω<sub>0</sub>t + φ) &nbsp;&nbsp; या &nbsp;&nbsp; x(t) = A cos(ω<sub>0</sub>t + φ)<br>
+            जहाँ: A = Amplitude, ω<sub>0</sub> = Angular Frequency (2πf<sub>0</sub>), φ = Phase Shift.
+        </div>
+
+        <div class="diagram-box">
+Sine Wave:   ~ ~ ~ (Starts at 0)       Cosine Wave:  V~V~ (Starts at Peak A)
+        </div>
+    </div>
+
+    <!-- Gate/Rectangular Pulse -->
+    <div class="card">
+        <div class="card-title">5. Gate Pulse / Rectangular Signal - rect(t/τ)</div>
+        <div class="en-def"><strong>Definition:</strong> A non-periodic signal that has a constant amplitude A over a finite time width 'τ' centered at origin and zero outside.</div>
+        <div class="hi-def"><strong>व्याख्या:</strong> इसे Π(t/τ) से भी दर्शाया जाता है। यह t = -τ/2 से t = +τ/2 तक नियत मान रखता है और बाकी जगह शून्य होता है। डिजिटल पल्स और फ़िल्टर डिज़ाइन में इसका भारी उपयोग है।</div>
+        
+        <div class="math-box">
+            <strong>गणितीय निरूपण:</strong><br>
+            A rect(t/τ) = A ; for -τ/2 ≤ t ≤ τ/2<br>
+            A rect(t/τ) = 0 ; otherwise
+        </div>
+
+        <div class="diagram-box">
+             ^ x(t)
+             | A
+       ┌─────┼─────┐
+       │     │     │
+ ──────┴─────┼─────┴──────> t
+     -τ/2    0    +τ/2
+        </div>
+    </div>
+
+    <!-- Triangular and Sawtooth -->
+    <div class="card">
+        <div class="card-title">6. Triangular & Sawtooth Signals</div>
+        <div class="hi-def">
+            <ul>
+                <li><strong>Triangular Signal - Λ(t/τ):</strong> यह एक सममित (Symmetric) सिग्नल है जो t = 0 पर शिखर मान A प्राप्त करता है और -τ से +τ की सीमा में रेखीय रूप से घटकर शून्य होता है।</li>
+                <li><strong>Sawtooth Signal (आरी-दंत तरंग):</strong> इसमें मान 0 से धीरे-धीरे रेखीय रूप से शिखर मान तक बढ़ता है और फिर अचानक गिरकर शून्य हो जाता है। इसका उपयोग CRT टीवी स्कैनिंग और ऑसिलेटर में होता है।</li>
+            </ul>
+        </div>
+
+        <div class="diagram-box">
+Triangular Wave:                       Sawtooth Wave:
+       ^ A                                    ^ A
+      /|\                                    /| /| /|
+     / | \                                  / |/ |/ |
+ ───┴──┼──┴───> t                    ──────┴──┴──┴──┴──> t
+   -τ  0  +τ                               0  T 2T 3T
+        </div>
+    </div>
+
+    <!-- TOPIC 2.2 -->
+    <h2>2.2 Detailed Classification of Signals</h2>
+    <p>सिग्नल्स को उनके गुणों के आधार पर continuous-time और discrete-time दोनों में निम्नलिखित प्रमुख श्रेणियों में वर्गीकृत किया गया है:</p>
+
+    <!-- 1. Continuous vs Discrete -->
+    <div class="card">
+        <div class="card-title">1. Continuous-Time (CT) vs Discrete-Time (DT) Signals</div>
+        <div class="hi-def">
+            <ul>
+                <li><strong>Continuous-Time Signal - x(t):</strong> वह सिग्नल जो समय के प्रत्येक मान (Every instant of time 't') पर परिभाषित होता है। समय एक सतत चर (Continuous variable) है।</li>
+                <li><strong>Discrete-Time Signal - x[n]:</strong> वह सिग्नल जो केवल निर्दिष्ट (Discrete) समय बिंदुओं n = 0, ±1, ±2... पर परिभाषित होता है। यहाँ 'n' केवल पूर्णांक (Integer) होता है। इसे CT सिग्नल की सैंपलिंग (Sampling) द्वारा प्राप्त किया जाता है।</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 2. Deterministic vs Random -->
+    <div class="card">
+        <div class="card-title">2. Deterministic vs Random Signals</div>
+        <div class="hi-def">
+            <ul>
+                <li><strong>Deterministic Signal (निश्चित सिग्नल):</strong> वह सिग्नल जिसका मान किसी भी समय 't' पर सटीक गणितीय समीकरण (Mathematical Equation) द्वारा व्यक्त और प्रिडिक्ट (Predict) किया जा सकता है। कोई अनिश्चितता नहीं होती।
+                <br><em>उदाहरण:</em> x(t) = 5 sin(100πt)</li>
+                <li><strong>Random / Stochastic Signal (यादृच्छिक सिग्नल):</strong> वह सिग्नल जिसका मान अनिश्चित होता है और जिसे किसी exact गणितीय समीकरण से नहीं दर्शाया जा सकता। इसे केवल सांख्यिकी (Probability/Statistics) से समझा जा सकता है।
+                <br><em>उदाहरण:</em> थर्मल शोर (Thermal Noise), शेयर बाज़ार का डेटा, मानव आवाज।</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 3. Periodic vs Non-Periodic -->
+    <div class="card">
+        <div class="card-title">3. Periodic vs Non-Periodic (Aperiodic) Signals</div>
+        <div class="en-def"><strong>Periodic Definition:</strong> A signal that repeats its pattern over a regular time interval continuously from -∞ to +∞.</div>
+        <div class="hi-def"><strong>विस्तृत विवरण:</strong> 
+        <br><strong>Continuous Time में आवर्ती शर्त:</strong> x(t + T<sub>0</sub>) = x(t) (जहाँ T<sub>0</sub> न्यूनतम फंडामेंटल टाइम पीरियड है)।
+        <br><strong>Discrete Time में आवर्ती शर्त:</strong> x[n + N] = x[n] (जहाँ N एक धनात्मक पूर्णांक - Integer होना अनिवार्य है)।
+        <br><em>DT Sinusoid आवर्ती तभी होगा यदि ω<sub>0</sub>/(2π) = rational number (m/N) हो!</em>
+        <br><strong>Non-Periodic Signal:</strong> वह सिग्नल जो समय के साथ खुद को कभी नहीं दोहराता (या जिसका आवर्तकाल T<sub>0</sub> = ∞ होता है)।</div>
+
+        <div class="math-box">
+            <strong>फंडामेंटल आवर्तकाल (Fundamental Period Formula):</strong><br>
+            T<sub>0</sub> = 2π / ω<sub>0</sub> = 1 / f<sub>0</sub>
+        </div>
+    </div>
+
+    <!-- 4. Energy and Power Signals -->
+    <div class="card">
+        <div class="card-title">4. Energy and Power Signals (ऊर्जा एवं शक्ति सिग्नल)</div>
+        <div class="hi-def">सिग्नल्स का उनकी कुल ऊर्जा (Total Energy) और औसत शक्ति (Average Power) के आधार पर वर्गीकरण:</div>
+
+        <div class="math-box">
+            <strong>Continuous Time (CT) सूत्र:</strong><br>
+            Total Energy (E) = ∫<sub>-∞</sub><sup>+∞</sup> |x(t)|<sup>2</sup> dt <br>
+            Average Power (P) = lim <sub>T → ∞</sub> (1/T) ∫<sub>-T/2</sub><sup>+T/2</sup> |x(t)|<sup>2</sup> dt
+        </div>
+
+        <div class="math-box">
+            <strong>Discrete Time (DT) सूत्र:</strong><br>
+            Total Energy (E) = ∑<sub>n=-∞</sub><sup>+∞</sup> |x[n]|<sup>2</sup> <br>
+            Average Power (P) = lim <sub>N → ∞</sub> [1/(2N+1)] ∑<sub>n=-N</sub><sup>+N</sup> |x[n]|<sup>2</sup>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Signal Type</th>
+                    <th>Energy (E) Value</th>
+                    <th>Power (P) Value</th>
+                    <th>मुख्य उदाहरण</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Energy Signal</strong></td>
+                    <td>Finite (0 &lt; E &lt; ∞)</td>
+                    <td><strong>Zero (P = 0)</strong></td>
+                    <td>Non-periodic सिग्नल्स (जैसे Pulse, Gate, e<sup>-at</sup>u(t))</td>
+                </tr>
+                <tr>
+                    <td><strong>Power Signal</strong></td>
+                    <td><strong>Infinite (E = ∞)</strong></td>
+                    <td>Finite (0 &lt; P &lt; ∞)</td>
+                    <td>Periodic सिग्नल्स (जैसे Sine, Cosine, Square wave)</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><em>नोट: एक सिग्नल या तो Energy सिग्नल हो सकता है या Power सिग्नल, लेकिन दोनों एक साथ नहीं हो सकता। (कुछ सिग्नल्स जैसे r(t) दोनों में से कोई नहीं होते)।</em></p>
+    </div>
+
+    <!-- 5. Causal, Non-Causal, Anti-Causal -->
+    <div class="card">
+        <div class="card-title">5. Causal, Non-Causal, and Anti-Causal Signals</div>
+        <div class="hi-def">
+            <ul>
+                <li><strong>Causal Signal (कारण प्रभाव सिग्नल):</strong> वह सिग्नल जो केवल वर्तमान और भविष्य के समय t ≥ 0 पर अस्तित्व में रहता है। t &lt; 0 के लिए मान शून्य होता है।
+                <br><em>शर्त:</em> x(t) = 0 ; for t &lt; 0 (उदा: u(t), e<sup>-at</sup>u(t))</li>
+                <li><strong>Anti-Causal Signal:</strong> वह सिग्नल जो केवल भूतकाल (t ≤ 0) में अस्तित्व में रहता है और t > 0 के लिए शून्य होता है।
+                <br><em>शर्त:</em> x(t) = 0 ; for t > 0 (उदा: u(-t))</li>
+                <li><strong>Non-Causal Signal:</strong> वह सिग्नल जो धनात्मक और ऋणात्मक दोनों समयों (t &lt; 0 तथा t ≥ 0) पर अस्तित्व में रहता है। (उदा: cos(ωt), Rectangular pulse).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 6. Even and Odd Signals -->
+    <div class="card">
+        <div class="card-title">6. Even (Symmetric) and Odd (Antisymmetric) Signals</div>
+        <div class="hi-def">
+            <ul>
+                <li><strong>Even Signal (सम सिग्नल):</strong> वह सिग्नल जो Y-अक्ष (Vertical Axis) के परितः सममित (Symmetrical/Mirror image) होता है।
+                <br><em>शर्त:</em> <strong>x(-t) = x(t)</strong> &nbsp;&nbsp; [DT में: x[-n] = x[n]]
+                <br><em>उदाहरण:</em> Cosine wave, t<sup>2</sup>, Rectangular pulse.</li>
+                
+                <li><strong>Odd Signal (विषम सिग्नल):</strong> वह सिग्नल जो मूल बिंदु (Origin) के परितः विषम-सममित होता है।
+                <br><em>शर्त:</em> <strong>x(-t) = -x(t)</strong> &nbsp;&nbsp; [DT में: x[-n] = -x[n]]
+                <br><em>उदाहरण:</em> Sine wave, t, Ramp signal. (नोट: Odd signal का t = 0 पर मान हमेशा 0 होता है)।</li>
+            </ul>
+        </div>
+
+        <div class="math-box">
+            <strong>Any Signal Decomposition (किसी भी सिग्नल को तोड़ने का सूत्र):</strong><br>
+            x(t) = x<sub>e</sub>(t) + x<sub>o</sub>(t)<br>
+            Even Part: &nbsp; x<sub>e</sub>(t) = [x(t) + x(-t)] / 2 <br>
+            Odd Part: &nbsp;&nbsp; x<sub>o</sub>(t) = [x(t) - x(-t)] / 2
+        </div>
+    </div>
+
+    <!-- TOPIC 2.3 -->
+    <h2>2.3 Basic Operations on Signals</h2>
+    <p>सिग्नल के स्वतंत्र चर (Independent variable - Time 't') पर तीन प्राथमिक ऑपरेशन्स किए जाते हैं:</p>
+
+    <!-- Time Shifting -->
+    <div class="card">
+        <div class="card-title">1. Time Shifting (समय का खिसकाव)</div>
+        <div class="en-def">Mathematical Representation: y(t) = x(t ± t<sub>0</sub>)</div>
+        <div class="hi-def">सिग्नल x(t) को समय अक्ष (Time Axis) पर बिना आकार बदले दाईं या बाईं ओर खिसकाना।
+        <br>इसके 2 प्रकार हैं:
+        <ol>
+            <li><strong>Time Delay (Right Shift): y(t) = x(t - t<sub>0</sub>)</strong>
+            <br>सिग्नल t<sub>0</sub> समय से पिछड़ जाता है (दाईं ओर Shift होता है)।</li>
+            <li><strong>Time Advance (Left Shift): y(t) = x(t + t<sub>0</sub>)</strong>
+            <br>सिग्नल t<sub>0</sub> समय पहले शुरू हो जाता है (बाईं ओर Shift होता है)।</li>
+        </ol>
+        </div>
+        <div class="diagram-box">
+   Original x(t):             Delayed x(t - 2):            Advanced x(t + 2):
+     ^                          ^                            ^
+    1|──┐                      1|   ──┐                     1|──┐
+     |  |                       |     |                      |  |
+ ────┴──┴──> t              ────┴──┴──┴──> t             ────┴──┴──┴──> t
+     0  1                      0   2  3                     -2 -1  0
+        </div>
+    </div>
+
+    <!-- Time Scaling -->
+    <div class="card">
+        <div class="card-title">2. Time Scaling (समय का पैमाना बदलना)</div>
+        <div class="en-def">Mathematical Representation: y(t) = x(a · t)</div>
+        <div class="hi-def">समय 't' को एक स्थिरांक गुणांक 'a' से गुणा करने पर सिग्नल सिकुड़ता या फैलता है।
+        <ol>
+            <li><strong>Time Compression (सिकुड़ना): [a > 1]</strong>
+            <br>सिग्नल समय में तेज़ हो जाता है। तरंग की चौड़ाई 1/a गुना घट जाती है।
+            <br><em>उदाहरण:</em> x(2t) - सिग्नल आधा चौड़ा हो जाएगा।</li>
+            <li><strong>Time Expansion (फैलना): [0 &lt; a &lt; 1]</strong>
+            <br>सिग्नल धीमा हो जाता है। तरंग की चौड़ाई 1/a गुना बढ़ जाती है।
+            <br><em>उदाहरण:</em> x(t/2) - सिग्नल दो गुना चौड़ा हो जाएगा।</li>
+        </ol>
+        </div>
+    </div>
+
+    <!-- Time Reversal -->
+    <div class="card">
+        <div class="card-title">3. Time Reversal / Inversion (समय का उलटना)</div>
+        <div class="en-def">Mathematical Representation: y(t) = x(-t)</div>
+        <div class="hi-def">सिग्नल को वर्टिकल Y-अक्ष के परिप्रेक्ष्य में 180 डिग्री पर पलट देना। यह सिग्नल की दर्पण छवि (Mirror Image) बनाता है।
+        <br>धनात्मक समय t ऋणात्मक -t बन जाता है। (audio को reverse play करने जैसा)।</div>
+    </div>
+
+    <!-- Precedence Rule -->
+    <div class="card">
+        <div class="card-title">संयुक्त ऑपरेशन्स का नियम (Precedence Rule for Combined Operations):</div>
+        <div class="hi-def">यदि एक सिग्नल पर <strong>y(t) = x(a·t - b)</strong> प्रकार का संयुक्त ऑपरेशन करना हो, तो इसे हल करने के दो तरीके हैं:</div>
+        <div class="math-box">
+            <strong>विधि 1 (Standard Best Method): First Shift, Then Scale</strong><br>
+            1. पहले Shift करें: x(t) ➔ x(t - b)<br>
+            2. फिर Scale करें ('t' को 'at' से बदलें): x(t - b) ➔ x(at - b)<br><br>
+            <strong>विधि 2: First Scale, Then Shift</strong><br>
+            1. पहले 't' का रूप लिखें: x[a(t - b/a)]<br>
+            2. पहले Scale करें: x(t) ➔ x(at)<br>
+            3. फिर Shift करें (b/a से): x(at) ➔ x(a(t - b/a)) = x(at - b)
+        </div>
+    </div>
+
+    <!-- TOPIC 2.4 -->
+    <h2>2.4 Fourier Series and Fourier Transform</h2>
+    <p>टाइम-डोमेन सिग्नल्स का फ्रीक्वेंसी-डोमेन (Frequency Domain) में विश्लेषण करने के लिए फोरियर टूल्स का उपयोग किया जाता है।</p>
+
+    <div class="card">
+        <div class="card-title">फ्रीक्वेंसी डोमेन विश्लेषण की आवश्यकता क्यों है?</div>
+        <div class="hi-def">टाइम डोमेन में सिग्नल का केवल एम्पलीट्यूड और टाइम दिखता है, लेकिन यह पता नहीं चलता कि उसमें कौन-कौन सी फ्रीक्वेंसी (Frequency Components) शामिल हैं। फोरियर विश्लेषण सिग्नल को उसके घटक साइन और कोसाइन तरंगों में तोड़ देता है, जिससे बैंडविड्थ और फ़िल्टरिंग का अध्ययन संभव होता है।</div>
+    </div>
+
+    <!-- Fourier Series -->
+    <h3>A. Fourier Series - FS (फोरियर सीरीज़)</h3>
+    <div class="card">
+        <div class="card-title">Fourier Series (केवल Periodic Signals के लिए)</div>
+        <div class="en-def"><strong>English:</strong> Fourier Series represents any continuous-time periodic signal as an infinite sum of harmonically related sinusoidal (Sine and Cosine) functions.</div>
+        <div class="hi-def">फोरियर सीरीज़ का उपयोग केवल **आवर्ती सिग्नल्स (Periodic Signals)** के विश्लेषण के लिए किया जाता है।</div>
+
+        <div class="math-box">
+            <strong>1. Trigonometric Fourier Series (TFS):</strong><br>
+            x(t) = a<sub>0</sub> + ∑<sub>n=1</sub><sup>∞</sup> [a<sub>n</sub> cos(nω<sub>0</sub>t) + b<sub>n</sub> sin(nω<sub>0</sub>t)]<br><br>
+            जहाँ Coefficients के सूत्र निम्न हैं:<br>
+            a<sub>0</sub> = (1/T<sub>0</sub>) ∫<sub>T0</sub> x(t) dt &nbsp;&nbsp;&nbsp; (DC Value / Average Value)<br>
+            a<sub>n</sub> = (2/T<sub>0</sub>) ∫<sub>T0</sub> x(t) cos(nω<sub>0</sub>t) dt<br>
+            b<sub>n</sub> = (2/T<sub>0</sub>) ∫<sub>T0</sub> x(t) sin(nω<sub>0</sub>t) dt
+        </div>
+
+        <div class="math-box">
+            <strong>2. Exponential Fourier Series (EFS - सबसे लोकप्रिय):</strong><br>
+            x(t) = ∑<sub>n=-∞</sub><sup>+∞</sup> C<sub>n</sub> e<sup>j n ω<sub>0</sub> t</sup><br><br>
+            जहाँ Coefficient C<sub>n</sub> का सूत्र है:<br>
+            C<sub>n</sub> = (1/T<sub>0</sub>) ∫<sub>T0</sub> x(t) e<sup>-j n ω<sub>0</sub> t</sup> dt
+        </div>
+
+        <div class="card-title" style="font-size: 15px; margin-top:10px;">Dirichlet's Conditions (फोरियर सीरीज़ लागू होने की शर्तें):</div>
+        <div class="hi-def">किसी भी आवर्ती सिग्नल x(t) की फोरियर सीरीज़ केवल तभी अस्तित्व में होगी यदि वह निम्नलिखित 3 शर्तों को पूरा करे:
+        <ol>
+            <li>x(t) एक आवर्तकाल (Period T<sub>0</sub>) में पूरी तरह से समाकलनीय (Absolutely Integrable) हो: ∫<sub>T0</sub> |x(t)| dt &lt; ∞.</li>
+            <li>x(t) में एक आवर्तकाल में परिमित संख्या में ही मैक्सिमा और मिनिमा (Finite Maxima & Minima) हों।</li>
+            <li>x(t) में एक आवर्तकाल में परिमित संख्या में ही असंततता (Finite Discontinuities) हों।</li>
+        </ol>
+        </div>
+    </div>
+
+    <!-- Fourier Transform -->
+    <h3>B. Fourier Transform - FT (फोरियर ट्रांसफॉर्म)</h3>
+    <div class="card">
+        <div class="card-title">Fourier Transform (Aperiodic / Non-Periodic Signals के लिए)</div>
+        <div class="en-def"><strong>English:</strong> Continuous-Time Fourier Transform (CTFT) converts a time-domain non-periodic signal x(t) into its continuous frequency-domain representation X(ω).</div>
+        <div class="hi-def">चूँकि गैर-आवर्ती (Aperiodic) सिग्नल्स का आवर्तकाल T<sub>0</sub> = ∞ होता है, इसलिए उन पर फोरियर सीरीज़ लागू नहीं होती। इसके लिए **Fourier Transform** का उपयोग किया जाता है।</div>
+
+        <div class="math-box">
+            <strong>1. Direct Fourier Transform (Analysis Equation):</strong><br>
+            X(ω) = F{x(t)} = ∫<sub>-∞</sub><sup>+∞</sup> x(t) e<sup>-jωt</sup> dt<br><br>
+            <strong>2. Inverse Fourier Transform (Synthesis Equation):</strong><br>
+            x(t) = F<sup>-1</sup>{X(ω)} = (1 / 2π) ∫<sub>-∞</sub><sup>+∞</sup> X(ω) e<sup>jωt</sup> dω
+        </div>
+    </div>
+
+    <h3>Properties of Continuous-Time Fourier Transform (महत्वपूर्ण प्रॉपर्टीज़):</h3>
+    <p>परीक्षा में सीधे पूछे जाने वाले फोरियर ट्रांसफॉर्म के प्रमुख गुणधर्म:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Property Name</th>
+                <th>Time Domain Signal x(t)</th>
+                <th>Fourier Transform X(ω)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Linearity</strong></td>
+                <td>a x<sub>1</sub>(t) + b x<sub>2</sub>(t)</td>
+                <td>a X<sub>1</sub>(ω) + b X<sub>2</sub>(ω)</td>
+            </tr>
+            <tr>
+                <td><strong>Time Shifting</strong></td>
+                <td>x(t - t<sub>0</sub>)</td>
+                <td>e<sup>-jωt<sub>0</sub></sup> X(ω)</td>
+            </tr>
+            <tr>
+                <td><strong>Frequency Shifting</strong></td>
+                <td>e<sup>jω<sub>0</sub>t</sup> x(t)</td>
+                <td>X(ω - ω<sub>0</sub>)</td>
+            </tr>
+            <tr>
+                <td><strong>Time Scaling</strong></td>
+                <td>x(a · t)</td>
+                <td>(1 / |a|) X(ω / a)</td>
+            </tr>
+            <tr>
+                <td><strong>Time Reversal</strong></td>
+                <td>x(-t)</td>
+                <td>X(-ω)</td>
+            </tr>
+            <tr>
+                <td><strong>Differentiation in Time</strong></td>
+                <td>d/dt [x(t)]</td>
+                <td>(jω) X(ω)</td>
+            </tr>
+            <tr>
+                <td><strong>Integration in Time</strong></td>
+                <td>∫<sub>-∞</sub><sup>t</sup> x(τ) dτ</td>
+                <td>(1 / jω) X(ω) + π X(0) δ(ω)</td>
+            </tr>
+            <tr>
+                <td><strong>Duality / Symmetry</strong></td>
+                <td>X(t)</td>
+                <td>2π x(-ω)</td>
+            </tr>
+            <tr>
+                <td><strong>Convolution Property</strong></td>
+                <td>x<sub>1</sub>(t) * x<sub>2</sub>(t)</td>
+                <td>X<sub>1</sub>(ω) · X<sub>2</sub>(ω) (Time domain का Convolution गुणा बन जाता है)</td>
+            </tr>
+            <tr>
+                <td><strong>Parseval's Theorem</strong></td>
+                <td>∫<sub>-∞</sub><sup>+∞</sup> |x(t)|<sup>2</sup> dt</td>
+                <td>(1 / 2π) ∫<sub>-∞</sub><sup>+∞</sup> |X(ω)|<sup>2</sup> dω (ऊर्जा संरक्षण का नियम)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Standard Fourier Transform Pairs (मानक ट्रांसफॉर्म जो याद रखने हैं):</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Signal Name</th>
+                <th>Time Domain x(t)</th>
+                <th>Fourier Transform X(ω)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Impulse Signal</td>
+                <td>δ(t)</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>DC Constant Signal</td>
+                <td>1</td>
+                <td>2π δ(ω)</td>
+            </tr>
+            <tr>
+                <td>Unit Step Signal</td>
+                <td>u(t)</td>
+                <td>(1 / jω) + π δ(ω)</td>
+            </tr>
+            <tr>
+                <td>Exponential Decay</td>
+                <td>e<sup>-at</sup> u(t)  [a > 0]</td>
+                <td>1 / (a + jω)</td>
+            </tr>
+            <tr>
+                <td>Rectangular Pulse</td>
+                <td>rect(t / τ)</td>
+                <td>τ Sinc(ωτ / 2) &nbsp;&nbsp; [जहाँ Sinc(x) = sin(x)/x]</td>
+            </tr>
+            <tr>
+                <td>Cosine Wave</td>
+                <td>cos(ω<sub>0</sub>t)</td>
+                <td>π [δ(ω - ω<sub>0</sub>) + δ(ω + ω<sub>0</sub>)]</td>
+            </tr>
+            <tr>
+                <td>Sine Wave</td>
+                <td>sin(ω<sub>0</sub>t)</td>
+                <td>(π / j) [δ(ω - ω<sub>0</sub>) - δ(ω + ω<sub>0</sub>)]</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
+
