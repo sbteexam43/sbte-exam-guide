@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Notes: Unit 5.0 - Transmitters and Receivers</title>
+    <style>
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #1565c0;
+            --accent-color: #00838f;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-color: #212121;
+            --border-color: #dcdcdc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            color: #ffffff;
+            background: var(--secondary-color);
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-top: 40px;
+            font-size: 21px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin-top: 25px;
+            font-size: 18px;
+        }
+
+        .diagram-box {
+            background: #1e1e1e;
+            color: #00ff66;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.4;
+            margin: 20px 0;
+            font-size: 13px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .en-def {
+            color: #37474f;
+            font-style: italic;
+            background: #eceff1;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 14.5px;
+        }
+
+        .hi-def {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .example-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffb300;
+            padding: 10px 15px;
+            margin-top: 10px;
+            font-size: 14px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .math-box {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            color: #1b5e20;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+        }
+
+        table, th, td {
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 11px;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        ul, ol {
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 0; width: 100%; }
+            .diagram-box { background: #f5f5f5; color: #000; border: 1px solid #000; }
+            h2 { page-break-before: always; color: #000; background: #ddd; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 5.0: Transmitters and Receivers</h1>
+
+    <!-- TOPIC 5.1 -->
+    <h2>5.1 AM and FM Transmitters (Block Diagram & Functions)</h2>
+
+    <!-- AM Transmitter -->
+    <div class="card">
+        <div class="card-title">1. High-Level AM Transmitter (उच्च-स्तरीय AM ट्रांसमीटर)</div>
+        <div class="en-def"><strong>Definition:</strong> An AM Transmitter is an electronic system that generates a High-Frequency carrier signal, modulates it with an Audio Message signal, amplifies it, and radiates it into space via an antenna.</div>
+        
+        <div class="diagram-box">
+Microphone ──► [ Audio Processing / Pre-Amplifier ] ──► [ Audio Driver Amplifier ] ──► [ Class C Power Amp (Audio) ] ──┐
+                                                                                                                     ▼
+Crystal Oscillator ──► [ Buffer Amplifier ] ──► [ Harmonic Generator / Class C Driver ] ───────────► [ Modulated Class C Power Amp ] ──► [ Antenna ]
+        </div>
+
+        <div class="hi-def">
+            <strong>मुख्य ब्लॉक एवं उनके कार्य (Functions of Blocks):</strong>
+            <ul>
+                <li><strong>Microphone:</strong> ध्वनिवैद्युत रूपांतरक (Acoustic Transducer) जो ध्वनि तरंगों को विद्युत ऑडियो सिग्नल में बदलता है।</li>
+                <li><strong>Audio Pre-Amplifier:</strong> माइक से आने वाले अत्यंत कमजोर वोल्टता सिग्नल के वोल्टेज स्तर को बढ़ाता है।</li>
+                <li><strong>Audio Driver Amplifier:</strong> पावर एम्पलीफायर स्टेज को ड्राइव करने के लिए पर्याप्त करंट और पावर प्रदान करता है।</li>
+                <li><strong>Crystal Oscillator:</strong> अत्यधिक सटीक और स्थिर आवृत्ति वाला उच्च-आवृत्ति (RF) कैरियर सिग्नल जनरेट करता है।</li>
+                <li><strong>Buffer Amplifier:</strong> यह क्रिस्टल ऑसिलेटर और पावर एम्पलीफायर के बीच आइसोलेशन प्रदान करता है ताकि लोड में बदलाव के कारण ऑसिलेटर की फ्रीक्वेंसी शिफ्ट न हो।</li>
+                <li><strong>Class C Power Amplifier (RF & Modulator):</strong> उच्च दक्षता (Efficiency ~ 85%) के साथ RF सिग्नल का पावर प्रवर्धन करता है। यहीं पर कलेक्टर मॉड्यूलेशन द्वारा AM सिग्नल का निर्माण होता है।</li>
+                <li><strong>Transmitting Antenna:</strong> मॉड्युलेटेड इलेक्ट्रिकल पावर को इलेक्ट्रोमैग्नेटिक (EM) तरंगों के रूप में फ्री स्पेस में प्रेषित करता है।</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FM Transmitter -->
+    <div class="card">
+        <div class="card-title">2. FM Transmitter (FM ट्रांसमीटर)</div>
+        <div class="en-def"><strong>Definition:</strong> An FM Transmitter generates a constant-amplitude, frequency-modulated Radio Frequency signal where carrier frequency varies in proportion to the audio input.</div>
+
+        <div class="diagram-box">
+Microphone ──► [ Audio Pre-Amp ] ──► [ Pre-Emphasis Network ] ──► [ FM Modulator / Reactance Modulator ]
+                                                                                   │
+Antenna ◄── [ Power Amplifier (Class C) ] ◄── [ Frequency Multipliers ] ◄──────────┘
+        </div>
+
+        <div class="hi-def">
+            <strong>मुख्य ब्लॉक एवं उनके कार्य:</strong>
+            <ul>
+                <li><strong>Pre-Emphasis Network:</strong> उच्च-आवृत्ति वाले ऑडियो सिग्नल्स के आयाम (Amplitude) को कृत्रिम रूप से बढ़ाता है ताकि चैनल में मौजूद उच्च-आवृत्ति शोर से बचाया जा सके।</li>
+                <li><strong>FM Modulator (Reactance / VCO):</strong> ऑडियो सिग्नल के अनुसार कैरियर सिग्नल की आवृत्ति को सीधे परिवर्तित करता है।</li>
+                <li><strong>Frequency Multipliers (Class C Harmonics):</strong> यह आवृत्ति विचलन (Frequency Deviation $\Delta f$) और सेंट्रल कैरियर फ्रीक्वेंसी ($f_c$) दोनों को कई गुना बढ़ा देता है ताकि Wideband FM (WBFM) प्राप्त हो सके।</li>
+                <li><strong>Power Amplifier:</strong> सिग्नल की शक्ति को बढ़ाकर एंटीना को फीड करता है।</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TOPIC 5.2 -->
+    <h2>5.2 AM and FM Receivers (Block Diagram & Functions)</h2>
+
+    <!-- AM Receiver -->
+    <div class="card">
+        <div class="card-title">1. AM Receiver Block Diagram (Superheterodyne Type)</div>
+        <div class="diagram-box">
+RF Antenna ──► [ RF Amplifier ] ──► [ Mixer ] ──► [ IF Amplifier (455 kHz) ] ──► [ Envelope Detector ] ──► [ Audio & Power Amp ] ──► Loudspeaker
+                                       ▲                                                   │
+                                       │                                                   └───────► [ Automatic Gain Control (AGC) ]
+                        [ Local Oscillator (f_LO) ]
+        </div>
+        
+        <div class="hi-def">
+            <strong>कार्य एवं विवरण:</strong>
+            <ul>
+                <li><strong>RF Amplifier:</strong> एंटीना द्वारा पकड़े गए कमजोर सिग्नल्स को चुनता है और SNR को बेहतर बनाता है।</li>
+                <li><strong>Mixer & Local Oscillator:</strong> आने वाले RF सिग्नल ($f_s$) और लोकल ऑसिलेटर सिग्नल ($f_{LO}$) को मिलाकर एक निश्चित मध्यवर्ती आवृत्ति (**Intermediate Frequency - IF**) बनाता है। <em>($f_{IF} = f_{LO} - f_s = 455\text{ kHz}$)</em>.</li>
+                <li><strong>IF Amplifier:</strong> 455 kHz की नियत आवृत्ति पर अधिकतम गेन और सेलेक्टिविटी प्रदान करता है।</li>
+                <li><strong>Envelope Detector:</strong> AM तरंग से मूल ऑडियो संदेश सिग्नल को अलग करता है।</li>
+                <li><strong>AGC (Automatic Gain Control):</strong> यह डिटेक्ट किए गए सिग्नल का DC मान लेकर RF/IF स्टेज के गेन को नियंत्रित करता है, जिससे इनपुट सिग्नल कमजोर या मजबूत होने पर भी स्पीकर की आवाज एकसमान बनी रहती है।</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FM Receiver -->
+    <div class="card">
+        <div class="card-title">2. FM Receiver Block Diagram</div>
+        <div class="diagram-box">
+Antenna ──► [ RF Amp ] ──► [ Mixer ] ──► [ IF Amp (10.7 MHz) ] ──► [ Amplitude Limiter ] ──► [ FM Detector / Ratio Det. ] ──► [ De-Emphasis ] ──► Audio Amp ──► Speaker
+                              ▲
+               [ Local Oscillator ]
+        </div>
+
+        <div class="hi-def">
+            <strong>FM रिसीवर के विशेष घटक:</strong>
+            <ul>
+                <li><strong>IF Frequency:</strong> FM में स्टैंडर्ड IF का मान **10.7 MHz** होता है।</li>
+                <li><strong>Amplitude Limiter:</strong> चैनल में आए किसी भी एम्प्लिट्यूड संबंधित शोर या उतार-चढ़ाव को काट (Clip) कर हटा देता है, जिससे केवल शुद्ध फ्रीक्वेंसी बदलाव ही आगे बढ़ता है।</li>
+                <li><strong>FM Discriminator / Detector:</strong> फ्रीक्वेंसी में हुए बदलावों को वापस मूल ऑडियो वोल्टेज में परिवर्तित करता है।</li>
+                <li><strong>De-Emphasis Circuit:</strong> ट्रांसमीटर के Pre-emphasis द्वारा बढ़ाए गए हाई-फ्रीक्वेंसी कॉम्पोनेंट्स को वापस मूल स्वाभाविक स्तर पर लाता है।</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TOPIC 5.3 -->
+    <h2>5.3 Antennas, Parameters, and Specifications</h2>
+
+    <div class="card">
+        <div class="card-title">1. Transmitting and Receiving Antenna</div>
+        <div class="en-def"><strong>Definition:</strong> An Antenna is a metallic structure (transducer) that converts guided electromagnetic waves (guided by transmission lines) into free-space electromagnetic waves and vice versa.</div>
+        <div class="hi-def"><strong>Reciprocal Property (रेसिप्रोसिटी का नियम):</strong> एंटीना का ट्रांसमिटिंग और रिसीविंग व्यवहार समान भौतिक सिद्धांतों पर आधारित होता है। एक एंटीना का रेडिएशन पैटर्न, गेन और डायरेक्टिविटी दोनों मोड्स (Transmitting/Receiving) में बिल्कुल समान रहता है।</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">2. Important Antenna Parameters (एंटीना के महत्वपूर्ण मापदंड)</div>
+        
+        <div class="math-box">
+            <strong>1. Radiation Pattern:</strong> एंटीना द्वारा अंतरिक्ष में त्रि-आयामी (3D) दिशाओं में विकिरित शक्ति का ग्राफिक निरूपण।<br><br>
+            <strong>2. Directivity (D):</strong> किसी विशिष्ट दिशा में एंटीना की विकिरण तीव्रता का औसत विकिरण तीव्रता से अनुपात।<br>
+            D = U<sub>max</sub> / U<sub>avg</sub> = 4π U<sub>max</sub> / P<sub>rad</sub><br><br>
+            <strong>3. Antenna Gain (G):</strong> एंटीना द्वारा किसी दिशा में इनपुट पावर की तुलना में प्राप्त शक्ति प्रवर्धन।<br>
+            G = η<sub>k</sub> · D &nbsp;&nbsp; (जहाँ η<sub>k</sub> = एंटीना की दक्षता)<br><br>
+            <strong>4. Input Impedance (Z<sub>in</sub>):</strong> एंटीना के टर्मिनलों पर उपलब्ध प्रतिरोध और रिएक्टेंस का योग। <em>(Half-wave Dipole का Z<sub>in</sub> = 73 + j42.5 Ω ≈ 73 Ω)</em>.<br><br>
+            <strong>5. Effective Aperture / Area (A<sub>e</sub>):</strong> रिसीविंग एंटीना द्वारा मुक्त स्थान से शक्ति एकत्र करने की क्षमता।<br>
+            A<sub>e</sub> = (λ<sup>2</sup> / 4π) · G<br><br>
+            <strong>6. Polarization:</strong> एंटीना से निकलने वाली इलेक्ट्रोमैग्नेटिक तरंग के इलेक्ट्रिक फील्ड ($E$-vector) के दोलन की दिशा (Linear, Circular, या Elliptical)।
+        </div>
+    </div>
+
+    <!-- TOPIC 5.4 -->
+    <h2>5.4 TRF Receiver vs Superheterodyne Receiver</h2>
+
+    <!-- TRF Receiver -->
+    <div class="card">
+        <div class="card-title">1. Tuned Radio Frequency (TRF) Receiver</div>
+        <div class="hi-def">यह सबसे प्रारंभिक प्रकार का रेडियो रिसीवर था जिसमें कैस्केड में जुड़े कई RF एम्पलीफायर और एक ट्यून्ड डिटेक्टिंग सर्किट होता था।</div>
+
+        <div class="diagram-box">
+Antenna ──► [ RF Stage 1 ] ──► [ RF Stage 2 ] ──► [ Detector ] ──► [ Audio Power Amp ] ──► Loudspeaker
+                 │                 │
+                 └─ (Ganged Tuning)─┘
+        </div>
+
+        <div class="hi-def">
+            <strong>TRF रिसीवर की गंभीर कमियां (Drawbacks):</strong>
+            <ol>
+                <li><strong>Tracking Error:</strong> विभिन्न RF स्टेज के कई वेरिएबल कैपेसिटर्स को एक साथ समान रूप से ट्यून (Ganged Tuning) करना बहुत कठिन था।</li>
+                <li><strong>Instability (Oscillation):</strong> उच्च गेन पर RF स्टेजों के बीच कैपेसिटिव फीडबैक के कारण सिस्टम ऑसिलेट करने लगता था।</li>
+                <li><strong>Variable Bandwidth / Poor Selectivity:</strong> उच्च आवृत्तियों पर $Q$-फैक्टर स्थिर न रहने के कारण बैंडविड्थ बदल जाती थी ($\Delta f = f_0 / Q$), जिससे पास के स्टेशन मिक्स हो जाते थे।</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Superheterodyne Receiver -->
+    <div class="card">
+        <div class="card-title">2. Superheterodyne Receiver (सुपरहेटरोडाइन का सिद्धांत)</div>
+        <div class="en-def"><strong>Principle:</strong> The principle of heterodyning is to mix the incoming variable RF signal (f<sub>s</sub>) with a locally generated frequency (f<sub>LO</sub>) in a non-linear device (Mixer) to produce a constant lower frequency called Intermediate Frequency (IF).</div>
+
+        <div class="math-box">
+            <strong>Heterodyning Condition:</strong><br>
+            f<sub>LO</sub> = f<sub>s</sub> + f<sub>IF</sub> &nbsp;&nbsp; (Local Oscillator is kept higher than Signal Frequency)<br>
+            f<sub>IF</sub> = f<sub>LO</sub> - f<sub>s</sub> = Constant (455 kHz for AM, 10.7 MHz for FM)<br><br>
+            <strong>Image Frequency (इमेज फ्रीक्वेंसी):</strong><br>
+            इमेज फ्रीक्वेंसी ($f_i$) एक अवांछित सिग्नल फ्रीक्वेंसी है जो मिक्सर में प्रवेश करके वही IF जनरेट कर देती है:<br>
+            f<sub>i</sub> = f<sub>s</sub> + 2 · f<sub>IF</sub><br><br>
+            <strong>Image Rejection Ratio (IRR):</strong> α = √(1 + Q<sup>2</sup> ρ<sup>2</sup>) &nbsp;&nbsp; (जहाँ ρ = f<sub>i</sub>/f<sub>s</sub> - f<sub>s</sub>/f<sub>i</sub>)
+        </div>
+
+        <p><strong>सुपरहेटरोडाइन के लाभ:</strong> उच्च और स्थिर सेलेक्टिविटी, उच्च गेन, और ट्रैकिंग में आसानी।</p>
+    </div>
+
+    <!-- TOPIC 5.5 -->
+    <h2>5.5 Receiver Characteristics & Pre-emphasis / De-emphasis</h2>
+
+    <!-- Receiver Characteristics -->
+    <div class="card">
+        <div class="card-title">1. Receiver Characteristics & Testing</div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>विशेषता (Characteristic)</th>
+                    <th>परिभाषा (Definition)</th>
+                    <th>निर्भरता (Depends On)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Sensitivity (संवेदनशीलता)</strong></td>
+                    <td>रिसीवर की अत्यंत कमजोर (Microvolt) इनपुट सिग्नल्स को सफलतापूर्वक पिक-अप करके एम्पलीफाई करने की क्षमता।</td>
+                    <td>RF और IF स्टेजों के **Overall Gain** और उनके आंतरिक नॉइज़ स्तर पर।</td>
+                </tr>
+                <tr>
+                    <td><strong>Selectivity (चयनशीलता)</strong></td>
+                    <td>वांछित सिग्नल फ्रीक्वेंसी को स्वीकार करने और निकटवर्ती अवांछित (Adjacent Channel) सिग्नल्स को खारिज करने की क्षमता।</td>
+                    <td>IF एम्पलीफायर के **Tuned Circuits के Response and Q-factor** पर।</td>
+                </tr>
+                <tr>
+                    <td><strong>Fidelity (सत्यनिष्ठा)</strong></td>
+                    <td>मॉड्यूलेटिंग सिग्नल में मौजूद सभी ऑडियो आवृत्तियों को बिना किसी डिस्टॉर्शन के एकसमान रूप से पुनरुत्पादित (Reproduce) करने की क्षमता।</td>
+                    <td>Audio Power Amplifier और Detector के **Flat Frequency Response** पर।</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pre-emphasis and De-emphasis -->
+    <div class="card">
+        <div class="card-title">2. Pre-emphasis and De-emphasis Circuits</div>
+        <div class="hi-def">FM में उच्च-आवृत्ति वाले ऑडियो सिग्नल्स का एम्प्लिट्यूड स्वाभाविक रूप से कम होता है, जबकि FM चैनल में नॉइज़ का प्रभाव उच्च आवृत्तियों पर सबसे अधिक होता है। इस समस्या के समाधान के लिए इस तकनीक का उपयोग किया जाता है:</div>
+
+        <div class="math-box">
+            <strong>Pre-emphasis (At Transmitter):</strong><br>
+            • यह एक High-Pass Filter (CR Circuit) होता है।<br>
+            • यह 2.1 kHz से ऊपर की ऑडियो आवृत्तियों का आयाम (Boost) बढ़ा देता है।<br>
+            • Time Constant: **τ = R · C = 75 μs** (USA) या **50 μs** (India/Europe).<br><br>
+            <strong>De-emphasis (At Receiver):</strong><br>
+            • यह एक Low-Pass Filter (RC Circuit) होता है जो FM डिटेक्ट होने के बाद लगाया जाता है।<br>
+            • यह बढ़ाई गई उच्च आवृत्तियों को उनके मूल आयाम पर वापस लाता है और साथ ही हाई-फ्रीक्वेंसी नॉइज़ को अटैन्यूएट (कम) कर देता है।
+        </div>
+
+        <div class="diagram-box">
+Pre-Emphasis Response (Transmitter):          De-Emphasis Response (Receiver):
+Gain (dB)                                      Gain (dB)
+  ^                                              ^
+  |               /──────                         | ──────\
+  |              /                               |        \
+  |             /                                |         \
+  └────────────┴──────► f                        └──────────┴──────► f
+             2.1 kHz                                      2.1 kHz
+        </div>
+    </div>
+
+    <!-- TOPIC 5.6 -->
+    <h2>5.6 Generation of FM: Direct vs Indirect Method</h2>
+
+    <div class="card">
+        <div class="card-title">1. Direct Method (VCO / Reactance Modulator)</div>
+        <div class="hi-def">इसमें संदेश सिग्नल के आयाम के अनुसार ऑसिलेटर (जैसे Varactor Diode या Reactance FET) की आवृत्ति को सीधे बदला जाता है।</div>
+        <ul>
+            <li><strong>लाभ:</strong> बहुत ही सरल और उच्च आवृत्ति विचलन ($\Delta f$) आसानी से प्राप्त होता है।</li>
+            <li><strong>हानि:</strong> इसमें क्रिस्टल ऑसिलेटर का उपयोग सीधे नहीं हो सकता, जिससे सेंट्रल कैरियर फ्रीक्वेंसी ($f_c$) की **स्थिरता (Frequency Stability) बहुत खराब** होती है।</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="card-title">2. Indirect Method (Armstrong FM Generation Method)</div>
+        <div class="en-def"><strong>Principle:</strong> Frequency Modulation is obtained indirectly by Phase Modulating a highly stable Crystal Oscillator output with the integrated audio signal.</div>
+
+        <div class="diagram-box">
+Crystal Oscillator (f1) ───┬──► [ Carrier Phase Shifter (90°) ] ──┐
+                          │                                      ▼
+Audio m(t) ──► [ Integrator ] ──────────────────────────────► [ Balanced Modulator ] ──► [ Adder ] ──► Narrowband FM (NBFM)
+                                                                                                        │
+                                                                                                        ▼
+                                     WBFM Output ◄── [ Power Amp ] ◄── [ Frequency Multipliers (N) ] ◄──┘
+        </div>
+
+        <div class="hi-def">
+            <strong>कार्य चरण:</strong>
+            <ol>
+                <li><strong>Integrator:</strong> मूल संदेश सिग्नल $m(t)$ को इंटीग्रेट करके $\int m(t) dt$ बनाता है।</li>
+                <li><strong>Balanced Modulator:</strong> क्रिस्टल ऑसिलेटर के 90° शिफ्टेड कैरियर और इंटीग्रेटेड ऑडियो को मिलाकर DSB-SC सिग्नल बनाता है।</li>
+                <li><strong>Adder:</strong> मूल कैरियर और DSB-SC को जोड़कर **Narrowband FM (NBFM)** बनाता है।</li>
+                <li><strong>Frequency Multipliers:</strong> NBFM के छोटे मॉड्यूलेशन इंडेक्स ($\beta < 0.5$) और फ्रीक्वेंसी डेविएशन को गुणक $N$ से गुणा करके **Wideband FM (WBFM)** में बदल देता है। ($f_c_{new} = N \cdot f_c$, $\Delta f_{new} = N \cdot \Delta f$).</li>
+            </ol>
+            <p><strong>मुख्य लाभ:</strong> क्रिस्टल ऑसिलेटर का उपयोग होने के कारण इसकी **कैरियर फ्रीक्वेंसी स्टेबिलिटी अत्यंत उच्च** होती है।</p>
+        </div>
+    </div>
+
+    <!-- TOPIC 5.7 -->
+    <h2>5.7 Demodulation of FM Using Phase Locked Loop (PLL)</h2>
+
+    <div class="card">
+        <div class="card-title">Demodulation of FM using PLL (Phase Locked Loop - IC 565)</div>
+        <div class="en-def"><strong>Definition:</strong> A Phase-Locked Loop (PLL) is a closed-loop feedback control circuit that locks its internal Voltage Controlled Oscillator (VCO) phase and frequency to an incoming modulated signal.</div>
+
+        <div class="diagram-box">
+FM Input s_FM(t) ──► [ Phase Detector (PD) ] ──► [ Low Pass Filter (LPF) ] ──┬──► Demodulated Audio Output v_out(t)
+                            ▲                                                  │
+                            │                                                  │
+                            └────────────── [ VCO ] ◄──────────────────────────┘
+                                                   (Control Voltage)
+        </div>
+
+        <div class="hi-def">
+            <strong>कार्य सिद्धांत (Working Principle):</strong>
+            <ol>
+                <li><strong>Phase Detector (PD):</strong> आने वाले FM इनपुट सिग्नल और VCO के आउटपुट सिग्नल के बीच फेज़ अंतर की तुलना करता है और एक एरर वोल्टेज $v_e(t)$ उत्पन्न करता है।</li>
+                <li><strong>Low Pass Filter (LPF):</strong> एरर वोल्टेज से उच्च-आवृत्ति घटकों (High-frequency ripples) और शोर को हटाकर एक शुद्ध DC/धीमा बदलता कंट्रोल वोल्टेज $v_c(t)$ प्रदान करता है।</li>
+                <li><strong>Voltage Controlled Oscillator (VCO):</strong> यह कंट्रोल वोल्टेज $v_c(t)$ वापस VCO के इनपुट पर जाता है ताकि VCO की फ्रीक्वेंसी इनपुट FM फ्रीक्वेंसी का पीछा (Track) कर सके।</li>
+                <li><strong>Demodulation Output:</strong> चूँकि इनपुट FM सिग्नल की फ्रीक्वेंसी मूल मैसेज सिग्नल $m(t)$ के अनुसार बदल रही थी, अतः VCO को उस फ्रीक्वेंसी पर लॉक रखने के लिए आवश्यक कंट्रोल वोल्टेज $v_c(t)$ **स्वयं मूल ऑडियो संदेश सिग्नल (Demodulated Output)** का सटीक रूप होता है!</li>
+            </ol>
+        </div>
+
+        <div class="example-box">
+            <strong>PLL FM Detector के लाभ:</strong> इसमें किसी ट्यून्ड LC सर्किट की आवश्यकता नहीं होती (IC आधारित), इसकी लीनियरिटी बहुत उत्कृष्ट होती है, और यह कम SNR पर भी बिना डिस्टॉर्शन के काम करता है।
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
